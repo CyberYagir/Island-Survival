@@ -41,3 +41,257 @@ Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/UNITYEDITORS/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Registered in 0.002465 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1378.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 10.349 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.006926 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 366.07 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.627 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.20 seconds
+Refreshing native plugins compatible for Editor in 1.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 133.1 MB.
+System memory in use after: 133.3 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3287.
+Total: 7.145400 ms (FindLiveObjects: 0.833200 ms CreateObjectMapping: 0.767600 ms MarkObjects: 5.367900 ms  DeleteObjects: 0.173200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Editor
+  artifactKey: Guid(f3e81468763f9ab4f93f1d09dc1f7920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor using Guid(f3e81468763f9ab4f93f1d09dc1f7920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'decd02b3ef3d9d262107e6b8e795fe26') in 0.275326 seconds
+  Import took 0.291382 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.030400 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 132.82 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.503 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2730 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 124.7 MB.
+System memory in use after: 124.8 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3307.
+Total: 6.420200 ms (FindLiveObjects: 0.970400 ms CreateObjectMapping: 0.330400 ms MarkObjects: 4.861200 ms  DeleteObjects: 0.255400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 186.542609 seconds.
+  path: Assets/StylizedWater2/_Demo
+  artifactKey: Guid(20fc20810f706c94cb5d206256bdab7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/_Demo using Guid(20fc20810f706c94cb5d206256bdab7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebf6da3cf21aba9dd8cc8781571ab287') in 0.090718 seconds
+  Import took 0.099599 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.657196 seconds.
+  path: Assets/StylizedWater2/_Demo/BuoyancyExample.unity
+  artifactKey: Guid(fa17db9327e1c48428a5dd79735795a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/_Demo/BuoyancyExample.unity using Guid(fa17db9327e1c48428a5dd79735795a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bee1a11887825af7c1d93e1720de6a0') in 0.029100 seconds
+  Import took 0.036725 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.759717 seconds.
+  path: Assets/StylizedWater2/_Demo/ParticleShowcase.unity
+  artifactKey: Guid(70d36081346f63e46b926a02b76297f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/_Demo/ParticleShowcase.unity using Guid(70d36081346f63e46b926a02b76297f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ab6c03515c1f1d659466134d3385e50') in 1.858734 seconds
+  Import took 1.937392 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.239413 seconds.
+  path: Assets/StylizedWater2/_Demo/ParticleShowcase.unity
+  artifactKey: Guid(70d36081346f63e46b926a02b76297f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/_Demo/ParticleShowcase.unity using Guid(70d36081346f63e46b926a02b76297f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ab6c03515c1f1d659466134d3385e50') in 1.309755 seconds
+  Import took 7.118902 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.337457 seconds.
+  path: Assets/Terrain/Grass.terrainlayer
+  artifactKey: Guid(8e6f1945f4f52a4428a67cd93cee195c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Terrain/Grass.terrainlayer using Guid(8e6f1945f4f52a4428a67cd93cee195c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75f578f9f429d46dcc11c88380318471') in 0.547922 seconds
+  Import took 0.559949 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000547 seconds.
+  path: Assets/Settings/SampleSceneProfile.asset
+  artifactKey: Guid(10fc4df2da32a41aaa32d77bc913491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/SampleSceneProfile.asset using Guid(10fc4df2da32a41aaa32d77bc913491c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8a72968ba09bc0545a2ad71ca986c38') in 0.147327 seconds
+  Import took 0.167950 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/Terrain/New Terrain.asset
+  artifactKey: Guid(676fea2c4b6efa1438e60eba43b722e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Terrain/New Terrain.asset using Guid(676fea2c4b6efa1438e60eba43b722e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd02fbf07b863a8e3478563b409eb9f92') in 0.437715 seconds
+  Import took 0.466116 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000432 seconds.
+  path: Assets/Settings/UniversalRP-LowQuality.asset
+  artifactKey: Guid(a31e9f9f9c9d4b9429ed0d1234e22103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/UniversalRP-LowQuality.asset using Guid(a31e9f9f9c9d4b9429ed0d1234e22103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b226a0bb157262eadf686f6bb5b5f1f8') in 0.083191 seconds
+  Import took 0.105289 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.018823 seconds.
+  path: Assets/Settings/UniversalRP-MediumQuality.asset
+  artifactKey: Guid(d847b876476d3d6468f5dfcd34266f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/UniversalRP-MediumQuality.asset using Guid(d847b876476d3d6468f5dfcd34266f96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd421f548a6507a11f25ec3578746e9c1') in 0.097321 seconds
+  Import took 0.117831 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.015592 seconds.
+  path: Assets/Settings/UniversalRP-HighQuality.asset
+  artifactKey: Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/UniversalRP-HighQuality.asset using Guid(19ba41d7c0026c3459d37c2fe90c55a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02e18c1f933b70f494440bf5e7626866') in 0.027482 seconds
+  Import took 0.057945 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/Settings/ForwardRenderer.asset
+  artifactKey: Guid(4a8e21d5c33334b11b34a596161b9360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/ForwardRenderer.asset using Guid(4a8e21d5c33334b11b34a596161b9360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a1b4a9852dbb3f596f74668f33f6a5') in 0.182953 seconds
+  Import took 0.226440 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054278 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(d1c3109bdb54ad54c8a2b2838528e640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(d1c3109bdb54ad54c8a2b2838528e640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c22d78b8b3c8912132c10b2a1a49d6da') in 0.022923 seconds
+  Import took 0.031123 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.238983 seconds.
+  path: Assets/test.unity
+  artifactKey: Guid(b6e8ff69f3561a94e808721cb0c8174b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/test.unity using Guid(b6e8ff69f3561a94e808721cb0c8174b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96126e4ddd452e0b6bb9d9bb08501262') in 0.018728 seconds
+  Import took 0.030537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 45.938015 seconds.
+  path: Assets/StylizedWater2/Materials/Textures/RoughWaves.png
+  artifactKey: Guid(88908a7c7a1f0ed418d1048378c17411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Materials/Textures/RoughWaves.png using Guid(88908a7c7a1f0ed418d1048378c17411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '709aa5a59d969cb2dcaa1632fcb164f9') in 0.975286 seconds
+  Import took 0.997364 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000100 seconds.
+  path: Assets/StylizedWater2/Materials/Textures/SWS_FoamSea.png
+  artifactKey: Guid(e91f048fea6b6b94eb864b2124843ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Materials/Textures/SWS_FoamSea.png using Guid(e91f048fea6b6b94eb864b2124843ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c4888c86e463a5b75109244b0f88352') in 0.827361 seconds
+  Import took 0.882725 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047053 seconds.
+  path: Assets/StylizedWater2/Materials/Textures/SWS_Windwaker.png
+  artifactKey: Guid(2e10c404ec8e1ff41bff06b82e5569df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Materials/Textures/SWS_Windwaker.png using Guid(2e10c404ec8e1ff41bff06b82e5569df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf58afd8eeb254c484e324c978d3b977') in 0.792724 seconds
+  Import took 0.815163 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008274 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.19 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.380 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2738 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 129.5 MB.
+System memory in use after: 129.6 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 3327.
+Total: 6.966000 ms (FindLiveObjects: 0.955400 ms CreateObjectMapping: 0.284200 ms MarkObjects: 5.467300 ms  DeleteObjects: 0.255700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 115.682529 seconds.
+  path: Assets/StylizedWater2/Prefabs
+  artifactKey: Guid(2e9414dd199e9ee4c8b9ebf674e5a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs using Guid(2e9414dd199e9ee4c8b9ebf674e5a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8b325164ef6ea6d0dcfd6d049369f7a') in 0.124013 seconds
+  Import took 0.134672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.081352 seconds.
+  path: Assets/StylizedWater2/Prefabs/StylizedWater_Lowpoly.prefab
+  artifactKey: Guid(0188e8e4d666f9245860a6b3dfeb4f35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs/StylizedWater_Lowpoly.prefab using Guid(0188e8e4d666f9245860a6b3dfeb4f35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '799ebcb93c25010f6793de3e7e72ddc0') in 4.131873 seconds
+  Import took 4.147183 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000458 seconds.
+  path: Assets/StylizedWater2/Prefabs/StylizedWater2_Ocean.prefab
+  artifactKey: Guid(915defc4859ebad4789c339184a60ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs/StylizedWater2_Ocean.prefab using Guid(915defc4859ebad4789c339184a60ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aff6c218c989dd2d89749ab8accee5af') in 0.257689 seconds
+  Import took 0.267667 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000532 seconds.
+  path: Assets/StylizedWater2/Prefabs/StylizedWater_Mobile.prefab
+  artifactKey: Guid(dc629dc53bccd7f4db193a1813466e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs/StylizedWater_Mobile.prefab using Guid(dc629dc53bccd7f4db193a1813466e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64eb5ccae04414f0e90dfce76a819716') in 0.940095 seconds
+  Import took 0.949991 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000120 seconds.
+  path: Assets/StylizedWater2/Prefabs/StylizedWater_Toon.prefab
+  artifactKey: Guid(1a327dcbc1bee1b42848752cd8540c9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs/StylizedWater_Toon.prefab using Guid(1a327dcbc1bee1b42848752cd8540c9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71007413a54acf8fbe1211202991cd3e') in 1.574812 seconds
+  Import took 1.605995 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/StylizedWater2/Prefabs/StylizedWater_Desktop.prefab
+  artifactKey: Guid(6d38f28c8f53eb64383bc1dc0b9c8fe4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/StylizedWater2/Prefabs/StylizedWater_Desktop.prefab using Guid(6d38f28c8f53eb64383bc1dc0b9c8fe4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c11ae1cbbf7f0249ec5b836af7b0234a') in 4.291514 seconds
+  Import took 4.300502 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
