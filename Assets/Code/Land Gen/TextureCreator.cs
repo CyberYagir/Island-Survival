@@ -2,7 +2,7 @@
 
 public class TextureCreator : MonoBehaviour {
 
-	[Range(2, 512)]
+	[Range(2, 2048)]
 	public int resolution = 256;
 
 	public float frequency = 1f;

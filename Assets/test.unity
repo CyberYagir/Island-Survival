@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571385, b: 0.30692253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 1457263785}
   - component: {fileID: 1457263784}
   - component: {fileID: 1457263788}
+  - component: {fileID: 1457263789}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -239,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c3680b80d395046a5b8023a977c56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixWidth: 512
-  pixHeight: 512
+  pixWidth: 2048
+  pixHeight: 2048
   xOrg: 0
   yOrg: 0
   octaves: 7
@@ -275,8 +276,8 @@ Terrain:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_HeightmapPixelError: 114
+  m_SplatMapDistance: 5137
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da936250c131a4e87b58e78e22d8d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 512
+  resolution: 2048
   frequency: 2.75
   octaves: 6
   lacunarity: 2
@@ -356,6 +357,22 @@ MonoBehaviour:
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+--- !u!114 &1457263789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457263783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d6576a6cb7a214c8c9181532340080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heigts:
+  - 0.2
+  - 0.5
+  n: 0
 --- !u!1 &1614249923
 GameObject:
   m_ObjectHideFlags: 0
