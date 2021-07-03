@@ -24,24 +24,29 @@ public class TextureCreator : MonoBehaviour {
 	public Gradient coloring;
 
 	public Texture2D texture;
-	
-	private void OnEnable () {
-		if (texture == null) {
+
+    private void Start()
+    {
+		if (texture == null)
+		{
 			texture = new Texture2D(resolution, resolution, TextureFormat.RGB24, true);
 			texture.name = "Procedural Texture";
 			texture.wrapMode = TextureWrapMode.Clamp;
 			texture.filterMode = FilterMode.Trilinear;
 			texture.anisoLevel = 9;
-			//GetComponent<MeshRenderer>().material.mainTexture = texture;
-		}
-		FillTexture();
-	}
+			if (GetComponent<MeshRenderer>())
+				GetComponent<MeshRenderer>().material.mainTexture = texture;
 
-	private void Update () {
-		if (transform.hasChanged) {
-			transform.hasChanged = false;
 			FillTexture();
 		}
+
+	}
+
+    private void Update () {
+		//if (transform.hasChanged) {
+		//	transform.hasChanged = false;
+		//	FillTexture();
+		//}
 	}
 	
 	public void FillTexture () {

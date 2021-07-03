@@ -17,6 +17,13 @@ public class TerrainGenerator : MonoBehaviour
 
     public Texture2D noiseTex;
     private Color[] pix;
+
+    public TextureCreator main, moutains;
+
+    public Color color;
+
+    public AnimationCurve shoothRamp;
+
     void Start()
     {
         // Set up the texture and a Color array to hold pixels during processing.
@@ -80,23 +87,37 @@ public class TerrainGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        print(color.grayscale);
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             GetComponent<TextureCreator>().FillTexture();
-            noiseTex = GetComponent<TextureCreator>().texture;
-            var n = new float[pixWidth, pixHeight];
+            moutains.GetComponent<TextureCreator>().FillTexture();
+            Invoke("Draw", 1);
+        }
+    }
 
-            for (int x = 0; x < noiseTex.width; x++)
+    public void Draw()
+    {
+        noiseTex = main.texture;
+        var mouTex = moutains.texture;
+
+        var n = new float[pixWidth, pixHeight];
+        for (int x = 0; x < noiseTex.width; x++)
+        {
+            for (int y = 0; y < noiseTex.height; y++)
             {
-                for (int y = 0; y < noiseTex.height; y++)
+                var max = 0.5f;
+                if (distance_squared(x, y) < max)
                 {
-                    if (distance_squared(x, y) < 0.8f)
-                    {
-                        n[x, y] = noiseTex.GetPixel(x, y).r * (1f - distance_squared(x, y) );
-                    }
+                    n[x, y] = ((noiseTex.GetPixel(x, y).grayscale * 0.15f)) + ((mouTex.GetPixel(x, y).grayscale) * 0.8f);
+                }
+                else
+                {
+                    n[x, y] = ((noiseTex.GetPixel(x, y).grayscale * 0.15f) + (mouTex.GetPixel(x, y).grayscale * 0.8f)) * shoothRamp.Evaluate((1 - ((distance_squared(x, y) - max) / (1 - max))));
                 }
             }
-            GetComponent<Terrain>().terrainData.SetHeights(0, 0, n);
         }
+        GetComponent<Terrain>().terrainData.SetHeights(0, 0, n);
+        GetComponent<TerrainTexturer>().DrawTextureTerrain();
     }
 }

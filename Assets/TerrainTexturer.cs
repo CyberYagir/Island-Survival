@@ -5,22 +5,14 @@ using UnityEngine;
 
 public class TerrainTexturer : MonoBehaviour
 {
-    public List<float> heigts;
-    public float n;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            StartR();
-        }
-    }
-    void StartR()
+    public void DrawTextureTerrain()
     {
         // Get the attached terrain component
         Terrain terrain = GetComponent<Terrain>();
 
         // Get a reference to the terrain data
         TerrainData terrainData = terrain.terrainData;
-
+        //terrainData.heightmapResolution = 2049;
         // Splatmap data is stored internally as a 3d array of floats, so declare a new empty array ready for your custom splatmap data:
         float[,,] splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
@@ -42,23 +34,41 @@ public class TerrainTexturer : MonoBehaviour
                 float steepness = terrainData.GetSteepness(y_01, x_01);
 
                 // Setup an array to record the mix of texture weights at this point
-                float[] splatWeights = heigts.ToArray();
+                float[] splatWeights = new float[terrainData.alphamapLayers];
 
-                if (height > 22)
+                if (height < 50)
+                {
+                    if (height > 22)
+                    {
+                        splatWeights[0] = 0;
+                        splatWeights[1] = 1;
+                        splatWeights[2] = 0;
+                    }
+                    else if (height < 20)
+                    {
+                        splatWeights[0] = 1;
+                        splatWeights[1] = 0;
+                        splatWeights[2] = 0;
+                    }
+                    else
+                    {
+                        splatWeights[0] = 1f - ((height - 20) / (22f - 20f));
+                        splatWeights[1] = ((height - 20) / (22f - 20f));
+                        splatWeights[2] = 0;
+                        //n = (height / 22f);
+                    }
+                }
+                else if (height > 60)
                 {
                     splatWeights[0] = 0;
-                    splatWeights[1] = 1;
-                }
-                else if (height < 20)
-                {
-                    splatWeights[0] = 1;
                     splatWeights[1] = 0;
+                    splatWeights[2] = 1;
                 }
                 else
                 {
-                    splatWeights[0] = 1f - ((height-20)/(22f-20f));
-                    splatWeights[1] = ((height - 20) / (22f - 20f));
-                    //n = (height / 22f);
+                    splatWeights[0] = 0;
+                    splatWeights[1] = 1f - ((height - 50) / (60 - 50f)); 
+                    splatWeights[2] = ((height - 50) / (60 - 50f));
                 }
 
                 // CHANGE THE RULES BELOW TO SET THE WEIGHTS OF EACH TEXTURE ON WHATEVER RULES YOU WANT
