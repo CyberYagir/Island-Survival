@@ -36,7 +36,7 @@ public class TerrainTexturer : MonoBehaviour
                 // Setup an array to record the mix of texture weights at this point
                 float[] splatWeights = new float[terrainData.alphamapLayers];
 
-                if (height < 50)
+                if (height < 50 && Vector3.Angle(normal, Vector3.up) < 40)
                 {
                     if (height > 22)
                     {
@@ -58,7 +58,7 @@ public class TerrainTexturer : MonoBehaviour
                         //n = (height / 22f);
                     }
                 }
-                else if (height > 60)
+                else if ((height > 60) || Vector3.Angle(normal, Vector3.up) > 40)
                 {
                     splatWeights[0] = 0;
                     splatWeights[1] = 0;
@@ -70,7 +70,10 @@ public class TerrainTexturer : MonoBehaviour
                     splatWeights[1] = 1f - ((height - 50) / (60 - 50f)); 
                     splatWeights[2] = ((height - 50) / (60 - 50f));
                 }
-
+                if (height > 160f)
+                {
+                    splatWeights[3] = (height-160f)/(170f-160f);
+                }
                 // CHANGE THE RULES BELOW TO SET THE WEIGHTS OF EACH TEXTURE ON WHATEVER RULES YOU WANT
 
                 // Texture[0] has constant influence

@@ -18,6 +18,8 @@ public class TerrainGenerator : MonoBehaviour
     public Texture2D noiseTex;
     private Color[] pix;
 
+    public int seed;
+
     public TextureCreator main, moutains;
 
     public Color color;
@@ -84,15 +86,23 @@ public class TerrainGenerator : MonoBehaviour
         // at this point 0 <= dx <= 1 and 0 <= dy <= 1
         return dx * dx + dy * dy;
     }
-
+    bool pressed;
     void Update()
     {
-        print(color.grayscale);
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1) && !pressed)
         {
-            GetComponent<TextureCreator>().FillTexture();
-            moutains.GetComponent<TextureCreator>().FillTexture();
-            Invoke("Draw", 1);
+            main.FillTexture();
+            moutains.FillTexture();
+            pressed = true;
+            
+        }
+        if (pressed)
+        {
+            if (main.gened && moutains.gened)
+            {
+                Draw();
+                pressed = false;
+            }
         }
     }
 
@@ -119,5 +129,7 @@ public class TerrainGenerator : MonoBehaviour
         }
         GetComponent<Terrain>().terrainData.SetHeights(0, 0, n);
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
+        GetComponent<DetailGenerator>().GenGrass();
+        GetComponent<BiomesFormatter>().FormateBiomes();
     }
 }
