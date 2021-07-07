@@ -93,16 +93,10 @@ public class TerrainGenerator : MonoBehaviour
         {
             main.FillTexture();
             moutains.FillTexture();
-            pressed = true;
-            
-        }
-        if (pressed)
-        {
-            if (main.gened && moutains.gened)
-            {
-                Draw();
-                pressed = false;
-            }
+
+            Draw();
+
+
         }
     }
 
@@ -131,5 +125,6 @@ public class TerrainGenerator : MonoBehaviour
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
         GetComponent<DetailGenerator>().GenGrass();
         GetComponent<BiomesFormatter>().FormateBiomes();
+        GetComponent<BiomesPrefabsGenerator>().GenPrefabs();
     }
 }

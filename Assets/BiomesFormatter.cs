@@ -33,11 +33,12 @@ public class BiomesFormatter : MonoBehaviour
                     if (biomes[i].texture.GetPixel(x,y).grayscale > 0.01f)
                         color = colors[i];
                 }
-                colors[x * texture2D.height + y] = color;
+                cls[y * texture2D.height + x] = color;
             }
         }
         texture2D.SetPixels32(cls);
-
         texture2D.Apply();
+
+
     }
 }

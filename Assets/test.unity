@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da936250c131a4e87b58e78e22d8d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 512
+  resolution: 32
   frequency: 1.5
   octaves: 1
   lacunarity: 1
@@ -295,6 +295,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+  gened: 0
 --- !u!1 &546412209
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da936250c131a4e87b58e78e22d8d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 512
+  resolution: 32
   frequency: 1.5
   octaves: 1
   lacunarity: 1
@@ -381,6 +382,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+  gened: 0
 --- !u!1 &646376461
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +400,7 @@ GameObject:
   - component: {fileID: 646376462}
   - component: {fileID: 646376469}
   - component: {fileID: 646376470}
+  - component: {fileID: 646376471}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -467,6 +470,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+  gened: 0
 --- !u!114 &646376464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +521,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+  gened: 0
 --- !u!114 &646376465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15eaba0445fc004498cce75f17af3c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biomeTexSize: 512
+  biomeTexSize: 32
   biomes:
   - {fileID: 1000943474}
   - {fileID: 452961410}
@@ -666,8 +671,40 @@ MonoBehaviour:
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0.6385703, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0.04445076, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
   texture2D: {fileID: 0}
+--- !u!114 &646376471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646376461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1178b4b62b797498b22c3b387ed8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsCount: 500
+  objects: 0
+  biomeObject:
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    prefabs:
+    - prefab: {fileID: 7419053610299677513, guid: 038a42fd964753d4cb07a6102122f978,
+        type: 3}
+      chance: 20
+      range: {x: 22, y: 45}
+    - prefab: {fileID: 7419053610299677513, guid: 14d72a5af4cd6124c82441a65e6638d9,
+        type: 3}
+      chance: 20
+      range: {x: 22, y: 45}
+    - prefab: {fileID: 5885494987599230450, guid: 2d397284180716744b4b59e8074b5c9b,
+        type: 3}
+      chance: 15
+      range: {x: 15, y: 20}
+  - color: {r: 0, g: 0.6392157, b: 1, a: 1}
+    prefabs: []
+  poses: []
 --- !u!1 &1000943472
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da936250c131a4e87b58e78e22d8d4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 512
+  resolution: 32
   frequency: 1.5
   octaves: 1
   lacunarity: 1
@@ -754,6 +791,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
+  gened: 0
 --- !u!1001 &1166234791
 PrefabInstance:
   m_ObjectHideFlags: 0

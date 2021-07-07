@@ -44,12 +44,9 @@ public class TextureCreator : MonoBehaviour {
 		}
 
 	}
-	public void FillTexture () {
-		StartCoroutine(FillIenum());
-	}
+	public void FillTexture()
+	{
 
-	IEnumerator FillIenum()
-    {
 		if (texture.width != resolution)
 		{
 			texture.Resize(resolution, resolution);
@@ -63,8 +60,6 @@ public class TextureCreator : MonoBehaviour {
 
 		NoiseMethod method = Noise.methods[(int)type][dimensions - 1];
 		float stepSize = 1f / resolution;
-		int stepAsyncLength = 100;
-		int step = 0;
 		for (int y = 0; y < resolution; y++)
 		{
 			Vector3 point0 = Vector3.Lerp(point00, point01, (y + 0.5f) * stepSize);
@@ -78,12 +73,6 @@ public class TextureCreator : MonoBehaviour {
 					sample = sample * 0.5f + 0.5f;
 				}
 				colors[y * resolution + x] = coloring.Evaluate(sample);
-			}
-			step++;
-			if (step > stepAsyncLength)
-			{
-				yield return new WaitForEndOfFrame();
-				step = 0;
 			}
 		}
 		gened = true;
