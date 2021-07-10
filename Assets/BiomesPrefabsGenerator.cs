@@ -45,8 +45,11 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                             {
                                 if (hit.point.y > biomeObject[q].prefabs[o].range.x && hit.point.y < biomeObject[q].prefabs[o].range.y)
                                 {
-                                    Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity);
-                                    objects++;
+                                    if(Vector3.Angle(hit.normal, Vector3.up) < 15){
+                                        Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity);
+                                        objects++;
+                                        poses.Add(pos);
+                                    }
                                 }
                             }
                         }

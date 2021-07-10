@@ -295,7 +295,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
-  gened: 0
 --- !u!1 &546412209
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +381,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
-  gened: 0
 --- !u!1 &646376461
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +468,6 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
-  gened: 0
 --- !u!114 &646376464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,7 +518,6 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
-  gened: 0
 --- !u!114 &646376465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,23 +681,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1178b4b62b797498b22c3b387ed8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsCount: 500
+  objectsCount: 5000
   objects: 0
   biomeObject:
   - color: {r: 1, g: 0, b: 0, a: 1}
     prefabs:
-    - prefab: {fileID: 7419053610299677513, guid: 038a42fd964753d4cb07a6102122f978,
-        type: 3}
+    - prefab: {fileID: 172798, guid: 42992c0e037caf34593ebd0c3f64e0ad, type: 3}
       chance: 20
-      range: {x: 22, y: 45}
-    - prefab: {fileID: 7419053610299677513, guid: 14d72a5af4cd6124c82441a65e6638d9,
-        type: 3}
+      range: {x: 22, y: 50}
+    - prefab: {fileID: 168612, guid: 2a595ed4d3a58a74d818304d6aade220, type: 3}
       chance: 20
-      range: {x: 22, y: 45}
-    - prefab: {fileID: 5885494987599230450, guid: 2d397284180716744b4b59e8074b5c9b,
-        type: 3}
+      range: {x: 22, y: 50}
+    - prefab: {fileID: 188516, guid: 733e54b0d0a87bc4792179eafb2bd664, type: 3}
+      chance: 20
+      range: {x: 22, y: 50}
+    - prefab: {fileID: 121546, guid: 4f891cfd97b933c439faa818326d389c, type: 3}
       chance: 15
-      range: {x: 15, y: 20}
+      range: {x: 22, y: 50}
+    - prefab: {fileID: 197658, guid: c75977e81bdb56446937daa818adc118, type: 3}
+      chance: 15
+      range: {x: 22, y: 50}
   - color: {r: 0, g: 0.6392157, b: 1, a: 1}
     prefabs: []
   poses: []
@@ -791,7 +790,6 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
-  gened: 0
 --- !u!1001 &1166234791
 PrefabInstance:
   m_ObjectHideFlags: 0

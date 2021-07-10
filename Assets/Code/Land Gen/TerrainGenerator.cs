@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -94,7 +95,7 @@ public class TerrainGenerator : MonoBehaviour
             main.FillTexture();
             moutains.FillTexture();
 
-            Draw();
+            //Draw();
 
 
         }
