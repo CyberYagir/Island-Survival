@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -26,6 +27,9 @@ public class TerrainGenerator : MonoBehaviour
     public Color color;
 
     public AnimationCurve shoothRamp;
+
+    public List<TextureCreator> waitForTextures;
+
 
     void Start()
     {
@@ -92,10 +96,27 @@ public class TerrainGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1) && !pressed)
         {
+            waitForTextures.Add(main);
+            waitForTextures.Add(moutains);
             main.FillTexture();
             moutains.FillTexture();
+            main.OnEndTexture += () =>
+            {
+                waitForTextures.Remove(main);
+                if (waitForTextures.Count == 0)
+                {
+                    Draw();
+                }
+            };
 
-            //Draw();
+            moutains.OnEndTexture += () =>
+            {
+                waitForTextures.Remove(moutains);
+                if (waitForTextures.Count == 0)
+                {
+                    Draw();
+                }
+            };
 
 
         }
@@ -126,6 +147,6 @@ public class TerrainGenerator : MonoBehaviour
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
         GetComponent<DetailGenerator>().GenGrass();
         GetComponent<BiomesFormatter>().FormateBiomes();
-        GetComponent<BiomesPrefabsGenerator>().GenPrefabs();
+        GetComponent<BiomesFormatter>().OnEndGenBiomes += () => { GetComponent<BiomesPrefabsGenerator>().GenPrefabs(); };
     }
 }

@@ -1,54 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class BiomesPrefabsGenerator : MonoBehaviour
 {
     [System.Serializable]
-    public class Prefabs {
+    public class Prefabs
+    {
         public Color color;
         public List<Prefab> prefabs;
     }
     [System.Serializable]
-    public class Prefab {
+    public class Prefab
+    {
         public GameObject prefab;
-        public int chance;
         public Vector2 range;
+        public int chance;
 
-
-        public bool RandIs()
-        {
-            return Random.Range(0, chance) <= 1;
-        }
     }
     public int objectsCount;
     public int objects;
     public List<Prefabs> biomeObject;
     public List<Vector2> poses;
+    public BiomesFormatter biomesFormatter;
+    public float scale;
+    public TextureCreator textureCreator;
+    public List<int> rnds;
+
+    private void Start()
+    {
+        textureCreator.FillTexture();
+    }
 
     public void GenPrefabs()
     {
+        var rnd = new System.Random(GetComponent<TerrainGenerator>().seed);
         var terr = GetComponent<Terrain>();
-        while (objects < objectsCount)
+        var colors = new Color32[terr.terrainData.alphamapResolution * terr.terrainData.alphamapResolution];
+        for (int x = 0; x < terr.terrainData.alphamapResolution; x++)
         {
-            for (int q = 0; q < biomeObject.Count; q++)
+            for (int y = 0; y < terr.terrainData.alphamapResolution; y++)
             {
-                for (int o = 0; o < biomeObject[q].prefabs.Count; o++)
+                for (int q = 0; q < biomeObject.Count; q++)
                 {
-                    if (biomeObject[q].prefabs[o].RandIs())
+                    for (int o = 0; o < biomeObject[q].prefabs.Count; o++)
                     {
-                        var pos = new Vector2(Random.Range(0, terr.terrainData.alphamapResolution), Random.Range(0, terr.terrainData.alphamapResolution));
-                        if (!poses.Contains(pos))
+                        var val = rnd.Next(0, biomeObject[q].prefabs[o].chance * 100);
+                        if (val <= 1 && !poses.Contains(new Vector2(x, y)))
                         {
-                            RaycastHit hit;
-                            if (Physics.Raycast(new Vector3(pos.x, 500, pos.y), Vector3.down, out hit))
+                            var posInPercents = new Vector2((float)x / (float)terr.terrainData.alphamapResolution, (float)y / (float)terr.terrainData.alphamapResolution);
+                            if (biomeObject[q].color == biomesFormatter.texture2D.GetPixel((int)(biomesFormatter.biomeTexSize * posInPercents.x), (int)(biomesFormatter.biomeTexSize * posInPercents.y)))
                             {
-                                if (hit.point.y > biomeObject[q].prefabs[o].range.x && hit.point.y < biomeObject[q].prefabs[o].range.y)
+                                RaycastHit hit;
+                                if (Physics.Raycast(new Vector3(x, 500, y), Vector3.down, out hit))
                                 {
-                                    if(Vector3.Angle(hit.normal, Vector3.up) < 15){
-                                        Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity);
-                                        objects++;
-                                        poses.Add(pos);
+                                    if (hit.point.y > biomeObject[q].prefabs[o].range.x && hit.point.y < biomeObject[q].prefabs[o].range.y)
+                                    {
+                                        if (Vector3.Angle(hit.normal, Vector3.up) < 15)
+                                        {
+                                            Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity);
+                                            poses.Add(new Vector2(x, y));
+                                            objects++;
+                                            if (objects >= objectsCount)
+                                            {
+                                                return;
+                                            }
+                                            break;
+                                        }
                                     }
                                 }
                             }

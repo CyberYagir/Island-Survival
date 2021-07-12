@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -29,9 +30,12 @@ public class TextureCreator : MonoBehaviour
 
     public Texture2D texture;
 
+
+    public event Action OnEndTexture = delegate { };
+
     Task thread;
-    Color32[] colors;
-    private void Start()
+    public Color32[] colors;
+    private void Init()
     {
         if (texture == null)
         {
@@ -61,18 +65,20 @@ public class TextureCreator : MonoBehaviour
             }
             if (thread.IsCompleted)
             {
+                Init();
                 texture.SetPixels32(colors);
                 texture.Apply();
+                OnEndTexture();
                 thread = null;
             }            
         }
     }
+
+
+
     public void FillTexture()
     {
-        if (texture.width != resolution)
-        {
-            texture.Resize(resolution, resolution);
-        }
+
         Vector3 point00 = transform.TransformPoint(new Vector3(-0.5f, -0.5f));
         Vector3 point10 = transform.TransformPoint(new Vector3(0.5f, -0.5f));
         Vector3 point01 = transform.TransformPoint(new Vector3(-0.5f, 0.5f));

@@ -11,7 +11,6 @@ public class DetailGenerator : MonoBehaviour
         terrainToPopulate.terrainData.SetDetailResolution(grassDensity, patchDetail);
         var terrainData = terrainToPopulate.terrainData;
         int[,] newMap = new int[terrainToPopulate.terrainData.alphamapWidth, terrainToPopulate.terrainData.alphamapHeight];
-
         for (int x = 0; x < terrainToPopulate.terrainData.alphamapWidth; x++)
         {
             for (int y = 0; y < terrainToPopulate.terrainData.alphamapHeight; y++)
@@ -21,7 +20,7 @@ public class DetailGenerator : MonoBehaviour
                 Vector3 normal = terrainData.GetInterpolatedNormal(y_01, x_01);
 
                 // Sample the height at this location (note GetHeight expects int coordinates corresponding to locations in the heightmap array)
-                float height = terrainData.GetHeight(Mathf.RoundToInt(y_01 * terrainData.heightmapResolution), Mathf.RoundToInt(x_01 * terrainData.heightmapWidth));
+                float height = terrainData.GetHeight(Mathf.RoundToInt(y_01 * terrainData.heightmapResolution), Mathf.RoundToInt(x_01 * terrainData.heightmapResolution));
 
                 if (height > 20 && height < 50 && Vector3.Angle(normal, Vector3.up) < 40)
                 {
@@ -30,6 +29,5 @@ public class DetailGenerator : MonoBehaviour
             }
         }
         terrainToPopulate.terrainData.SetDetailLayer(0, 0, 0, newMap);
-
     }
 }
