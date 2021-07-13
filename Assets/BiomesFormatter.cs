@@ -50,7 +50,6 @@ public class BiomesFormatter : MonoBehaviour
                             cls[y * texture2D.height + x] = color;
                         }
                     }
-                    print("End");
                     texture2D.SetPixels32(cls);
                     texture2D.Apply();
                     OnEndGenBiomes();

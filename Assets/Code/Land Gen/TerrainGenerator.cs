@@ -36,6 +36,35 @@ public class TerrainGenerator : MonoBehaviour
         // Set up the texture and a Color array to hold pixels during processing.
         noiseTex = new Texture2D(pixWidth, pixHeight);
         pix = new Color[noiseTex.width * noiseTex.height];
+
+
+
+
+        waitForTextures.Add(main);
+        waitForTextures.Add(moutains);
+        main.FillTexture();
+        moutains.FillTexture();
+
+        LoadUI.text_loading = "Creating main textures...";
+        main.OnEndTexture += () =>
+        {
+            waitForTextures.Remove(main);
+            LoadUI.text_loading = "Load main...";
+            if (waitForTextures.Count == 0)
+            {
+                StartCoroutine(Draw());
+            }
+        };
+
+        moutains.OnEndTexture += () =>
+        {
+            waitForTextures.Remove(moutains);
+            LoadUI.text_loading = "Load moutains...";
+            if (waitForTextures.Count == 0)
+            {
+                StartCoroutine(Draw());
+            }
+        };
     }
 
     public Texture2D _CalcNoise()
@@ -90,39 +119,9 @@ public class TerrainGenerator : MonoBehaviour
         var dy = 2 * y / pixHeight - 1;
         // at this point 0 <= dx <= 1 and 0 <= dy <= 1
         return dx * dx + dy * dy;
-    }
-    bool pressed;
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1) && !pressed)
-        {
-            waitForTextures.Add(main);
-            waitForTextures.Add(moutains);
-            main.FillTexture();
-            moutains.FillTexture();
-            main.OnEndTexture += () =>
-            {
-                waitForTextures.Remove(main);
-                if (waitForTextures.Count == 0)
-                {
-                    Draw();
-                }
-            };
+    } 
 
-            moutains.OnEndTexture += () =>
-            {
-                waitForTextures.Remove(moutains);
-                if (waitForTextures.Count == 0)
-                {
-                    Draw();
-                }
-            };
-
-
-        }
-    }
-
-    public void Draw()
+    public IEnumerator Draw()
     {
         noiseTex = main.texture;
         var mouTex = moutains.texture;
@@ -143,9 +142,15 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
         }
+        LoadUI.text_loading = "Set terrain...";
+        yield return new WaitForSeconds(0.5f);
         GetComponent<Terrain>().terrainData.SetHeights(0, 0, n);
+        LoadUI.text_loading = "Set grass and terrain texture...";
+        yield return new WaitForSeconds(0.5f);
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
         GetComponent<DetailGenerator>().GenGrass();
+        LoadUI.text_loading = "Creating biomes and resources...";
+        yield return new WaitForSeconds(0.5f);
         GetComponent<BiomesFormatter>().FormateBiomes();
         GetComponent<BiomesFormatter>().OnEndGenBiomes += () => { GetComponent<BiomesPrefabsGenerator>().GenPrefabs(); };
     }

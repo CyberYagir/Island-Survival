@@ -37,6 +37,8 @@ public class BiomesPrefabsGenerator : MonoBehaviour
     {
         var rnd = new System.Random(GetComponent<TerrainGenerator>().seed);
         var terr = GetComponent<Terrain>();
+
+        var holder = new GameObject() { name = "Resources Holder" };
         var colors = new Color32[terr.terrainData.alphamapResolution * terr.terrainData.alphamapResolution];
         for (int x = 0; x < terr.terrainData.alphamapResolution; x++)
         {
@@ -59,7 +61,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                     {
                                         if (Vector3.Angle(hit.normal, Vector3.up) < 15)
                                         {
-                                            Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity);
+                                            Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform).transform.localEulerAngles = new Vector3(0,rnd.Next(0,360), 0);
                                             poses.Add(new Vector2(x, y));
                                             objects++;
                                             if (objects >= objectsCount)
@@ -76,5 +78,6 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                 }
             }
         }
+        LoadUI.ui.Hide();
     }
 }
