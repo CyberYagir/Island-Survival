@@ -163,8 +163,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loading terrain...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ce6fc639f1fe7d54fba1289e68904c0a, type: 2}
-  m_sharedMaterial: {fileID: 3979019913526140930, guid: ce6fc639f1fe7d54fba1289e68904c0a,
+  m_fontAsset: {fileID: 11400000, guid: 52efac52e3f5640429a832f35459fdcb, type: 2}
+  m_sharedMaterial: {fileID: 5696730485663102990, guid: 52efac52e3f5640429a832f35459fdcb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -480,6 +480,51 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   texture: {fileID: 0}
   colors: []
+--- !u!1 &629794566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629794568}
+  - component: {fileID: 629794567}
+  m_Layer: 0
+  m_Name: Languages
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &629794567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629794566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2731f2057915a114b992f22468d8f14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translates: {fileID: 11400000, guid: 7493bf3c3ccb2d74abd05a57edb878bb, type: 2}
+  activatedTexts: []
+--- !u!4 &629794568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629794566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646376461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,8 +1673,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Loading...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ce6fc639f1fe7d54fba1289e68904c0a, type: 2}
-  m_sharedMaterial: {fileID: 3979019913526140930, guid: ce6fc639f1fe7d54fba1289e68904c0a,
+  m_fontAsset: {fileID: 11400000, guid: 52efac52e3f5640429a832f35459fdcb, type: 2}
+  m_sharedMaterial: {fileID: 5696730485663102990, guid: 52efac52e3f5640429a832f35459fdcb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1747,8 +1792,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751295729}
-  m_LocalRotation: {x: 0.0011124257, y: -0, z: 0.00535255, w: 0.9999851}
-  m_LocalPosition: {x: 671.3334, y: -349.8694, z: 1188}
+  m_LocalRotation: {x: 0.0017231238, y: -0, z: 0.010052542, w: 0.999948}
+  m_LocalPosition: {x: 671.3335, y: -547.6088, z: 1188}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666666}
   m_Children:
   - {fileID: 852810575}
