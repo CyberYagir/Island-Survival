@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028f6fd4b5648da408750b332adcc576, type: 3}
+  m_Name: Menu
+  m_EditorClassIdentifier: 
+  languages:
+  - eng
+  - rus
+  words:
+  - phrases:
+    - langName: eng
+      phrase: Start game
+    - langName: rus
+      phrase: "\u0421\u0442\u0430\u0440\u0442 \u0438\u0433\u0440\u044B"
+    key: Start game
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: 'Seed:'
+    - langName: rus
+      phrase: "\u0421\u0435\u043C\u044F:"
+    key: 'Seed:'
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Connecting
+    - langName: rus
+      phrase: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435"
+    key: Connecting
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: 'Name:'
+    - langName: rus
+      phrase: "\u0418\u043C\u044F:"
+    key: 'Name:'
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Load
+    - langName: rus
+      phrase: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430"
+    key: Load
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Create
+    - langName: rus
+      phrase: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C"
+    key: Create
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Offline
+    - langName: rus
+      phrase: "\u041E\u0444\u0444\u043B\u0430\u0439\u043D"
+    key: Offline
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Online
+    - langName: rus
+      phrase: "\u041E\u043D\u043B\u0430\u0439\u043D"
+    key: Online
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Survival
+    - langName: rus
+      phrase: "\u0412\u044B\u0436\u0438\u0432\u0430\u0442\u044C"
+    key: Survival
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Connect
+    - langName: rus
+      phrase: "\u041E\u043D\u043B\u0430\u0439\u043D"
+    key: Connect
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Options
+    - langName: rus
+      phrase: "\u041D\u0430\u043B\u0430\u0434\u043A\u0430"
+    key: Options
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Credits
+    - langName: rus
+      phrase: "\u0422\u0438\u0442\u0440\u044B"
+    key: Credits
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: Exit
+    - langName: rus
+      phrase: "\u0412\u044B\u0445\u043E\u0434"
+    key: Exit
+    hide: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,13 +34,20 @@ public class TerrainGenerator : MonoBehaviour
 
     void Start()
     {
+        var seeds = ((string)PhotonNetwork.CurrentRoom.CustomProperties["Seed"]).Split(':');
+        for (int i = 0; i < seeds.Length; i++)
+        {
+            print(i + ": " + seeds[i]); 
+        }
+
+        seed = int.Parse(seeds[0]);
+        main.offcet = new Vector3(int.Parse(seeds[1])/100f, int.Parse(seeds[2])/100f);
+        moutains.offcet = new Vector3(int.Parse(seeds[3])/100f, int.Parse(seeds[4])/100f);
+
+
         // Set up the texture and a Color array to hold pixels during processing.
         noiseTex = new Texture2D(pixWidth, pixHeight);
         pix = new Color[noiseTex.width * noiseTex.height];
-
-
-
-
         waitForTextures.Add(main);
         waitForTextures.Add(moutains);
         main.FillTexture();

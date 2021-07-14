@@ -98,7 +98,14 @@ public class LangsList : MonoBehaviour
         {
             for (int i = 0; i < translates.words.Count; i++)
             {
-                dictionary.Add(translates.words[i].key, new Word(translates.words[i]));
+                try
+                {
+                    dictionary.Add(translates.words[i].key, new Word(translates.words[i]));
+                }
+                catch (System.Exception)
+                {
+                    
+                }
             }
         }
         else

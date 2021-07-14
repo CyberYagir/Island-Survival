@@ -35,6 +35,7 @@ public class TextureCreator : MonoBehaviour
 
     Task thread;
     public Color32[] colors;
+
     private void Init()
     {
         if (texture == null)

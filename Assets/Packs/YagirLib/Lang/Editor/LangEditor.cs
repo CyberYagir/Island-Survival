@@ -5,10 +5,11 @@ using UnityEditor;
 using System.Xml.Serialization;
 using System.IO;
 using System;
+using UnityEditor.SceneManagement;
 
 public class SaveLang {
 
-    public List<string> languages = new List<string>() { "eng", "rus", "ukr" };
+    public List<string> languages;
     public List<WordKey> words;
     public SaveLang()
     {
@@ -22,8 +23,8 @@ public class LangEditor : EditorWindow
     public string findWord = "";
     public Vector2 scroll = new Vector2(0,0);
     public bool setKeyRusWord;
+    public LangListObjects curr;
     public int tab;
-
     int oldTap = 0;
     [MenuItem("YagirLib/Langs")]
     public static void ShowWindow()
@@ -48,8 +49,19 @@ public class LangEditor : EditorWindow
         EditorWindow.GetWindow(typeof(LangEditor)).minSize = new Vector2(500, 300);
     }
 
+    private void OnLostFocus()
+    {
+        
+    }
+
     private void OnGUI()
     {
+        if (Application.isPlaying || Application.isLoadingLevel)
+        {
+            GUILayout.Label("In play mode or in level loading editing not supported", EditorStyles.boldLabel, GUILayout.Width(position.width));
+          
+            return;
+        }
         if (LangsList.langs == null)
         {
             LangsList.langs = FindObjectOfType<LangsList>();
@@ -70,10 +82,15 @@ public class LangEditor : EditorWindow
             GUILayout.Label("Set Translates.assets", EditorStyles.boldLabel, GUILayout.Width(position.width));
             
             LangsList.langs.translates = EditorGUILayout.ObjectField("Asset: ", LangsList.langs.translates, typeof(LangListObjects), true) as LangListObjects;
-            //translates = LangsList.langs.translates;
+            curr = LangsList.langs.translates;
             return;
         }
 
+        if (curr != LangsList.langs.translates)
+        {
+            curr = LangsList.langs.translates;
+            return;
+        }
 
 
         tab = GUILayout.Toolbar(tab, new string[] { "Words", "Languages" });
@@ -140,14 +157,14 @@ public class LangEditor : EditorWindow
                 {
                     item.hide = !item.hide;
                     GUI.FocusControl(null);
-                    OnGUI();
+                    //OnGUI();
                     return;
                 }
                 if (GUILayout.Button("Remove"))
                 {
                     LangsList.langs.translates.words.Remove(item);
                     GUI.FocusControl(null);
-                    OnGUI();
+                    //OnGUI();
                     return;
                 }
                 GUILayout.EndHorizontal();
@@ -176,6 +193,12 @@ public class LangEditor : EditorWindow
                 }
                 GuiLine();
             }
+
+            LangsList.langs.translates.words = words;
+            EditorUtility.SetDirty(LangsList.langs.translates); 
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+            //AssetDatabase.Refresh();
+
             GUILayout.EndScrollView();
             if (GUILayout.Button("Hide All"))
             {
@@ -212,7 +235,7 @@ public class LangEditor : EditorWindow
                         words[j].phrases.RemoveAll(x => x.langName == langs[i]);
                     }
                     langs.Remove(langs[i]);
-                    OnGUI();
+                    //OnGUI();
                     return;
                 }
                 GUILayout.EndHorizontal();
@@ -253,7 +276,7 @@ public class LangEditor : EditorWindow
                 LangsList.langs.translates.words = new List<WordKey>();
                 LangsList.langs.translates.languages = s.languages;
                 LangsList.langs.translates.words = s.words;
-                OnGUI();
+                //OnGUI();
                 return;
             }
         }
