@@ -18,6 +18,20 @@ MonoBehaviour:
   words:
   - phrases:
     - langName: eng
+      phrase: Connect
+    - langName: rus
+      phrase: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0441\u044F"
+    key: Connect
+    hide: 0
+  - phrases:
+    - langName: eng
+      phrase: 'IPv4:'
+    - langName: rus
+      phrase: 'IPv4:'
+    key: 'IPv4:'
+    hide: 0
+  - phrases:
+    - langName: eng
       phrase: Start game
     - langName: rus
       phrase: "\u0421\u0442\u0430\u0440\u0442 \u0438\u0433\u0440\u044B"

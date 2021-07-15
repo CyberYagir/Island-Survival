@@ -23,6 +23,7 @@ public class MoveWindow : MonoBehaviour
 
     public void Toggle()
     {
+        print("toggle");
         openClose = !openClose;
     }
 }

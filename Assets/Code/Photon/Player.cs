@@ -11,7 +11,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         GameManager.pause = false;
         if (!photonView.IsMine)
         {
-
+            GetComponentInChildren<Camera>().enabled = false;
         }
         else
         {

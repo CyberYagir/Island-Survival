@@ -96,12 +96,11 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
+        print("Failed");
         base.OnJoinRoomFailed(returnCode, message);
     }
     public override void OnJoinedRoom()
     {
-        ExitGames.Client.Photon.Hashtable h = new ExitGames.Client.Photon.Hashtable();
-        PhotonNetwork.LocalPlayer.SetCustomProperties(h);
         PhotonNetwork.LoadLevel(1);
         base.OnJoinedRoom();
     }
@@ -109,7 +108,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         //errorText.text = "Join room Error";
-        CreateRoom();
+        //CreateRoom();
         base.OnJoinRandomFailed(returnCode, message);
     }
     public override void OnRoomListUpdate(List<RoomInfo> roomList)

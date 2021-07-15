@@ -40,10 +40,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private void Update()
     {
         //tabMenu.SetActive(Input.GetKey(KeyCode.Tab) || Timer.timer_.end);
+        Debug.LogError("Roomname: " + PhotonNetwork.CurrentRoom.Name + "/" + PhotonNetwork.OfflineMode);
         if (LocalPlayer == null)
         {
             time += Time.deltaTime;
-            if (time > 2.5f)
+            if (time > 2.5f && TerrainGenerator.genEnded)
             {
                 RespawnPlayer();
             }

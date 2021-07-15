@@ -79,5 +79,6 @@ public class BiomesPrefabsGenerator : MonoBehaviour
             }
         }
         LoadUI.ui.Hide();
+        TerrainGenerator.genEnded = true;
     }
 }

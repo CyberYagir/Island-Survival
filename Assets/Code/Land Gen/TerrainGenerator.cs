@@ -31,7 +31,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public List<TextureCreator> waitForTextures;
 
-
+    public static bool genEnded;
     void Start()
     {
         var seeds = ((string)PhotonNetwork.CurrentRoom.CustomProperties["Seed"]).Split(':');

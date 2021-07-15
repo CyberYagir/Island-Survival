@@ -15,6 +15,22 @@ public class MenuUIManager : MonoBehaviour
         nickname.text = PhotonLobby.nickname;
     }
 
+    public void OpenWindow(MoveWindow moveWindow)
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("OpenMenu"))
+        {
+            if (item.GetComponent<MoveWindow>() != moveWindow)
+            {
+                item.GetComponent<MoveWindow>().openClose = false;
+            }
+        }
+        moveWindow.Toggle();
+    }
+    private void Update()
+    {
+        print(PhotonNetwork.OfflineMode);
+    }
+
     public void SaveNickName(TMP_InputField inputField)
     {
         if (inputField.text.Trim().Length != 0)
@@ -38,5 +54,11 @@ public class MenuUIManager : MonoBehaviour
         }
 
         PhotonLobby.lobby.CreateRoom(false, 16, SetStartSeed.seed);
+    }
+
+    public void Connect(TMP_InputField field)
+    {
+        PhotonNetwork.OfflineMode = false;
+        PhotonLobby.lobby.JoinRoom(field.text);
     }
 }
