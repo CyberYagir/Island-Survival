@@ -17,6 +17,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         public GameObject prefab;
         public Vector2 range;
         public int chance;
+        public bool rot;
 
     }
     public int objectsCount;
@@ -26,7 +27,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
     public BiomesFormatter biomesFormatter;
     public float scale;
     public TextureCreator textureCreator;
-    public List<int> rnds;
+    public List<GameObject> spawnedObjects = new List<GameObject>();
 
     private void Start()
     {
@@ -39,7 +40,6 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         var terr = GetComponent<Terrain>();
 
         var holder = new GameObject() { name = "Resources Holder" };
-        var colors = new Color32[terr.terrainData.alphamapResolution * terr.terrainData.alphamapResolution];
         for (int x = 0; x < terr.terrainData.alphamapResolution; x++)
         {
             for (int y = 0; y < terr.terrainData.alphamapResolution; y++)
@@ -61,7 +61,9 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                     {
                                         if (Vector3.Angle(hit.normal, Vector3.up) < 15)
                                         {
-                                            Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform).transform.localEulerAngles = new Vector3(0,rnd.Next(0,360), 0);
+                                            var n = Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform);
+                                            n.transform.localEulerAngles = new Vector3(0, biomeObject[q].prefabs[o].rot ? rnd.Next(0, 360) : 0, 0);
+                                            spawnedObjects.Add(n.gameObject);
                                             poses.Add(new Vector2(x, y));
                                             objects++;
                                             if (objects >= objectsCount)

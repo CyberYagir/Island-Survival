@@ -6,12 +6,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
+    public Behaviour[] behaviours;
     private void Awake()
     {
         GameManager.pause = false;
         if (!photonView.IsMine)
         {
             GetComponentInChildren<Camera>().enabled = false;
+            for (int i = 0; i < behaviours.Length; i++)
+            {
+                behaviours[i].enabled = false;
+            }
+            GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {

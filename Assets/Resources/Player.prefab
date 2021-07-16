@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1078183996}
   - component: {fileID: 1078183995}
   - component: {fileID: 1078183994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7019826292798893074}
   - component: {fileID: 1994265106}
   - component: {fileID: 1994265110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb3a8406b166f946bc7f673bce9acd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  behaviours:
+  - {fileID: 1994265110}
 --- !u!114 &304381003110535165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,12 +215,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8639d9f01a8c5f41a2fa21916aadb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 700
+  speed: 750
   sense: 60
   rb: {fileID: 1994265106}
   camera: {fileID: 4539108982357287020}
   rotY: 0
   rotX: 0
+  angle: 0
+  inWater: 0
+  jumpForce: 5
+  mask:
+    serializedVersion: 2
+    m_Bits: 1
+  inJump: 0
 --- !u!1 &5695517221109471864
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +240,7 @@ GameObject:
   - component: {fileID: 4539108982357287020}
   - component: {fileID: 7359601731046083066}
   - component: {fileID: 6689928673851203289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +284,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 4000
   field of view: 90
   orthographic: 0

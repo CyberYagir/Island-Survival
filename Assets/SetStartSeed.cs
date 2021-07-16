@@ -9,7 +9,7 @@ public class SetStartSeed : MonoBehaviour
     public static string seed;
     void Start()
     {
-        seed = AddToSeed(DateTime.Now.Ticks.ToString());
+        seed = AddToSeed(((int)Time.realtimeSinceStartup).ToString());
         GetComponent<TMP_InputField>().text = Format(seed);
     }
 

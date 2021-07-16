@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private void Update()
     {
         //tabMenu.SetActive(Input.GetKey(KeyCode.Tab) || Timer.timer_.end);
-        Debug.LogError("Roomname: " + PhotonNetwork.CurrentRoom.Name + "/" + PhotonNetwork.OfflineMode);
+       //Debug.LogError("Roomname: " + PhotonNetwork.CurrentRoom.Name + "/" + PhotonNetwork.OfflineMode);
         if (LocalPlayer == null)
         {
             time += Time.deltaTime;

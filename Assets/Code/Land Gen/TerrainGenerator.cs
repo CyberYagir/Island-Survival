@@ -41,8 +41,8 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         seed = int.Parse(seeds[0]);
-        main.offcet = new Vector3(int.Parse(seeds[1])/100f, int.Parse(seeds[2])/100f);
-        moutains.offcet = new Vector3(int.Parse(seeds[3])/100f, int.Parse(seeds[4])/100f);
+        main.offcet = new Vector3(int.Parse(seeds[1]), int.Parse(seeds[2]));
+        moutains.offcet = new Vector3(int.Parse(seeds[3]), int.Parse(seeds[4]));
 
 
         // Set up the texture and a Color array to hold pixels during processing.
