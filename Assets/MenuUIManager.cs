@@ -7,12 +7,13 @@ using UnityEngine;
 public class MenuUIManager : MonoBehaviour
 {
     public GameObject connectToPUN;
-    public TMP_InputField nickname;
+    public TMP_InputField nickname, connectNickname;
     public CustomToggle isMultiplayer;
 
     private void Start()
     {
         nickname.text = PhotonLobby.nickname;
+        connectNickname.text = PhotonLobby.nickname;
     }
 
     public void OpenWindow(MoveWindow moveWindow)
@@ -26,9 +27,10 @@ public class MenuUIManager : MonoBehaviour
         }
         moveWindow.Toggle();
     }
-    private void Update()
+    public void SyncNames(TMP_InputField tmp)
     {
-        print(PhotonNetwork.OfflineMode);
+        nickname.text = tmp.text;
+        connectNickname.text = tmp.text;
     }
 
     public void SaveNickName(TMP_InputField inputField)

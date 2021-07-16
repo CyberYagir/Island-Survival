@@ -6,10 +6,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
-    public Behaviour[] behaviours;
+    public MonoBehaviour[] behaviours;
+    public GameObject skin;
     private void Awake()
     {
         GameManager.pause = false;
+        foreach (var item in skin.GetComponentsInChildren<Renderer>())
+        {
+            item.shadowCastingMode = photonView.IsMine ? UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : UnityEngine.Rendering.ShadowCastingMode.On;
+        }
+        transform.name = photonView.Owner.NickName + ":" + photonView.Owner.UserId;
         if (!photonView.IsMine)
         {
             GetComponentInChildren<Camera>().enabled = false;
