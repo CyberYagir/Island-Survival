@@ -322,6 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3333756176917491440}
   - component: {fileID: 7368863988022754745}
+  - component: {fileID: -901639375224329248}
   m_Layer: 0
   m_Name: Palm1
   m_TagString: Untagged
@@ -363,3 +364,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5692821357069854781}
   m_Enabled: 1
+--- !u!114 &-901639375224329248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668556987634587952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  minDropCount: 2
+  maxDropCount: 5

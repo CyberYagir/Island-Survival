@@ -41,7 +41,7 @@ public class Word
 public class LangPhrase
 {
     public string langName;
-    public string phrase;
+    public string phrase, description, other;
 }
 
 [ExecuteInEditMode]
@@ -55,14 +55,6 @@ public class LangsList : MonoBehaviour
     public List<TextTranslator> activatedTexts;
 
 
-    private void Start()
-    {
-        if (Application.isPlaying)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-    
     /// <summary>
     /// Set language id (Use in Awake to start init)
     /// </summary>
@@ -112,7 +104,7 @@ public class LangsList : MonoBehaviour
         {
             print("Set Translation Asset!");
         }
-        SetLanguage(1);
+        //SetLanguage(1);
     }
 
     public static string GetWord(string key)
@@ -125,6 +117,18 @@ public class LangsList : MonoBehaviour
         {
             Debug.LogError("YagirLib: Word \"" + key + "\" not found in list");
             return key;
+        }
+    }
+    public static LangPhrase GetAllWord(string key)
+    {
+        try
+        {
+            return dictionary[key].phrases[currLang];
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("YagirLib: Word \"" + key + "\" not found in list");
+            return null;
         }
     }
 }

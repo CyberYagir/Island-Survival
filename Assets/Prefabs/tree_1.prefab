@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437470}
   - component: {fileID: 4662789179575314100}
+  - component: {fileID: -4800273767531764249}
   m_Layer: 0
   m_Name: tree_1
   m_TagString: Untagged
@@ -60,6 +61,21 @@ LODGroup:
     - renderer: {fileID: 7055091880396290966}
     - renderer: {fileID: 672557942783865509}
   m_Enabled: 1
+--- !u!114 &-4800273767531764249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  minDropCount: 2
+  maxDropCount: 5
 --- !u!1 &175454
 GameObject:
   m_ObjectHideFlags: 0

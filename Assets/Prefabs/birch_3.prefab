@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495872}
   - component: {fileID: 7165026707102562328}
+  - component: {fileID: -425964297190450458}
   m_Layer: 0
   m_Name: birch_3
   m_TagString: Untagged
@@ -238,6 +239,21 @@ LODGroup:
     - renderer: {fileID: 1888493738207628591}
     - renderer: {fileID: 1698618279355464243}
   m_Enabled: 1
+--- !u!114 &-425964297190450458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  minDropCount: 2
+  maxDropCount: 5
 --- !u!1 &674402309132231794
 GameObject:
   m_ObjectHideFlags: 0

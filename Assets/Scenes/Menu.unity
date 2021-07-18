@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &126926339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1978,6 +1978,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 316838937}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &324369852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324369854}
+  - component: {fileID: 324369853}
+  - component: {fileID: 324369855}
+  m_Layer: 0
+  m_Name: Pickaxe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &324369853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324369852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handItem: {fileID: 0}
+  actions:
+  - keyCode: 323
+    Down:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 324369855}
+          m_TargetAssemblyTypeName: Pickaxe, Assembly-CSharp
+          m_MethodName: Attack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    Up:
+      m_PersistentCalls:
+        m_Calls: []
+    Press:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!4 &324369854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324369852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 498.98068, y: 125.92105, z: 5.065918}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324369855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324369852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed297242c347c84ca943bb64bfacafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &372850415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,7 +2658,7 @@ PrefabInstance:
     - target: {fileID: 6124016043482069456, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
       propertyPath: key
-      value: 'Name:'
+      value: 'Lang:'
       objectReference: {fileID: 0}
     - target: {fileID: 6124016043482069459, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
@@ -3771,6 +3851,7 @@ GameObject:
   - component: {fileID: 853986878}
   - component: {fileID: 853986877}
   - component: {fileID: 853986876}
+  - component: {fileID: 853986879}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -3856,7 +3937,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 853986879}
+        m_TargetAssemblyTypeName: ChangeLanguage, Assembly-CSharp
+        m_MethodName: ChangeLang
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 853986876}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Dropdown, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &853986877
 MonoBehaviour:
@@ -3896,6 +3989,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853986874}
   m_CullTransparentMesh: 1
+--- !u!114 &853986879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853986874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa030f6055702ff409cfa1f3a437677f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &857186414
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,8 +7210,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720398515}
-  m_LocalRotation: {x: 0.0013702916, y: 0, z: -0.0001662451, w: 0.99999905}
-  m_LocalPosition: {x: 203.2, y: 14.519167, z: 46.28}
+  m_LocalRotation: {x: 0.014567785, y: 0, z: -0.009643244, w: 0.9998474}
+  m_LocalPosition: {x: 203.2, y: 14.982155, z: 46.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1395857819}
@@ -7714,7 +7819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0734f8d874c02446a0d63c92a34e565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: Connect
+  key: Options
 --- !u!114 &1797242270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8491,32 +8596,32 @@ PrefabInstance:
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 26.9956
+      value: 3.7665927
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 26.9956
+      value: 8.371335
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 26.9956
+      value: 3.5364134
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 819.60364
+      value: 118.5563
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0108242
+      value: -3.0108
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 992.25977
+      value: 33.5374
       objectReference: {fileID: 0}
     - target: {fileID: 8075803201668319606, guid: 915defc4859ebad4789c339184a60ebf,
         type: 3}

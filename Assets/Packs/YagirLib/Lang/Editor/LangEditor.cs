@@ -178,13 +178,23 @@ public class LangEditor : EditorWindow
                         GUILayout.BeginHorizontal();
                         GUILayout.Label(item.phrases[i].langName + ": ", GUILayout.Width(100));
                         var opt = new GUILayoutOption[] { GUILayout.Width(position.width - 300), GUILayout.ExpandWidth(true) };
-
                         item.phrases[i].phrase = EditorGUILayout.TextArea(item.phrases[i].phrase, opt);
                         if (setKeyRusWord)
                         {
                             item.key = item.phrases[0].phrase;
                         }
                         GUILayout.EndHorizontal();
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label(item.phrases[i].langName + " desc: ", GUILayout.Width(100));
+                        item.phrases[i].description = EditorGUILayout.TextArea(item.phrases[i].description, opt);
+                        GUILayout.EndHorizontal();
+
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label(item.phrases[i].langName + " other: ", GUILayout.Width(100));
+                        item.phrases[i].other = EditorGUILayout.TextArea(item.phrases[i].other, opt);
+                        GUILayout.EndHorizontal();
+                        GuiLine();
+
                     }
                     GUILayout.EndVertical();
                     GUILayout.EndHorizontal();

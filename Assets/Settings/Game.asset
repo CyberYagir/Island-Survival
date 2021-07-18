@@ -18,36 +18,8 @@ MonoBehaviour:
   words:
   - phrases:
     - langName: eng
-      phrase: 
+      phrase: Loading...
     - langName: rus
-      phrase: 
-    key: 
-    hide: 0
-  - phrases:
-    - langName: eng
-      phrase: 
-    - langName: rus
-      phrase: 
-    key: 
-    hide: 0
-  - phrases:
-    - langName: eng
-      phrase: 
-    - langName: rus
-      phrase: 
-    key: 
-    hide: 0
-  - phrases:
-    - langName: eng
-      phrase: 
-    - langName: rus
-      phrase: 
-    key: 
-    hide: 0
-  - phrases:
-    - langName: eng
-      phrase: 
-    - langName: rus
-      phrase: 
-    key: 
+      phrase: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."
+    key: Loading...
     hide: 0

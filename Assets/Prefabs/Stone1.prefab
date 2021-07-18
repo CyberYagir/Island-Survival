@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2149242816790267225}
   - component: {fileID: 6087184226576336398}
   - component: {fileID: 715531642588452453}
+  - component: {fileID: 8828283268225888668}
   m_Layer: 0
   m_Name: Stone1
   m_TagString: Untagged
@@ -116,3 +117,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2149242816790267225}
   m_Enabled: 1
+--- !u!114 &8828283268225888668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981247629035004402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  minDropCount: 2
+  maxDropCount: 5
