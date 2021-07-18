@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public List<Item> items = new List<Item>(5);
     public int selected;
+    public Transform hand;
 
     private void Update()
     {
@@ -16,6 +17,11 @@ public class PlayerInventory : MonoBehaviour
                 selected = i;
             }
         }
+    }
+
+    public Item GetItem()
+    {
+        return items[selected];
     }
 
 }

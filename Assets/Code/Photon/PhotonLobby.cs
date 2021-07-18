@@ -26,7 +26,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         nickname = PlayerPrefs.GetString("Name", "Human");
 
-        print(IPManager.GetIP(ADDRESSFAM.IPv4));
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         lobby = this;
@@ -36,9 +35,9 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
         if (PhotonNetwork.IsConnected == false)
         {
             PhotonNetwork.GameVersion = Application.version;
-            PhotonNetwork.OfflineMode = false; 
+            PhotonNetwork.OfflineMode = false;
+            PhotonNetwork.NickName = PlayerPrefs.GetString("Name", "Human");
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.NickName = Random.Range(0, 10000).ToString();
         }
         else
         {

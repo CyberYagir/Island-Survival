@@ -15,7 +15,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         {
             item.shadowCastingMode = photonView.IsMine ? UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : UnityEngine.Rendering.ShadowCastingMode.On;
         }
-        transform.name = photonView.Owner.NickName + ":" + photonView.Owner.UserId;
+        transform.name = photonView.Owner.NickName + ":" + photonView.Owner.ActorNumber;
         if (!photonView.IsMine)
         {
             GetComponentInChildren<Camera>().enabled = false;
