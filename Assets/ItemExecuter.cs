@@ -12,7 +12,7 @@ public class ItemExecuter : MonoBehaviour
 {
     public HandItem handItem;
     public List<Keys> actions;
-
+    public Animator animator;
 
     private void Update()
     {

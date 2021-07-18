@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Pickaxe : MonoBehaviour
 {
-    public void Attack()
-    {
-        print("123");
-    }
+
 }
