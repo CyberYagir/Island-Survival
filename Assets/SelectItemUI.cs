@@ -16,7 +16,7 @@ public class SelectItemUI : MonoBehaviour
     private void Start()
     {
         startX = rectTransform.anchoredPosition;
-        GetComponentInChildren<TMP_Text>().text = id.ToString();
+        GetComponentInChildren<TMP_Text>().text = (id+1).ToString();
     }
 
     private void Update()

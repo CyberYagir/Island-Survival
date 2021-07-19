@@ -8,6 +8,7 @@ public class InventoryRenderItems : MonoBehaviour
     public Camera camera;
     public List<RenderTexture> textures;
     public PlayerInventory playerInventory;
+    public List<GameObject> gameObjects;
     public Transform point;
     public void Update()
     {
@@ -23,6 +24,8 @@ public class InventoryRenderItems : MonoBehaviour
         for (int i = 0; i < textures.Count; i++)
         {
             textures[i] = new RenderTexture(256, 256, 0);
+            if (playerInventory.items[i] != null)
+                gameObjects.Add(Instantiate(playerInventory.items[i].prefab, point));
         }
     }
     private void Start()
@@ -32,30 +35,24 @@ public class InventoryRenderItems : MonoBehaviour
 
     public void Set()
     {
-        Init();
         for (int i = 0; i < textures.Count; i++)
         {
             if (playerInventory.items[i] != null)
             {
-                var n = Instantiate(playerInventory.items[i].prefab, point);
-                foreach (Transform item in n.transform)
+                gameObjects[i].SetActive(true);
+                foreach (Transform item in gameObjects[i].transform)
                 {
                     item.gameObject.layer = LayerMask.NameToLayer("Inventory");
                 }
-                ClearOutRenderTexture(camera.targetTexture);
-                ClearOutRenderTexture(textures[i]);
                 camera.targetTexture = textures[i];
-                camera.Render();
-                Destroy(n.gameObject);
+                camera.RenderDontRestore();
+                gameObjects[i].SetActive(false);
+            }
+            else
+            {
+                textures[i].Release();
             }
         }
-    }
-    public void ClearOutRenderTexture(RenderTexture renderTexture)
-    {
-        RenderTexture rt = RenderTexture.active;
-        RenderTexture.active = renderTexture;
-        GL.Clear(true, true, Color.clear);
-        RenderTexture.active = rt;
     }
 
 }
