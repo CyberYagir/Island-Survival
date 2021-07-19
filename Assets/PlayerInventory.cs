@@ -8,29 +8,44 @@ public class PlayerInventory : MonoBehaviour
     public int selected = 1;
     public int oldselected = 1;
     public Transform hand;
-
+    public bool cooldown;
+    public Animator animator;
+    private void Start()
+    {
+        Set();
+    }
     private void Update()
     {
-        for (int i = 0; i < items.Count; i++)
+        if (!cooldown)
         {
-            if (Input.GetKey((i+1).ToString()))
+            for (int i = 0; i < items.Count; i++)
             {
-                selected = i;
+                if (Input.GetKey((i + 1).ToString()))
+                {
+                    selected = i;
+                }
             }
-        }
 
-        if (selected != oldselected)
-        {
-            foreach (Transform item in hand)
+            if (selected != oldselected)
             {
-                Destroy(item.gameObject);
+                cooldown = true;
+                animator.Play("ReSelect");
             }
-            if (items[selected] != null && items[selected].prefab != null)
-            {
-                Instantiate(items[selected].prefab, hand);
-            }
-            oldselected = selected;
         }
+    }
+    public void Set()
+    {
+        foreach (Transform item in hand)
+        {
+            Destroy(item.gameObject);
+        }
+        if (items[selected] != null && items[selected].prefab != null)
+        {
+            Instantiate(items[selected].prefab, hand);
+        }
+        print("stop cooldown");
+        oldselected = selected;
+        cooldown = false;
     }
 
     public Item GetItem()

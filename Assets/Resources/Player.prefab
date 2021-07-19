@@ -1676,6 +1676,8 @@ MonoBehaviour:
   selected: 0
   oldselected: 0
   hand: {fileID: 3785379680140264841}
+  cooldown: 0
+  animator: {fileID: 2761178936261119928}
 --- !u!1 &2526355728415491943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2621,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6886449393041368090}
+  - component: {fileID: 2761178936261119928}
+  - component: {fileID: 866777627533474397}
   m_Layer: 7
   m_Name: Hands
   m_TagString: Untagged
@@ -2642,6 +2646,37 @@ Transform:
   m_Father: {fileID: 718444770896156161}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2761178936261119928
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935442660739319619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 461e95ef3a5741845838199024d49d52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &866777627533474397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935442660739319619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e8d62975fb0a44581df936f8ef563b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4015192382925575230
 GameObject:
   m_ObjectHideFlags: 0

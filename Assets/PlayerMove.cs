@@ -16,12 +16,17 @@ public class PlayerMove : MonoBehaviour
     public bool inJump;
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         rotY += (Input.GetAxis("Mouse X") * Time.deltaTime * sense);
         rotX -= (Input.GetAxis("Mouse Y") * Time.deltaTime * sense);
         rotX = Mathf.Clamp(rotX, -85, 85);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, rotY)), 15 * Time.deltaTime);
         camera.transform.localRotation = Quaternion.Lerp(camera.transform.localRotation, Quaternion.Euler(new Vector3(rotX, 0, 0)), 15 * Time.deltaTime);
-        rb.AddRelativeForce((Vector3.forward + new Vector3(0, angle * 2f, 0)) * speed * Time.deltaTime * Input.GetAxis("Vertical"), ForceMode.Acceleration);
+        rb.AddRelativeForce((Vector3.forward + new Vector3(0, angle * 5f, 0)) * speed * Time.deltaTime * Input.GetAxis("Vertical"), ForceMode.Acceleration);
         rb.AddRelativeForce((Vector3.right + new Vector3(0, angle * 2f, 0)) * speed * Time.deltaTime * Input.GetAxis("Horizontal"), ForceMode.Acceleration);
 
         if (Physics.SphereCastAll(transform.position - new Vector3(0, 1, 0) + new Vector3(0, 0.4f, 0), 0.45f, Vector3.down, 0.1f, mask).Length != 0)
@@ -29,9 +34,9 @@ public class PlayerMove : MonoBehaviour
             inJump = false;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
+                if (Physics.Raycast(transform.position - new Vector3(0, 0.9f, 0), Vector3.down, out RaycastHit hitf, 0.2f))
                 {
-                    angle = Vector3.Angle(hit.normal, Vector3.up)/180f;
+                    angle = Vector3.Angle(hitf.normal, Vector3.up) / 180f;
                     if (angle < 0.29f)
                     {
                         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -57,9 +62,14 @@ public class PlayerMove : MonoBehaviour
                 Destroy(GetComponent<FloatingTransform>());
             }
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            Debug.DrawRay(transform.position - new Vector3(0, 0.9f, 0), transform.forward, Color.red);
+            if (Physics.Raycast(transform.position - new Vector3(0, 0.9f, 0), transform.forward, out hit, 1f))
             {
                 angle = Vector3.Angle(hit.normal, Vector3.up) / 180f;
+                if (angle > 0.31)
+                {
+                    angle = 0;
+                }
             }
             
         }
