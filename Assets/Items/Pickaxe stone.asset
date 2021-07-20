@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Pickaxe stone
   value: 1
   maxValue: 1
-  durability: 0
+  durability: 1
   prefab: {fileID: 4472954409885125131, guid: b771f4aba36d1584bab95157aa5487c2, type: 3}
   cooldown: 0
   damage: 0

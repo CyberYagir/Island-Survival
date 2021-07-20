@@ -143,7 +143,7 @@ public class Player : MonoBehaviourPun, IPunObservable
                 pos = new Vector3(Random.Range(0, 2048), 500, Random.Range(0, 2048));
                 Physics.Raycast(pos, Vector3.down, out hit);
             }
-            pos = hit.point;
+            pos = hit.point + new Vector3(0, 2, 0);
 
             var rot = Quaternion.identity;
             if (player != null)

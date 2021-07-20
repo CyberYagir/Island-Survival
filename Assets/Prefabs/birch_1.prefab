@@ -158,6 +158,7 @@ MonoBehaviour:
   hp: 5
   minDropCount: 2
   maxDropCount: 5
+  item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
 --- !u!1 &176342
 GameObject:
   m_ObjectHideFlags: 0

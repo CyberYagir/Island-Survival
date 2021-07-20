@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Sword stone
   value: 1
   maxValue: 1
-  durability: 0
+  durability: 1
   prefab: {fileID: 1765794878614499069, guid: a5acab4ac7944574184d7b276e3ed21f, type: 3}
   cooldown: 0
   damage: 0

@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpForce;
     public LayerMask mask;
     public bool inJump;
+    public float gravModifayer;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -71,7 +72,12 @@ public class PlayerMove : MonoBehaviour
                     angle = 0;
                 }
             }
-            
+            if (!Physics.Raycast(transform.position - new Vector3(0, 0.9f, 0), Vector3.down, out RaycastHit hitb, 3f)){
+                print("Fall");
+                rb.velocity -= new Vector3(0, Time.deltaTime * gravModifayer, 0);
+            }
+
+
         }
         else
         {

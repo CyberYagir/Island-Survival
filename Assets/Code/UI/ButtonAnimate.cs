@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 public class ButtonAnimate : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool over;
-    RectTransform rect;
+    public RectTransform rect;
     Vector2 startPos;
     private void Start()
     {
-        rect = GetComponent<RectTransform>();
+        //rect = GetComponent<RectTransform>();
         startPos = new Vector2(rect.anchoredPosition.x, -131f);
     }
     public void OnPointerEnter(PointerEventData eventData)
