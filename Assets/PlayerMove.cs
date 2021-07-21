@@ -57,10 +57,10 @@ public class PlayerMove : MonoBehaviour
             {
                 rb.useGravity = false;
                 inWater = true;
-            }
-            if (GetComponent<FloatingTransform>())
-            {
-                Destroy(GetComponent<FloatingTransform>());
+
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+                GetComponent<Rigidbody>().freezeRotation = true;
+                return;
             }
             RaycastHit hit;
             Debug.DrawRay(transform.position - new Vector3(0, 0.9f, 0), transform.forward, Color.red);
@@ -81,12 +81,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (!GetComponent<FloatingTransform>())
-            {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                GetComponent<Rigidbody>().freezeRotation = true;
-                gameObject.AddComponent<FloatingTransform>().rollAmount = 0;
-            }
+            transform.position = new Vector3(transform.position.x, WaterPoint.waterPoint.transform.position.y, transform.position.z);
             if (!inJump && WaterPoint.waterPoint.transform.position.y > 15)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
