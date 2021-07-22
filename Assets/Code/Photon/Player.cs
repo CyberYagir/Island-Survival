@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviourPun, IPunObservable
 {
     public MonoBehaviour[] behaviours;
-    public GameObject skin;
+    public GameObject skin, canvas, hands, itemPreview;
     private void Awake()
     {
         GameManager.pause = false;
@@ -18,6 +18,9 @@ public class Player : MonoBehaviourPun, IPunObservable
         transform.name = photonView.Owner.NickName + ":" + photonView.Owner.ActorNumber;
         if (!photonView.IsMine)
         {
+            hands.SetActive(false);
+            canvas.SetActive(false);
+            itemPreview.SetActive(false);
             GetComponentInChildren<Camera>().enabled = false;
             for (int i = 0; i < behaviours.Length; i++)
             {
@@ -29,7 +32,6 @@ public class Player : MonoBehaviourPun, IPunObservable
         {
         }
     }
-
     private void Update()
     {
         if (!photonView.IsMine)
@@ -39,6 +41,13 @@ public class Player : MonoBehaviourPun, IPunObservable
         {
             Dead();
         }
+    }
+
+    [PunRPC]
+    public void DamageResource(int resID, float subHp)
+    {
+        print("ПНХ");
+        FindObjectOfType<BiomesPrefabsGenerator>().spawnedObjects[resID].GetComponent<Resource>().hp -= subHp;
     }
     [PunRPC]
     public void TakeDamage(float damage, string actorName, int weapon)

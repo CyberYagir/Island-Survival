@@ -64,6 +64,12 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                             var n = Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform);
                                             n.transform.localEulerAngles = new Vector3(0, biomeObject[q].prefabs[o].rot ? rnd.Next(0, 360) : 0, 0);
                                             spawnedObjects.Add(n.gameObject);
+                                            var res = n.GetComponent<Resource>();
+                                            if (res != null)
+                                            {
+                                                res.resId = spawnedObjects.Count - 1;
+                                            }
+
                                             poses.Add(new Vector2(x, y));
                                             objects++;
                                             if (objects >= objectsCount)

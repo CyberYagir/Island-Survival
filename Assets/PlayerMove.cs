@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
         rotY += (Input.GetAxis("Mouse X") * Time.deltaTime * sense);
         rotX -= (Input.GetAxis("Mouse Y") * Time.deltaTime * sense);
         rotX = Mathf.Clamp(rotX, -85, 85);
+        
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, rotY)), 15 * Time.deltaTime);
         camera.transform.localRotation = Quaternion.Lerp(camera.transform.localRotation, Quaternion.Euler(new Vector3(rotX, 0, 0)), 15 * Time.deltaTime);
         rb.AddRelativeForce((Vector3.forward + new Vector3(0, angle * 5f, 0)) * speed * Time.deltaTime * Input.GetAxis("Vertical"), ForceMode.Acceleration);

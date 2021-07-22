@@ -127,7 +127,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
+  actions:
+  - keyCode: 323
+    Down:
+      m_PersistentCalls:
+        m_Calls: []
+    Up:
+      m_PersistentCalls:
+        m_Calls: []
+    Press:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6608113486844955860}
+          m_TargetAssemblyTypeName: Pickaxe, Assembly-CSharp
+          m_MethodName: Mine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &6608113486844955860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed297242c347c84ca943bb64bfacafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMine: 0
+  attack: {fileID: 7400000, guid: c6b67f73f4d1e2a4ca9fd6fcedc3680f, type: 2}

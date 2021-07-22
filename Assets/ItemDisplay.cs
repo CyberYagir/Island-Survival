@@ -13,11 +13,7 @@ public class ItemDisplay : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Resource resource = hit.transform.GetComponentInParent<Resource>();
-                if (resource == null)
-                {
-                    resource = hit.transform.GetComponent<Resource>();
-                }
+                Resource resource = ItemInteract.GetResource(hit.transform.gameObject);
                 if (resource)
                 {
                     text.gameObject.SetActive(true);

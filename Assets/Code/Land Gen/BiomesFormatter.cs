@@ -27,7 +27,6 @@ public class BiomesFormatter : MonoBehaviour
             item.offcet = Mathf.PerlinNoise(id + Mathf.Sqrt(t.main.offcet.x), id + Mathf.Sqrt(t.main.offcet.y)) * (-t.seed * (id % 2 == 0 ? 1 : -1)) * Vector3.one * id;
             item.FillTexture();
             creators.Add(item);
-
             item.OnEndTexture += () =>
             {
                 creators.Remove(item);

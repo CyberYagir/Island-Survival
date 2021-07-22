@@ -37,6 +37,7 @@ MonoBehaviour:
   - DestroyRpc
   - KillRPC
   - TakeDamage
+  - DamageResource
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

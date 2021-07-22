@@ -112,7 +112,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.011580351
+  - screenRelativeHeight: 0.0045454954
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2118062674394613636}
@@ -133,3 +133,4 @@ MonoBehaviour:
   minDropCount: 2
   maxDropCount: 5
   item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
+  resId: 0

@@ -7,13 +7,11 @@ public class Resource : MonoBehaviour
     public float hp;
     public int minDropCount, maxDropCount;
     public Item item;
+    public int resId;
 
-    public void Update()
+    public void Start()
     {
-        if (hp <= 0)
-        {
-
-        }
+        item = item.Clone();
     }
 
 }

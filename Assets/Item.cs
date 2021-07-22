@@ -11,5 +11,11 @@ public class Item : ScriptableObject
     public int value, maxValue;
     public float durability;
     public GameObject prefab;
+
+
+    public Item Clone()
+    {
+        return Instantiate(this);
+    }
 }
 

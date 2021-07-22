@@ -188,7 +188,6 @@ GameObject:
   m_Component:
   - component: {fileID: 412126}
   - component: {fileID: 5810361531612536621}
-  - component: {fileID: 7988951470445096572}
   - component: {fileID: 375151787831769048}
   m_Layer: 0
   m_Name: tree_2
@@ -240,18 +239,6 @@ LODGroup:
     - renderer: {fileID: 8157606560729890860}
     - renderer: {fileID: 8173247696285291001}
   m_Enabled: 1
---- !u!114 &7988951470445096572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269aa6b8059d06a4bbf0be6567214460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &375151787831769048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +255,7 @@ MonoBehaviour:
   minDropCount: 2
   maxDropCount: 5
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
+  resId: 0
 --- !u!1 &547042892594272971
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,15 +35,26 @@ public class PlayerInventory : MonoBehaviour
     }
     public void Set()
     {
+        
         foreach (Transform item in hand)
         {
             Destroy(item.gameObject);
         }
-        if (items[selected] != null && items[selected].prefab != null)
+        if (items[selected] != null)
         {
-            Instantiate(items[selected].prefab, hand);
+            if (items[selected].prefab != null)
+            {
+                Instantiate(items[selected].prefab, hand);
+            }
+            if (items[selected] is HandItem)
+            {
+                if ((items[selected] as HandItem).animatorController != null)
+                {
+                    GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = (items[selected] as HandItem).animatorController;
+                }
+            }
         }
-        print("stop cooldown");
+        //print("stop cooldown");
         oldselected = selected;
         cooldown = false;
     }
