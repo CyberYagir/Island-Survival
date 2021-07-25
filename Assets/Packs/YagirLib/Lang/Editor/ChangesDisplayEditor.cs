@@ -21,13 +21,58 @@ public class ChangesDisplay : EditorWindow
         var p = FindObjectOfType<ChangesManager>();
         if (p)
         {
+            int n = 0;
             GUILayout.BeginVertical();
-            foreach (var item in p.resChanges)
+            GUILayout.Label("Changes: ");
+            foreach (var item in ChangesManager.changes.changes)
             {
+                n++;
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.TextArea(item.Key.ToString());
-                EditorGUILayout.TextArea(item.Value.h.ToString());
+                EditorGUILayout.TextArea(item.Key.ToString(), GUILayout.Width(200));
+                GUILayout.BeginVertical();
+                foreach (var vals in item.Value.values)
+                {
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(vals.Key.ToString() + ": ", GUILayout.Width(50));
+                    EditorGUILayout.TextArea(vals.Value.ToString());
+                    GUILayout.EndHorizontal();
+                }
+
+                GUILayout.BeginHorizontal();
+
+                EditorGUILayout.LabelField("type: ", GUILayout.Width(50));
+                EditorGUILayout.LabelField(item.Value.tp.ToString());
                 GUILayout.EndHorizontal();
+                GUILayout.EndVertical();
+                GUILayout.EndHorizontal();
+
+                if (n > 5) break;
+            }
+            GUILayout.Space(10);
+            GUILayout.Label("Destroys: ");
+            foreach (var item in ChangesManager.changes.destroys)
+            {
+                n++;
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.TextArea(item.Key.ToString(), GUILayout.Width(200));
+                GUILayout.BeginVertical();
+                foreach (var vals in item.Value.values)
+                {
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(vals.Key.ToString() + ": ", GUILayout.Width(50));
+                    EditorGUILayout.TextArea(vals.Value.ToString());
+                    GUILayout.EndHorizontal();
+                }
+
+                GUILayout.BeginHorizontal();
+
+                EditorGUILayout.LabelField("type: ", GUILayout.Width(50));
+                EditorGUILayout.LabelField(item.Value.tp.ToString());
+                GUILayout.EndHorizontal();
+                GUILayout.EndVertical();
+                GUILayout.EndHorizontal();
+
+                if (n > 5) break;
             }
             GUILayout.EndVertical();
         }

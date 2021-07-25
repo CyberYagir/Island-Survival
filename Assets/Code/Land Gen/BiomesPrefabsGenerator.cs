@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -88,16 +89,41 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         }
         LoadUI.ui.Hide();
 
-        if (ChangesManager.cm.resChanges.Count != 0)
+
+        TerrainGenerator.genEnded = true;
+        ChangesManager.cm.gameObject.GetPhotonView().RPC("ReSyncRPC", RpcTarget.All);
+    }
+
+    public void SetResources()
+    {
+        if (ChangesManager.changes.changes.Count != 0)
         {
-            foreach (var item in ChangesManager.cm.resChanges)
+            foreach (var item in ChangesManager.changes.changes)
             {
-                if (item.Value.h <= 0)
+                if (item.Value.tp == Change.ChangeType.ResChange)
+                {
+                    var val = ChangesManager.GetValue(item.Key, "hp");
+                    if (val != null)
+                    {
+                        var n = spawnedObjects[item.Key].GetComponent<Resource>();
+                        if (n != null)
+                        {
+                            n.hp = (int)val;
+                        }
+                    }
+                }
+            }
+        }
+        if (ChangesManager.changes.destroys.Count != 0)
+        {
+            foreach (var item in ChangesManager.changes.destroys)
+            {
+                if (item.Value.tp == Change.ChangeType.ResDestroyChange)
                 {
                     Destroy(spawnedObjects[item.Key]);
                 }
             }
         }
-        TerrainGenerator.genEnded = true;
+
     }
 }

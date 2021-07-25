@@ -10,27 +10,51 @@ using System.Linq;
 
 [System.Serializable]
 public class ResChange {
-    /// <summary>
-    /// hp
-    /// </summary>
-    public int h;
 
-
+    public Dictionary<string, object> values = new Dictionary<string, object>();
+    public Change.ChangeType tp = Change.ChangeType.None;
     public ResChange Clone()
     {
-        return new ResChange() { h = h };
+        return new ResChange()
+        {
+            values = values.ToDictionary(entry => entry.Key,
+                                               entry => entry.Value),
+            tp = tp
+        };
+    }
+    public void Set(string name, object value)
+    {
+        values.TryGetValue(name, out object get);
+        if (get == null)
+        {
+            values.Add(name, value);
+        }
+        else
+        {
+            values[name] = value;
+        }
     }
 }
+public class Values {
+    public string name;
+    public object value;
+}
+
+public class Change { 
+    public enum ChangeType { None, ResChange, CreateChange, ResDestroyChange, DontChange};
+    public Dictionary<int, ResChange> changes = new Dictionary<int, ResChange>();
+    public Dictionary<int, ResChange> destroys = new Dictionary<int, ResChange>();
+}
+
 
 public class ChangesManager : MonoBehaviour, IPunObservable
 {
     public static ChangesManager cm;
-    public Dictionary<int,ResChange> resChanges = new Dictionary<int, ResChange>();
-
-    public enum SyncType {SyncAction, SyncPlayer, None};
+    public static Change changes = new Change();
+    public enum SyncType { None = 0, SyncAction = 1, SyncPlayer = 2, SyncAll = 3};
     public SyncType syncType;
 
-
+    bool initTerrain;
 
     public static void ReSync(SyncType syncType)
     {
@@ -39,29 +63,112 @@ public class ChangesManager : MonoBehaviour, IPunObservable
             cm.syncType = syncType;
         }
     }
+    public static void AddChange(int id, List<Values> values, Change.ChangeType type = Change.ChangeType.DontChange)
+    {
+        changes.changes.TryGetValue(id, out ResChange get);
+        if (get != null)
+        {
+            for (int i = 0; i < values.Count; i++)
+            {
+                get.Set(values[i].name, values[i].value);
+            }
+        }
+        else
+        {
+            changes.changes.Add(id, new ResChange());
+            if (type != Change.ChangeType.DontChange)
+            {
+                changes.changes[id].tp = type;
+            }
+            AddChange(id, values, type);
+        }
+    }
+    public static void MoveAllResToDestroy()
+    {
+        List<int> keys = new List<int>();
+        foreach (var item in changes.changes)
+        {
+            if (item.Value.tp == Change.ChangeType.ResDestroyChange)
+            {
+                keys.Add(item.Key);
+            }
+        }
+        for (int i = 0; i < keys.Count; i++)
+        {
+            changes.destroys.Add(keys[i], changes.changes[keys[i]]);
+            changes.changes.Remove(keys[i]);
+        }
+        if (keys.Count != 0)
+        {
+            ReSync(SyncType.SyncAll);
+        }
+    }
+
+    public static object GetValue(int id, string paramName)
+    {
+        if (changes.changes.TryGetValue(id, out ResChange res))
+        {
+            if (res.values.TryGetValue(paramName, out object val))
+            {
+                return val;
+            }
+        }
+        return null;
+    }
 
     private void Awake()
     {
         cm = this;
     }
+    [PunRPC]
+    public void ReSyncRPC()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            ReSync(SyncType.SyncAll);
+            Debug.LogError("ResyncAll");
+            
+        }
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-            var isEq = syncType != SyncType.None;
+            int isEq = (int)syncType;
             stream.SendNext(isEq);
-            if (isEq)
+            if ((SyncType)isEq == SyncType.SyncAction)
             {
                 syncType = SyncType.None;
-                stream.SendNext(JsonConvert.SerializeObject(resChanges));
+                stream.SendNext(JsonConvert.SerializeObject(changes.changes));
+            }
+            else if ((SyncType)isEq == SyncType.SyncPlayer || (SyncType)isEq == SyncType.SyncAll)
+            {
+                stream.SendNext(JsonConvert.SerializeObject(changes.changes));
+                stream.SendNext(JsonConvert.SerializeObject(changes.destroys));
             }
         }
         else
         {
-            if ((bool)stream.ReceiveNext() == true)
+            
+            var type = (SyncType)stream.ReceiveNext();
+            if (type == SyncType.SyncAction)
             {
-                var s = (string)stream.ReceiveNext();
-                resChanges = JsonConvert.DeserializeObject<Dictionary<int, ResChange>>(s);
+                changes.changes = JsonConvert.DeserializeObject<Dictionary<int, ResChange>>((string)stream.ReceiveNext());
+            }
+            else if (type == SyncType.SyncPlayer || type == SyncType.SyncAll)
+            {
+                changes.changes = JsonConvert.DeserializeObject<Dictionary<int, ResChange>>((string)stream.ReceiveNext());
+                changes.destroys = JsonConvert.DeserializeObject<Dictionary<int, ResChange>>((string)stream.ReceiveNext());
+            }
+
+            if (type == SyncType.SyncAll)
+            {
+                if (TerrainGenerator.genEnded && !initTerrain)
+                {
+                    FindObjectOfType<BiomesPrefabsGenerator>().SetResources();
+                    initTerrain = true;
+                }
             }
         }
     }

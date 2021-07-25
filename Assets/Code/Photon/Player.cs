@@ -56,24 +56,22 @@ public class Player : MonoBehaviourPun, IPunObservable
         }
         if (PhotonNetwork.IsMasterClient)
         {
-            var mn = FindObjectOfType<ChangesManager>();
-            mn.resChanges.TryGetValue(resID, out ResChange k);
-            if (k != null)
+            ChangesManager.AddChange(resID, new List<Values>(), Change.ChangeType.CreateChange);
+            ChangesManager.changes.changes[resID].Set("hp", res.hp);
+            if (res.hp <= 0)
             {
-                k.h = res.hp;
-            }
-            else
-            {
-                mn.resChanges.Add(resID, new ResChange() { h = res.hp });
+                ChangesManager.changes.changes[resID].tp = Change.ChangeType.ResDestroyChange;
             }
         }
         if (res.hp <= 0)
         {
             res.GetComponent<SphereCollider>().enabled = false;
             res.GetComponent<Animator>().Play("Dead");
+            ChangesManager.MoveAllResToDestroy();
         }
         ChangesManager.ReSync(ChangesManager.SyncType.SyncAction);
     }
+
     [PunRPC]
     public void TakeDamage(float damage, string actorName, int weapon)
     {
