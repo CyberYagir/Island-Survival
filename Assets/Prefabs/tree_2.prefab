@@ -189,6 +189,8 @@ GameObject:
   - component: {fileID: 412126}
   - component: {fileID: 5810361531612536621}
   - component: {fileID: 375151787831769048}
+  - component: {fileID: -5545682170544943504}
+  - component: {fileID: 94235355602785981}
   m_Layer: 0
   m_Name: tree_2
   m_TagString: Untagged
@@ -256,6 +258,39 @@ MonoBehaviour:
   maxDropCount: 5
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
   resId: 0
+  inTrigger: []
+--- !u!95 &-5545682170544943504
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197658}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd288960e488de74b9b817f3e066d9f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &94235355602785981
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.76
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &547042892594272971
 GameObject:
   m_ObjectHideFlags: 0

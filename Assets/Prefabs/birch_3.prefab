@@ -175,7 +175,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: e1bdeb4b7b67c98448daa0e3ab52ec89, type: 3}
 --- !u!1 &188516
@@ -189,6 +189,8 @@ GameObject:
   - component: {fileID: 495872}
   - component: {fileID: 7165026707102562328}
   - component: {fileID: -425964297190450458}
+  - component: {fileID: -4307310314921147279}
+  - component: {fileID: 1148792826285831243}
   m_Layer: 0
   m_Name: birch_3
   m_TagString: Untagged
@@ -255,6 +257,40 @@ MonoBehaviour:
   minDropCount: 2
   maxDropCount: 5
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
+  resId: 0
+  inTrigger: []
+--- !u!95 &-4307310314921147279
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188516}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd288960e488de74b9b817f3e066d9f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &1148792826285831243
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.76
+  m_Center: {x: 0, y: 3.52, z: 0}
 --- !u!1 &674402309132231794
 GameObject:
   m_ObjectHideFlags: 0

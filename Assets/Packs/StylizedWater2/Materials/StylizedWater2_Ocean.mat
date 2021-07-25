@@ -186,7 +186,7 @@ Material:
     - _Translucency: 1
     - _WaveCount: 3
     - _WaveDistance: 0.969
-    - _WaveHeight: 1.44
+    - _WaveHeight: 2.08
     - _WaveNormalStr: 6
     - _WaveSpeed: 1.5
     - _WaveSteepness: 0.582

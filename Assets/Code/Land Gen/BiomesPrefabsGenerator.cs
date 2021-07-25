@@ -87,6 +87,17 @@ public class BiomesPrefabsGenerator : MonoBehaviour
             }
         }
         LoadUI.ui.Hide();
+
+        if (ChangesManager.cm.resChanges.Count != 0)
+        {
+            foreach (var item in ChangesManager.cm.resChanges)
+            {
+                if (item.Value.h <= 0)
+                {
+                    Destroy(spawnedObjects[item.Key]);
+                }
+            }
+        }
         TerrainGenerator.genEnded = true;
     }
 }

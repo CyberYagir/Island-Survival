@@ -8,6 +8,8 @@ public class Player : MonoBehaviourPun, IPunObservable
 {
     public MonoBehaviour[] behaviours;
     public GameObject skin, canvas, hands, itemPreview;
+
+
     private void Awake()
     {
         GameManager.pause = false;
@@ -44,10 +46,33 @@ public class Player : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
-    public void DamageResource(int resID, float subHp)
+    public void DamageResource(int resID, int subHp)
     {
-        print("ПНХ");
-        FindObjectOfType<BiomesPrefabsGenerator>().spawnedObjects[resID].GetComponent<Resource>().hp -= subHp;
+        var res = FindObjectOfType<BiomesPrefabsGenerator>().spawnedObjects[resID].GetComponent<Resource>();
+        res.hp -= subHp;
+        if (res.hp > 0)
+        {
+            res.GetComponent<Animator>().Play("Attacked");
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            var mn = FindObjectOfType<ChangesManager>();
+            mn.resChanges.TryGetValue(resID, out ResChange k);
+            if (k != null)
+            {
+                k.h = res.hp;
+            }
+            else
+            {
+                mn.resChanges.Add(resID, new ResChange() { h = res.hp });
+            }
+        }
+        if (res.hp <= 0)
+        {
+            res.GetComponent<SphereCollider>().enabled = false;
+            res.GetComponent<Animator>().Play("Dead");
+        }
+        ChangesManager.ReSync(ChangesManager.SyncType.SyncAction);
     }
     [PunRPC]
     public void TakeDamage(float damage, string actorName, int weapon)
@@ -143,13 +168,14 @@ public class Player : MonoBehaviourPun, IPunObservable
     {
         if (PhotonNetwork.IsMasterClient == false || withMasterClient == true)
         {
+            System.Random rnd = new System.Random(0);
 
-            var pos = new Vector3(Random.Range(0, 2048),500, Random.Range(0, 2048));
+            var pos = new Vector3(rnd.Next(0, 2048),500, rnd.Next(0, 2048));
             RaycastHit hit;
             Physics.Raycast(pos, Vector3.down, out hit);
             while (!(hit.point.y > 15 && hit.point.y < 45) || Vector3.Angle(hit.normal, Vector3.up) > 10)
             {
-                pos = new Vector3(Random.Range(0, 2048), 500, Random.Range(0, 2048));
+                pos = new Vector3(rnd.Next(0, 2048), 500, rnd.Next(0, 2048));
                 Physics.Raycast(pos, Vector3.down, out hit);
             }
             pos = hit.point + new Vector3(0, 2, 0);

@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5654052415710198840}
-  - component: {fileID: 6601346300635880981}
-  - component: {fileID: 2118062674394613636}
-  - component: {fileID: 8581835289942515540}
   - component: {fileID: 6787687834671161721}
   - component: {fileID: 1210377886495351752}
+  - component: {fileID: 2630908969459300813}
+  - component: {fileID: 3917037401404473360}
   m_Layer: 0
   m_Name: Stone2
   m_TagString: Untagged
@@ -28,28 +27,131 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011844923061134725}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: -3.82503}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1684760972239490087}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6601346300635880981
+--- !u!205 &6787687834671161721
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011844923061134725}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.8141413, y: 0.3582374, z: 1.0612869}
+  m_Size: 4.1225734
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.0045454954
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8824172757600542403}
+  m_Enabled: 1
+--- !u!114 &1210377886495351752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011844923061134725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
+  minDropCount: 2
+  maxDropCount: 5
+  item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
+  resId: 0
+  inTrigger: []
+--- !u!95 &2630908969459300813
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011844923061134725}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd288960e488de74b9b817f3e066d9f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &3917037401404473360
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011844923061134725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.76
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8159319539196737452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684760972239490087}
+  - component: {fileID: 4404154720827045818}
+  - component: {fileID: 8824172757600542403}
+  - component: {fileID: 1565180833812802054}
+  m_Layer: 0
+  m_Name: Stone2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1684760972239490087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159319539196737452}
+  m_LocalRotation: {x: -0, y: -0, z: -0.18353464, w: 0.9830133}
+  m_LocalPosition: {x: -0.95, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 5654052415710198840}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.151}
+--- !u!33 &4404154720827045818
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011844923061134725}
+  m_GameObject: {fileID: 8159319539196737452}
   m_Mesh: {fileID: 4493585093827132993, guid: 7bedbf82c53a47b4cb89859aace54078, type: 3}
---- !u!23 &2118062674394613636
+--- !u!23 &8824172757600542403
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011844923061134725}
+  m_GameObject: {fileID: 8159319539196737452}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,13 +186,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8581835289942515540
+--- !u!64 &1565180833812802054
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011844923061134725}
+  m_GameObject: {fileID: 8159319539196737452}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -98,39 +200,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 7bedbf82c53a47b4cb89859aace54078, type: 3}
---- !u!205 &6787687834671161721
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011844923061134725}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.0076595265, y: 0, z: 0}
-  m_Size: 0.046718627
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.0045454954
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 2118062674394613636}
-  m_Enabled: 1
---- !u!114 &1210377886495351752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011844923061134725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 5
-  minDropCount: 2
-  maxDropCount: 5
-  item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
-  resId: 0

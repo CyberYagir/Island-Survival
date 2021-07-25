@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,9 @@ public class HidePhotonConnecting : MonoBehaviour
 
     public void Update()
     {
+        print(PhotonNetwork.NetworkClientState);
         time += Time.deltaTime;
-        if (time > 2)
+        if (time > 2 && PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.ConnectedToMasterServer)
             animator.Play("ConnectingToPhotonOff");
     }
 

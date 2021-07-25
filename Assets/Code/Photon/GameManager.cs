@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private void Update()
     {
         //tabMenu.SetActive(Input.GetKey(KeyCode.Tab) || Timer.timer_.end);
-       //Debug.LogError("Roomname: " + PhotonNetwork.CurrentRoom.Name + "/" + PhotonNetwork.OfflineMode);
+        //Debug.LogError("Roomname: " + PhotonNetwork.CurrentRoom.Name + "/" + PhotonNetwork.OfflineMode);
+        //Debug.LogError(PhotonNetwork.NetworkClientState);
         if (LocalPlayer == null)
         {
             time += Time.deltaTime;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
+        ChangesManager.ReSync(ChangesManager.SyncType.SyncPlayer);
         base.OnPlayerEnteredRoom(newPlayer);
     }
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)

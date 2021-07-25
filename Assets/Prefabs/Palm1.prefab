@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 5344369123787797845}
   m_LocalRotation: {x: 0.56251466, y: -0.11075764, z: 0.41060928, w: 0.7090205}
   m_LocalPosition: {x: -0.01258, y: -0.01387, z: 0.03383}
-  m_LocalScale: {x: 0.0083997, y: 0.0083997, z: 0.0083997}
+  m_LocalScale: {x: 0.012092023, y: 0.012092023, z: 0.012092023}
   m_Children: []
   m_Father: {fileID: 684843182433067307}
   m_RootOrder: 2
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 5344369123890183457}
   m_LocalRotation: {x: 0.62799054, y: 0.020466683, z: 0.3010824, w: 0.7173273}
   m_LocalPosition: {x: -0.0297, y: -0.01387, z: 0.05439}
-  m_LocalScale: {x: 0.0083997, y: 0.0083997, z: 0.0083997}
+  m_LocalScale: {x: 0.012092023, y: 0.012092023, z: 0.012092023}
   m_Children: []
   m_Father: {fileID: 684843182433067307}
   m_RootOrder: 4
@@ -201,13 +201,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5344369125230385216}
-  m_LocalRotation: {x: 0.89795035, y: -0.034228172, z: 0.18226756, w: 0.39911422}
-  m_LocalPosition: {x: 0.0023, y: -0.0071, z: 0.0121}
-  m_LocalScale: {x: 0.0083997, y: 0.0083997, z: 0.0083997}
+  m_LocalRotation: {x: 0.89205396, y: 0.043358333, z: 0.11563749, w: 0.43472725}
+  m_LocalPosition: {x: 0.0024, y: -0.0047, z: 0.0077}
+  m_LocalScale: {x: 0.012092023, y: 0.012092023, z: 0.012092023}
   m_Children: []
   m_Father: {fileID: 684843182433067307}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 133.177, y: -26.005005, z: -7.0529785}
+  m_LocalEulerAnglesHint: {x: 130.04199, y: -22.289001, z: -16.052002}
 --- !u!136 &5344369125230385230
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 5344369125294248527}
   m_LocalRotation: {x: 0.64193404, y: -0.06707618, z: 0.38606453, w: 0.6590718}
   m_LocalPosition: {x: -0.00318, y: -0.01321, z: 0.02265}
-  m_LocalScale: {x: 0.0083997, y: 0.0083997, z: 0.0083997}
+  m_LocalScale: {x: 0.012092023, y: 0.012092023, z: 0.012092023}
   m_Children: []
   m_Father: {fileID: 684843182433067307}
   m_RootOrder: 1
@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 5344369125565801191}
   m_LocalRotation: {x: 0.56251466, y: -0.11075764, z: 0.41060928, w: 0.7090205}
   m_LocalPosition: {x: -0.02237, y: -0.01387, z: 0.04383}
-  m_LocalScale: {x: 0.0083997, y: 0.0083997, z: 0.0083997}
+  m_LocalScale: {x: 0.012092023, y: 0.012092023, z: 0.012092023}
   m_Children: []
   m_Father: {fileID: 684843182433067307}
   m_RootOrder: 3
@@ -323,6 +323,8 @@ GameObject:
   - component: {fileID: 3333756176917491440}
   - component: {fileID: 7368863988022754745}
   - component: {fileID: -901639375224329248}
+  - component: {fileID: -8179310977778158559}
+  - component: {fileID: 3734752296372902942}
   m_Layer: 0
   m_Name: Palm1
   m_TagString: Untagged
@@ -359,7 +361,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.014866933
+  - screenRelativeHeight: 0.0131072495
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5692821357069854781}
@@ -381,3 +383,36 @@ MonoBehaviour:
   maxDropCount: 5
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
   resId: 0
+  inTrigger: []
+--- !u!95 &-8179310977778158559
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668556987634587952}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd288960e488de74b9b817f3e066d9f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &3734752296372902942
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668556987634587952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12.76
+  m_Center: {x: 0, y: 3.52, z: 0}

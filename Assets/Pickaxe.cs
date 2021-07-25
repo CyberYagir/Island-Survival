@@ -42,7 +42,7 @@ public class Pickaxe : Usable
         var res = GetComponentInParent<ItemInteract>().GetResourceFromRay();
         if (res)
         {
-            GameManager.manager.LocalPlayer.photonView.RPC("DamageResource", Photon.Pun.RpcTarget.All, res.resId, (playerInventory.GetItem() as HandItem).damage);
+            GameManager.manager.LocalPlayer.photonView.RPC("DamageResource", Photon.Pun.RpcTarget.All, res.resId, (int)(playerInventory.GetItem() as HandItem).damage);
         }
     }
 }

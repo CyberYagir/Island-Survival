@@ -18,5 +18,5 @@ MonoBehaviour:
   durability: 1
   prefab: {fileID: 4472954409885125131, guid: b771f4aba36d1584bab95157aa5487c2, type: 3}
   damage: 1
-  attackTime: 0
+  attackTime: 0.4
   animatorController: {fileID: 9100000, guid: 9991adc7363e5394d8753d50c4a7929d, type: 2}

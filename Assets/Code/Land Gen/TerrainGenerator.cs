@@ -156,6 +156,7 @@ public class TerrainGenerator : MonoBehaviour
         LoadUI.text_loading = "Set grass and terrain texture...";
         yield return new WaitForSeconds(0.5f);
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
+        yield return new WaitForSeconds(0.5f);
         GetComponent<DetailGenerator>().GenGrass();
         LoadUI.text_loading = "Creating biomes and resources...";
         yield return new WaitForSeconds(0.5f);
