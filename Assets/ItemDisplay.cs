@@ -16,9 +16,10 @@ public class ItemDisplay : MonoBehaviour
                 Resource resource = ItemInteract.GetResource(hit.transform.gameObject);
                 if (resource)
                 {
+                    print("ok");
                     text.gameObject.SetActive(true);
-                    text.text = resource.item.name;
-                    text.transform.position = Vector3.Lerp(text.transform.position, Camera.main.WorldToScreenPoint(hit.point), 10f * Time.deltaTime);
+                    text.text = resource.item.itemName;
+                    //text.transform.position = Vector3.Lerp(text.transform.position, hit.point, 10f * Time.deltaTime);
                 }
             }
         }

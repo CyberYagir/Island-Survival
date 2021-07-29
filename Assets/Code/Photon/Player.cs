@@ -67,6 +67,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         {
             res.GetComponent<SphereCollider>().enabled = false;
             res.GetComponent<Animator>().Play("Dead");
+            res.DropResources();
             ChangesManager.MoveAllResToDestroy();
         }
         ChangesManager.ReSync(ChangesManager.SyncType.SyncAction);

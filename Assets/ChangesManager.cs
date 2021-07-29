@@ -103,6 +103,22 @@ public class ChangesManager : MonoBehaviour, IPunObservable
             ReSync(SyncType.SyncAll);
         }
     }
+    [PunRPC]
+    public void CreateDropItem(string name, Vector3 pos, Quaternion quaternion, string prefab, int val, Vector3 forward)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            var n = PhotonNetwork.InstantiateRoomObject(name, pos, quaternion);
+            n.GetComponent<Rigidbody>().AddForce(forward * 5, ForceMode.Impulse);
+            if (forward == Vector3.zero)
+            {
+                n.GetComponent<Drop>().time = 2;
+            }
+            n.GetPhotonView().RPC("InitRPC", RpcTarget.All, prefab);
+            n.GetPhotonView().RPC("SetValue", RpcTarget.All, val);
+        }
+    }
+
 
     public static object GetValue(int id, string paramName)
     {
@@ -125,9 +141,7 @@ public class ChangesManager : MonoBehaviour, IPunObservable
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            ReSync(SyncType.SyncAll);
-            Debug.LogError("ResyncAll");
-            
+            ReSync(SyncType.SyncAll);            
         }
     }
 

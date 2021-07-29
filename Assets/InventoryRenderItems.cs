@@ -21,12 +21,27 @@ public class InventoryRenderItems : MonoBehaviour
     public void Init()
     {
         textures = new List<RenderTexture>(new RenderTexture[playerInventory.items.Count]);
+        for (int i = 0; i < gameObjects.Count; i++)
+        {
+            Destroy(gameObjects[i].gameObject);
+        }
+        gameObjects = new List<GameObject>();
+        //print("Destroy");
         for (int i = 0; i < textures.Count; i++)
         {
             textures[i] = new RenderTexture(256, 256, 0);
             if (playerInventory.items[i] != null)
-                gameObjects.Add(Instantiate(playerInventory.items[i].prefab, point));
+            {
+                var obj = Instantiate(playerInventory.items[i].prefab, point);
+                obj.transform.GetChild(0).localPosition = Vector3.zero;
+                gameObjects.Add(obj);
+            }
         }
+    }
+
+    public void ResetDisplay()
+    {
+        Init();
     }
     private void Start()
     {
@@ -35,23 +50,30 @@ public class InventoryRenderItems : MonoBehaviour
 
     public void Set()
     {
-        for (int i = 0; i < textures.Count; i++)
+        try
         {
-            if (playerInventory.items[i] != null)
+            for (int i = 0; i < textures.Count; i++)
             {
-                gameObjects[i].SetActive(true);
-                foreach (Transform item in gameObjects[i].transform)
+                if (playerInventory.items[i] != null)
                 {
-                    item.gameObject.layer = LayerMask.NameToLayer("Inventory");
+                    gameObjects[i].SetActive(true);
+                    foreach (Transform item in gameObjects[i].transform)
+                    {
+                        item.gameObject.layer = LayerMask.NameToLayer("Inventory");
+                    }
+                    camera.targetTexture = textures[i];
+                    camera.RenderDontRestore();
+                    gameObjects[i].SetActive(false);
                 }
-                camera.targetTexture = textures[i];
-                camera.RenderDontRestore();
-                gameObjects[i].SetActive(false);
+                else
+                {
+                    textures[i].Release();
+                }
             }
-            else
-            {
-                textures[i].Release();
-            }
+        }
+        catch (Exception)
+        {
+            Init();
         }
     }
 

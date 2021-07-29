@@ -39,6 +39,10 @@ MonoBehaviour:
   - TakeDamage
   - DamageResource
   - ReSyncRPC
+  - InitRPC
+  - CreateDropItem
+  - SetValue
+  - DestroyRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

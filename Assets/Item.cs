@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "Base Item", menuName = "Game/Base Item", order = 1)]
 public class Item : ScriptableObject
 {
-    public string name;
+    public string itemName;
     public int value, maxValue;
     public float durability;
     public GameObject prefab;
@@ -15,7 +15,9 @@ public class Item : ScriptableObject
 
     public Item Clone()
     {
-        return Instantiate(this);
+        var cln = Instantiate(this);
+        cln.name = cln.name.Replace("(Clone)", "");
+        return cln;
     }
 }
 

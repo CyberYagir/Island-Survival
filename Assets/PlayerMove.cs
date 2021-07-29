@@ -17,11 +17,11 @@ public class PlayerMove : MonoBehaviour
     public float gravModifayer;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    Cursor.visible = false;
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
         rotY += (Input.GetAxis("Mouse X") * Time.deltaTime * sense);
         rotX -= (Input.GetAxis("Mouse Y") * Time.deltaTime * sense);
         rotX = Mathf.Clamp(rotX, -85, 85);
@@ -58,7 +58,6 @@ public class PlayerMove : MonoBehaviour
             {
                 rb.useGravity = false;
                 inWater = true;
-
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 GetComponent<Rigidbody>().freezeRotation = true;
                 return;
@@ -82,7 +81,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, WaterPoint.waterPoint.transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, WaterPoint.waterPoint.transform.position.y + 1, transform.position.z);
             if (!inJump && WaterPoint.waterPoint.transform.position.y > 15)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
