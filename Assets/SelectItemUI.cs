@@ -6,16 +6,21 @@ using UnityEngine.UI;
 
 public class SelectItemUI : MonoBehaviour
 {
-    public PlayerInventory playerInventory;
+    PlayerInventory playerInventory;
+    InventoryRenderItems inventoryRender;
+    [HideInInspector]
     public int id;
     public RectTransform rectTransform, line;
     public float addX;
     public Vector2 startX;
-    public InventoryRenderItems inventoryRender;
     public RawImage rawImage;
     public TMP_Text id_text, count_text;
     private void Start()
     {
+        id = transform.GetSiblingIndex();
+        playerInventory = GetComponentInParent<PlayerInventory>();
+        inventoryRender = playerInventory.GetComponentInChildren<InventoryRenderItems>();
+
         startX = rectTransform.anchoredPosition;
         id_text.text = (id+1).ToString();
     }

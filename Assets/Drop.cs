@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Photon.Pun;
+using StylizedWater2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,17 @@ public class Drop : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
+        if (gameObject.GetPhotonView().IsMine) {
+            if (transform.position.y < 15)
+            {
+                if (GetComponent<FloatingTransform>() == null)
+                {
+                    GetComponent<Rigidbody>().drag = 10;
+                    GetComponent<Rigidbody>().useGravity = false;
+                    gameObject.AddComponent<FloatingTransform>().rollAmount = 2;
+                }
+            }
+        }
     }
 
     [PunRPC]

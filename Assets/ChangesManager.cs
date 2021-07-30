@@ -109,7 +109,7 @@ public class ChangesManager : MonoBehaviour, IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             var n = PhotonNetwork.InstantiateRoomObject(name, pos, quaternion);
-            n.GetComponent<Rigidbody>().AddForce(forward * 5, ForceMode.Impulse);
+            n.GetComponent<Rigidbody>().AddForce(forward*2, ForceMode.Impulse);
             if (forward == Vector3.zero)
             {
                 n.GetComponent<Drop>().time = 2;

@@ -35,6 +35,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            float localForwardVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
             if (GetItem() != null)
             {
                 items[selected].value -= 1;
@@ -44,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
                     "Drop", 
                     hand.transform.position, 
                     transform.rotation, 
-                    GetItem().name, 1, Camera.main.transform.forward);
+                    GetItem().name, 1, Camera.main.transform.forward * ((localForwardVelocity/2)+1));
 
                 if (GetItem().value == 0)
                 {
