@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
+    [HideInInspector]
+    public int startHp;
     public int hp;
     public int minDropCount, maxDropCount;
     public Item item;
@@ -14,6 +16,7 @@ public class Resource : MonoBehaviour
 
     public void Start()
     {
+        startHp = hp;
         item = item.Clone();
     }
 

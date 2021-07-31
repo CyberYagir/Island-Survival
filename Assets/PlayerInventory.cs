@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour
     public bool cooldown;
     public Animator animator;
     bool change;
+    public HandItem hands;
     private void Start()
     {
         for (int i = 0; i < items.Count; i++)
@@ -68,6 +69,7 @@ public class PlayerInventory : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
+        GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = null;
         if (items[selected] != null)
         {
             if (items[selected].prefab != null)
@@ -76,11 +78,13 @@ public class PlayerInventory : MonoBehaviour
             }
             if (items[selected] is HandItem)
             {
-                if ((items[selected] as HandItem).animatorController != null)
-                {
-                    GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = (items[selected] as HandItem).animatorController;
-                }
+                GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = (items[selected] as HandItem).animatorController;
             }
+        }
+        else
+        {
+            Instantiate(hands.prefab, hand);
+            GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = hands.animatorController;
         }
         //print("stop cooldown");
         oldselected = selected;
@@ -91,7 +95,17 @@ public class PlayerInventory : MonoBehaviour
     {
         return items[selected];
     }
-
+    public Item GetItem(bool hand)
+    {
+        if (items[selected] != null)
+        {
+            return items[selected];
+        }
+        else
+        {
+            return hands;
+        }
+    }
     public void AddItem(Drop drop)
     {
         var finded = items.FindAll(x => x != null && x.name == drop.item.name && x.value < x.maxValue);
