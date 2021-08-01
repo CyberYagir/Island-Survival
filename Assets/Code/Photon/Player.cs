@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
-    public MonoBehaviour[] behaviours;
+    public MonoBehaviour[] behaviours, destroy;
     public GameObject skin, canvas, hands, itemPreview;
 
 
@@ -27,6 +27,10 @@ public class Player : MonoBehaviourPun, IPunObservable
             for (int i = 0; i < behaviours.Length; i++)
             {
                 behaviours[i].enabled = false;
+            }
+            for (int i = 0; i < destroy.Length; i++)
+            {
+                Destroy(destroy[i]);
             }
             GetComponent<Rigidbody>().isKinematic = true;
         }

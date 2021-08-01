@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Item : ScriptableObject
     public string itemName;
     public int value, maxValue;
     public float durability;
+    [Newtonsoft.Json.JsonIgnore]
     public GameObject prefab;
 
 

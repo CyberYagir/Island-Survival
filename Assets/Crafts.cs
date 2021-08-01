@@ -9,6 +9,8 @@ public class CraftItem {
 }
 [System.Serializable]
 public class Craft {
+    public enum CraftType { Player, CraftingTable, Furnace, Anvil, WeaponTable};
+    public CraftType craftType;
     public List<CraftItem> craftItems = new List<CraftItem>();
     public CraftItem finalItem = new CraftItem();
 }

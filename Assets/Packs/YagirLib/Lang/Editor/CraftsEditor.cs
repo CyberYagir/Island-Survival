@@ -53,6 +53,7 @@ public class CraftsEditor : EditorWindow
         GUILayout.Label(craft.finalItem.item != null ? craft.finalItem.item.itemName : "None", headStyle);
         GUILayout.BeginHorizontal();
             GUILayout.BeginVertical(GUILayout.Width(100));
+                craft.craftType = (Craft.CraftType)EditorGUILayout.EnumPopup(craft.craftType);
                 craft.finalItem.item = (Item)EditorGUILayout.ObjectField(craft.finalItem.item, typeof(Item), false, GUILayout.Width(100), GUILayout.Height(100));
                 if (craft.finalItem != null)
                 {

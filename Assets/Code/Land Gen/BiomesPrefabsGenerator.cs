@@ -18,7 +18,8 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         public GameObject prefab;
         public Vector2 range;
         public int chance;
-        public bool rot;
+        public bool rotx, roty,rotz, size;
+        public float minSize, maxSize;
 
     }
     public int objectsCount;
@@ -64,6 +65,10 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                         {
                                             var n = Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform);
                                             n.transform.localEulerAngles = new Vector3(0, biomeObject[q].prefabs[o].rot ? rnd.Next(0, 360) : 0, 0);
+                                            if (biomeObject[q].prefabs[o].size)
+                                            {
+                                                n.transform.localScale = Vector3.one * rnd.NextDouble(biomeObject[q].prefabs[o].minSize, biomeObject[q].prefabs[o].maxSize);
+                                            }
                                             spawnedObjects.Add(n.gameObject);
                                             var res = n.GetComponent<Resource>();
                                             if (res != null)
@@ -93,7 +98,11 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         TerrainGenerator.genEnded = true;
         ChangesManager.cm.gameObject.GetPhotonView().RPC("ReSyncRPC", RpcTarget.All);
     }
-
+    public double GetRandomNumber(double minimum, double maximum)
+    {
+        System.Random random = new Random();
+        return random.NextDouble() * (maximum - minimum) + minimum;
+    }
     public void SetResources()
     {
         if (ChangesManager.changes.changes.Count != 0)
