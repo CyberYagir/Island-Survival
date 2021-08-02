@@ -64,10 +64,10 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                         if (Vector3.Angle(hit.normal, Vector3.up) < 15)
                                         {
                                             var n = Instantiate(biomeObject[q].prefabs[o].prefab, hit.point, Quaternion.identity, holder.transform);
-                                            n.transform.localEulerAngles = new Vector3(0, biomeObject[q].prefabs[o].rot ? rnd.Next(0, 360) : 0, 0);
+                                            n.transform.localEulerAngles = new Vector3(biomeObject[q].prefabs[o].rotx ? rnd.Next(0, 360) : 0, biomeObject[q].prefabs[o].roty ? rnd.Next(0, 360) : 0, biomeObject[q].prefabs[o].rotz ? rnd.Next(0, 360) : 0);
                                             if (biomeObject[q].prefabs[o].size)
                                             {
-                                                n.transform.localScale = Vector3.one * rnd.NextDouble(biomeObject[q].prefabs[o].minSize, biomeObject[q].prefabs[o].maxSize);
+                                                n.transform.localScale = Vector3.one * (float)GetRandomNumber(biomeObject[q].prefabs[o].minSize, biomeObject[q].prefabs[o].maxSize);
                                             }
                                             spawnedObjects.Add(n.gameObject);
                                             var res = n.GetComponent<Resource>();
@@ -100,7 +100,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
     }
     public double GetRandomNumber(double minimum, double maximum)
     {
-        System.Random random = new Random();
+        System.Random random = new System.Random();
         return random.NextDouble() * (maximum - minimum) + minimum;
     }
     public void SetResources()

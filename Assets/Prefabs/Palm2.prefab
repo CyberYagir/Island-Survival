@@ -578,7 +578,6 @@ GameObject:
   - component: {fileID: 8517000320872501723}
   - component: {fileID: 278134531999246149}
   - component: {fileID: -2771223441356276979}
-  - component: {fileID: -6951993859827376179}
   - component: {fileID: 1572684226574445526}
   m_Layer: 0
   m_Name: Palm2
@@ -638,31 +637,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876fac69cd5438a4ab3c3772ac9cc48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startHp: 0
   hp: 5
   minDropCount: 2
   maxDropCount: 5
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
   resId: 0
   inTrigger: []
---- !u!95 &-6951993859827376179
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4591731692484114939}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bd288960e488de74b9b817f3e066d9f7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5089022
+      value: 0.09972
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!135 &1572684226574445526
 SphereCollider:
   m_ObjectHideFlags: 0

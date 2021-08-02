@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CraftsEditor : EditorWindow
@@ -81,6 +82,8 @@ public class CraftsEditor : EditorWindow
             GUILayout.EndVertical();
         GUILayout.EndHorizontal();
         GuiLine();
+
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 
     public void DrawCraftItem(CraftItem craftItem, Craft craft)

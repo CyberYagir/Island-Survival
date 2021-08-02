@@ -1,17 +1,16 @@
-Shader "Unlit/Billboard"
+Shader "Unlit/Billboard Cutout"
 {
 	Properties
 	{
-		_MainTex("Texture", 2D) = "white" {}
+		_MainTex ("Texture", 2D) = "white" {}
+		_Cutoff("Alpha cutoff", Range(0,1)) = 0.5
+		_Offcet("Offcet", Vector) = (0,0,0,0)
 	}
-		SubShader
+	SubShader
 	{
-
-		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" "DisableBatching" = "True" }
-
+		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "DisableBatching" = "True" }
+		
 		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha
-
 		Pass
 		{
 			CGPROGRAM
@@ -37,34 +36,31 @@ Shader "Unlit/Billboard"
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-
-			v2f vert(appdata v)
+			fixed _Cutoff;
+			float4 _Offcet;
+			v2f vert (appdata v)
 			{
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv.xy;
 
-				// billboard mesh towards camera
 				float3 vpos = mul((float3x3)unity_ObjectToWorld, v.vertex.xyz);
 				float4 worldCoord = float4(unity_ObjectToWorld._m03, unity_ObjectToWorld._m13, unity_ObjectToWorld._m23, 1);
 				float4 viewPos = mul(UNITY_MATRIX_V, worldCoord) + float4(vpos, 0);
 				float4 outPos = mul(UNITY_MATRIX_P, viewPos);
-
-				o.pos = outPos;
-
-				UNITY_TRANSFER_FOG(o,o.pos);
+				o.pos = outPos ;
+				UNITY_TRANSFER_FOG(o, o.pos);
 				return o;
 			}
-
-			fixed4 frag(v2f i) : SV_Target
+			
+			fixed4 frag (v2f i) : SV_Target
 			{
-				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
-			// apply fog
-			UNITY_APPLY_FOG(i.fogCoord, col);
-			return col;
+				clip(col.a - _Cutoff);
+				UNITY_APPLY_FOG(i.fogCoord, col);
+				return col;
+			}
+			ENDCG
 		}
-		ENDCG
-	}
 	}
 }

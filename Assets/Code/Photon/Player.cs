@@ -56,7 +56,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         res.hp -= subHp;
         if (res.hp > 0)
         {
-            res.GetComponent<Animator>().Play("Attacked");
+            res.Animate();
         }
         if (PhotonNetwork.IsMasterClient)
         {
@@ -70,8 +70,8 @@ public class Player : MonoBehaviourPun, IPunObservable
         if (res.hp <= 0)
         {
             res.GetComponent<SphereCollider>().enabled = false;
-            res.GetComponent<Animator>().Play("Dead");
             res.DropResources();
+            res.Dead();
             ChangesManager.MoveAllResToDestroy();
         }
         ChangesManager.ReSync(ChangesManager.SyncType.SyncAction);
