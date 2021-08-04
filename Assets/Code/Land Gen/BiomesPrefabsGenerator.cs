@@ -67,7 +67,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
                                             n.transform.localEulerAngles = new Vector3(biomeObject[q].prefabs[o].rotx ? rnd.Next(0, 360) : 0, biomeObject[q].prefabs[o].roty ? rnd.Next(0, 360) : 0, biomeObject[q].prefabs[o].rotz ? rnd.Next(0, 360) : 0);
                                             if (biomeObject[q].prefabs[o].size)
                                             {
-                                                n.transform.localScale = Vector3.one * (float)GetRandomNumber(biomeObject[q].prefabs[o].minSize, biomeObject[q].prefabs[o].maxSize);
+                                                n.transform.localScale = Vector3.one * (float)GetRandomNumber(rnd, biomeObject[q].prefabs[o].minSize, biomeObject[q].prefabs[o].maxSize);
                                             }
                                             spawnedObjects.Add(n.gameObject);
                                             var res = n.GetComponent<Resource>();
@@ -98,10 +98,9 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         TerrainGenerator.genEnded = true;
         ChangesManager.cm.gameObject.GetPhotonView().RPC("ReSyncRPC", RpcTarget.All);
     }
-    public double GetRandomNumber(double minimum, double maximum)
+    public double GetRandomNumber(System.Random rnd, double minimum, double maximum)
     {
-        System.Random random = new System.Random();
-        return random.NextDouble() * (maximum - minimum) + minimum;
+        return rnd.NextDouble() * (maximum - minimum) + minimum;
     }
     public void SetResources()
     {

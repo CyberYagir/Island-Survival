@@ -1626,6 +1626,7 @@ GameObject:
   - component: {fileID: 3664896838453451927}
   - component: {fileID: 4499007634525031955}
   - component: {fileID: 8519827177402707754}
+  - component: {fileID: 5112776625948487077}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1697,6 +1698,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2494989143954309162}
   - {fileID: 4499007634525031955}
+  - {fileID: 5112776625948487077}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1825,6 +1827,26 @@ MonoBehaviour:
   hunger: 100
   t_water: 1
   t_hunger: 1
+--- !u!114 &5112776625948487077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494989143954309163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3ac369ef723e1438cd3613f29007db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand:
+  - {fileID: 5578392758882033557}
+  - {fileID: 269640278802905458}
+  - {fileID: 3785379680140264841}
+  skin:
+  - {fileID: 3115344083134649245}
+  - {fileID: 7963926728276718729}
+  - {fileID: 1153253296529010860}
 --- !u!1 &2526355728415491943
 GameObject:
   m_ObjectHideFlags: 0

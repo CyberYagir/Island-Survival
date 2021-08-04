@@ -18,6 +18,17 @@ MonoBehaviour:
   words:
   - phrases:
     - langName: eng
+      phrase: 'Quality:'
+      description: 
+      other: 
+    - langName: rus
+      phrase: "\u041A\u0430\u0447\u0435\u0441\u0442\u0432\u043E:"
+      description: 
+      other: 
+    key: 'Quality:'
+    hide: 0
+  - phrases:
+    - langName: eng
       phrase: 'Lang:'
       description: 1234
       other: 
