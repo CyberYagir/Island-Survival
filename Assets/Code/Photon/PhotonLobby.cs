@@ -18,6 +18,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public static PhotonLobby lobby;
     public List<RoomInfo> rooms;
     public static string nickname;
+    public static bool isConnectedToMasterOrLobby;
     private void OnApplicationQuit()
     {
         ClearErrorPrefs();
@@ -61,6 +62,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         //mainUI.SetActive(true);
+        isConnectedToMasterOrLobby = true;
         base.OnConnectedToMaster();
     }
 
@@ -68,6 +70,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnJoinedLobby()
     {
         PhotonNetwork.JoinLobby(new TypedLobby("DEFAULT", LobbyType.Default));
+        isConnectedToMasterOrLobby = true;
         base.OnJoinedLobby();
     }
 

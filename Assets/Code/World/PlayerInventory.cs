@@ -18,7 +18,7 @@ public class PlayerInventory : MonoBehaviourPun
     public List<Item> items = new List<Item>(5);
     public int selected = 1;
     public int oldselected = 1;
-    public Transform hand;
+    public Transform hand, skinHand;
     public bool cooldown;
     public Animator animator;
     bool change;
@@ -36,6 +36,28 @@ public class PlayerInventory : MonoBehaviourPun
             Set();
         }
     }
+    [PunRPC]
+    public void SpawnItemInHand(string itemName)
+    {
+        foreach (Transform item in photonView.IsMine ? hand : skinHand)
+        {
+            Destroy(item.gameObject);
+        }
+        var it = Resources.Load<Item>("ItemsObjects/" + itemName);
+        var obj = Instantiate(it.prefab, photonView.IsMine ? hand : skinHand);
+        if (!photonView.IsMine)
+        {
+            foreach (var item in obj.GetComponentsInChildren<MonoBehaviour>())
+            {
+                Destroy(item);
+            }
+            foreach (var item in obj.GetComponentsInChildren<Renderer>())
+            {
+                item.gameObject.layer = LayerMask.NameToLayer("Default");
+            }
+        }
+    }
+
     private void Update()
     {
         if (photonView.IsMine)
@@ -106,7 +128,7 @@ public class PlayerInventory : MonoBehaviourPun
         {
             if (items[selected].prefab != null)
             {
-                Instantiate(items[selected].prefab, hand);
+                photonView.RPC("SpawnItemInHand", RpcTarget.AllBuffered, items[selected].name);
             }
             if (items[selected] is HandItem)
             {
@@ -115,7 +137,7 @@ public class PlayerInventory : MonoBehaviourPun
         }
         else
         {
-            Instantiate(hands.prefab, hand);
+            photonView.RPC("SpawnItemInHand", RpcTarget.AllBuffered, hands.name);
             GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = hands.animatorController;
         }
         //print("stop cooldown");

@@ -9,6 +9,7 @@ public class DisconnectFromPhotonButton : MonoBehaviour
     {
         if (PhotonNetwork.IsConnected)
         {
+            PhotonLobby.isConnectedToMasterOrLobby = false;
             PhotonNetwork.Disconnect();
         }
     }

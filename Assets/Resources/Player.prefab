@@ -444,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994067903293072952}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.023601761, z: 0}
+  m_LocalPosition: {x: -0.0026, y: 0.0192, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7963926728276718729}
@@ -1627,6 +1627,7 @@ GameObject:
   - component: {fileID: 4499007634525031955}
   - component: {fileID: 8519827177402707754}
   - component: {fileID: 5112776625948487077}
+  - component: {fileID: 8861858373229545813}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1699,6 +1700,8 @@ MonoBehaviour:
   - {fileID: 2494989143954309162}
   - {fileID: 4499007634525031955}
   - {fileID: 5112776625948487077}
+  - {fileID: 8861858373229545813}
+  - {fileID: 1022244377857169328}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1744,6 +1747,7 @@ MonoBehaviour:
     m_Bits: 1
   inJump: 0
   gravModifayer: 30
+  forwardSpeed: 0
 --- !u!114 &5735575020708539421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,6 +1769,7 @@ MonoBehaviour:
   selected: 0
   oldselected: 0
   hand: {fileID: 3785379680140264841}
+  skinHand: {fileID: 1153253296529010860}
   cooldown: 0
   animator: {fileID: 2761178936261119928}
   hands: {fileID: 11400000, guid: c68bdc4bbe3dfa3488c891dc94cff216, type: 2}
@@ -1847,6 +1852,22 @@ MonoBehaviour:
   - {fileID: 3115344083134649245}
   - {fileID: 7963926728276718729}
   - {fileID: 1153253296529010860}
+  camera: {fileID: 718444770896156161}
+  cameraBone: {fileID: 6860938582761992908}
+--- !u!114 &8861858373229545813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494989143954309163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69e197250cbbd047be81dae7f8ff82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4063765239898888338}
+  player: {fileID: 1994265110}
 --- !u!1 &2526355728415491943
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,6 +5101,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8063636689433443952}
+  - component: {fileID: 4063765239898888338}
+  - component: {fileID: 1022244377857169328}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -5104,6 +5127,48 @@ Transform:
   m_Father: {fileID: 2494989143954309166}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4063765239898888338
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254202185537086666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1fa9411ac8cbade4bb55254109de6e27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1022244377857169328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254202185537086666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 1
+    Name: RunDir
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
+  - SynchronizeType: 1
+    LayerIndex: 1
 --- !u!1 &7300723983581592364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5884,7 +5949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0009886274}
+  m_AnchoredPosition: {x: 0, y: 0.000011887865}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8952816302962788467

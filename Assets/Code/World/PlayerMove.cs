@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     public LayerMask mask;
     public bool inJump;
     public float gravModifayer;
-
+    public float forwardSpeed;
     private void Update()
     {
         if (!WindowManager.menu)
@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
+        forwardSpeed = Vector3.Dot(rb.velocity, transform.forward);
 
         if (!WindowManager.menu)
         {

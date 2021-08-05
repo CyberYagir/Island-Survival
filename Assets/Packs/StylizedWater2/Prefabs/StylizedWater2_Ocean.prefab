@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8693902038381448034}
   - component: {fileID: 7857932842866716418}
   - component: {fileID: 6114610816132478596}
+  - component: {fileID: 3079780860600089233}
   m_Layer: 0
   m_Name: StylizedWater2_Ocean
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6114610816132478596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,4 +96,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d53e2a245a2e389439504202541600e4, type: 2}
+  meshFilter: {fileID: 8693902038381448034}
   meshRenderer: {fileID: 7857932842866716418}
+--- !u!114 &3079780860600089233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448459736454284433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3064aedb6bf9a7f44aaeb013b45ab470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: d53e2a245a2e389439504202541600e4, type: 2}
+  - {fileID: 2100000, guid: 85735fb033211934c8811e833d83be62, type: 2}
+  - {fileID: 2100000, guid: e686b7e49e8f4f1419c3e94837f06d4b, type: 2}

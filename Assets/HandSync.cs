@@ -3,16 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandSync : MonoBehaviour, IPunObservable
+public class HandSync : MonoBehaviourPun, IPunObservable
 {
     public List<Transform> hand;
     public List<Transform> skin;
-    List<Vector3> lerps = new List<Vector3>();
+    public Transform camera, cameraBone;
+    List<Quaternion> lerps = new List<Quaternion>();
+    Quaternion camraRot = new Quaternion();
     private void Update()
     {
-        for (int i = 0; i < skin.Count; i++)
+        if (!photonView.IsMine)
         {
-            skin[i].rotation = Quaternion.Lerp(skin[i].rotation, Quaternion.EulerAngles(lerps[i]), 20f * Time.deltaTime);
+            for (int i = 0; i < skin.Count; i++)
+            {
+                skin[i].localRotation = Quaternion.Lerp(skin[i].localRotation, lerps[i] * (i == 0 ? Quaternion.Euler(90, 0, 0) : Quaternion.Euler(0, 0, 0)), 20f * Time.deltaTime);
+            }
+            cameraBone.localRotation = Quaternion.Lerp(cameraBone.localRotation, camraRot, 10 * Time.deltaTime);
         }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -21,16 +27,18 @@ public class HandSync : MonoBehaviour, IPunObservable
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                stream.SendNext(hand[i].localEulerAngles + (i == 0 ? new Vector3(-90, 0, 0) : Vector3.zero));
+                stream.SendNext(hand[i].localRotation);
             }
+            stream.SendNext(camera.localRotation);
         }
         else
         {
-            lerps = new List<Vector3>();
+            lerps = new List<Quaternion>();
             for (int i = 0; i < skin.Count; i++)
             {
-                lerps.Add((Vector3)stream.ReceiveNext());
+                lerps.Add((Quaternion)stream.ReceiveNext());
             }
+            camraRot = (Quaternion)stream.ReceiveNext();
         }
     }
 }

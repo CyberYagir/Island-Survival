@@ -17,9 +17,8 @@ public class HidePhotonConnecting : MonoBehaviour
 
     public void Update()
     {
-        print(PhotonNetwork.NetworkClientState);
         time += Time.deltaTime;
-        if (time > 2 && PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.ConnectedToMasterServer)
+        if (time > 4 && PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.ConnectedToMasterServer && PhotonLobby.isConnectedToMasterOrLobby)
             animator.Play("ConnectingToPhotonOff");
     }
 
