@@ -66,6 +66,8 @@ public class Resource : MonoBehaviour
     }
     public void DropResources()
     {
+        for (int i = 0; i < Random.Range(minDropCount, maxDropCount+1); i++)
+        {
         ChangesManager.cm.gameObject.GetPhotonView().RPC(
             "CreateDropItem",
             RpcTarget.All,
@@ -73,6 +75,8 @@ public class Resource : MonoBehaviour
             transform.position + new Vector3(0,2,0),
             transform.rotation,
             item.name, 1, Vector3.zero);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

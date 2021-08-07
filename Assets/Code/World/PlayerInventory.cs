@@ -45,6 +45,11 @@ public class PlayerInventory : MonoBehaviourPun
         }
         var it = Resources.Load<Item>("ItemsObjects/" + itemName);
         var obj = Instantiate(it.prefab, photonView.IsMine ? hand : skinHand);
+
+        foreach (var item in obj.GetComponentsInChildren<Collider>())
+        {
+            Destroy(item);
+        }
         if (!photonView.IsMine)
         {
             foreach (var item in obj.GetComponentsInChildren<MonoBehaviour>())
@@ -81,23 +86,18 @@ public class PlayerInventory : MonoBehaviourPun
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                float localForwardVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
                 if (GetItem() != null)
                 {
                     items[selected].value -= 1;
-                    ChangesManager.cm.gameObject.GetPhotonView().RPC(
-                        "CreateDropItem",
-                        RpcTarget.All,
-                        "Drop",
-                        hand.transform.position,
-                        transform.rotation,
-                        GetItem().name, 1, Camera.main.transform.forward * ((localForwardVelocity / 2) + 1));
+
+                    Drop(GetItem());
 
                     if (GetItem().value == 0)
                     {
                         items[selected] = null; change = true;
                     }
                 }
+                InventoryRenderItems.inventoryRender.Set();
             }
 
             if (selected != oldselected || change)
@@ -107,6 +107,18 @@ public class PlayerInventory : MonoBehaviourPun
                 change = false;
             }
         }
+    }
+
+    public void Drop(Item item)
+    {
+        float localForwardVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
+        ChangesManager.cm.gameObject.GetPhotonView().RPC(
+            "CreateDropItem",
+            RpcTarget.All,
+            "Drop",
+            hand.transform.position,
+            transform.rotation,
+            item.name, 1, Camera.main.transform.forward * ((localForwardVelocity / 2) + 1));
     }
 
     public void SendData()
@@ -160,8 +172,9 @@ public class PlayerInventory : MonoBehaviourPun
             return hands;
         }
     }
-    public void AddItem(Drop drop)
+    public bool AddItem(Drop drop)
     {
+        bool added = false;
         var finded = items.FindAll(x => x != null && x.name == drop.item.name && x.value < x.maxValue);
         if (finded.Count != 0)
         {
@@ -185,7 +198,7 @@ public class PlayerInventory : MonoBehaviourPun
                     change = true;
                 }
                 drop.gameObject.GetPhotonView().RPC("DestroyRPC", RpcTarget.All);
-                //PhotonNetwork.Destroy(drop.gameObject);
+                added = true;
             }
             else
             {
@@ -195,8 +208,46 @@ public class PlayerInventory : MonoBehaviourPun
         else
         {
             drop.gameObject.GetPhotonView().RPC("DestroyRPC", RpcTarget.All);
+            added = true;
         }
-
         GetComponentInChildren<InventoryRenderItems>().ResetDisplay();
+        return added;
+    }
+
+
+    public bool AddItem(Item item)
+    {
+        bool added = false;
+        var finded = items.FindAll(x => x != null && x.name == item.name && x.value < x.maxValue);
+        if (finded.Count != 0)
+        {
+            for (int i = 0; i < finded.Count; i++)
+            {
+                if (item.value > 0 && finded[i].value + 1 <= finded[i].maxValue)
+                {
+                    finded[i].value++;
+                    item.value--;
+                }
+            }
+        }
+        if (item.value != 0)
+        {
+            if (items.FindAll(x => x == null).Count != 0)
+            {
+                var n = items.FindIndex(x => x == null);
+                items[n] = item;
+                if (n == selected)
+                {
+                    change = true;
+                }
+                added = true;
+            }
+        }
+        else
+        {
+            added = true;
+        }
+        GetComponentInChildren<InventoryRenderItems>().ResetDisplay();
+        return added;
     }
 }

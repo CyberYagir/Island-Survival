@@ -17,7 +17,7 @@ public class CraftsUI : MonoBehaviour
     [Space]
     public GameObject subHolder;
     public GameObject subItem;
-
+    public Button craftButton;
 
     private void Start()
     {
@@ -27,9 +27,14 @@ public class CraftsUI : MonoBehaviour
     }
     private void Update()
     {
+        if (selected != null && Input.GetKeyDown(KeyCode.E))
+        {
+            DrawCraftStats(selected);
+        }
         if (selected != null && moveWindow.openClose == true)
         {
             image.texture = FindObjectOfType<InventoryRenderItems>().render(selected.finalItem.item.prefab);
+            craftButton.interactable = isCanCraft(selected);
         }
     }
 
@@ -51,6 +56,51 @@ public class CraftsUI : MonoBehaviour
             n.transform.GetChild(1).GetComponent<TMP_Text>().text = (it == null ? "0" : it.value.ToString()) + "/" + craft.craftItems[i].count;
             n.SetActive(true);
         }
+    }
+    public void Craft()
+    {
+        if (selected != null)
+        {
+            if (isCanCraft(selected))
+            {
+                for (int i = 0; i < selected.craftItems.Count; i++)
+                {
+                    var it = GetComponentInParent<PlayerInventory>().items.Find(x => x != null && x.itemName == selected.craftItems[i].item.itemName);
+                    if (it != null)
+                    {
+                        it.value -= selected.craftItems[i].item.value;
+                        if (it.value <= 0) Destroy(it);
+                    }
+                }
+                var final = selected.finalItem.item.Clone();
+                final.value = selected.finalItem.count;
+                if (!GetComponentInParent<PlayerInventory>().AddItem(final))
+                {
+                    GetComponentInParent<PlayerInventory>().Drop(final);
+                }
+            }
+        }
+    }
+    public bool isCanCraft(Craft craft)
+    {
+        int isCan = 0 ;
+        for (int i = 0; i < craft.craftItems.Count; i++)
+        {
+            var it = GetComponentInParent<PlayerInventory>().items.Find(x => x != null && x.itemName == craft.craftItems[i].item.itemName);
+            if (it != null)
+            {
+                if (it.value >= craft.craftItems[i].count)
+                {
+                    isCan++;
+                }
+                else
+                    break;
+
+            }
+            else break;
+        }
+
+        return isCan == craft.craftItems.Count;
     }
 
     public void DrawCrafts()

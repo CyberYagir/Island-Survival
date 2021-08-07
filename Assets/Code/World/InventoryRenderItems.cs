@@ -11,6 +11,7 @@ public class InventoryRenderItems : MonoBehaviour
     public List<GameObject> gameObjects;
     public RenderTexture other;
     public Transform point;
+    public static InventoryRenderItems inventoryRender;
     
     public void Update()
     {
@@ -18,7 +19,7 @@ public class InventoryRenderItems : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Set();
+        Set(false);
     }
     public void Init()
     {
@@ -31,7 +32,7 @@ public class InventoryRenderItems : MonoBehaviour
         //print("Destroy");
         for (int i = 0; i < textures.Count; i++)
         {
-            textures[i] = new RenderTexture(256, 256, 0);
+            textures[i] = new RenderTexture(128, 128, 0);
             if (playerInventory.items[i] != null)
             {
                 var obj = Instantiate(playerInventory.items[i].prefab, point);
@@ -44,11 +45,13 @@ public class InventoryRenderItems : MonoBehaviour
     public void ResetDisplay()
     {
         Init();
+        Set();
     }
     private void Start()
     {
+        inventoryRender = this;
         other = new RenderTexture(512, 512, 0);
-        Init();
+        ResetDisplay();
     }
 
     public RenderTexture render(GameObject item)
@@ -66,26 +69,29 @@ public class InventoryRenderItems : MonoBehaviour
         return other;
     }
 
-    public void Set()
+    public void Set(bool check = true)
     {
         try
         {
             for (int i = 0; i < textures.Count; i++)
             {
-                if (playerInventory.items[i] != null)
+                if (i == playerInventory.selected || check)
                 {
-                    gameObjects[i].SetActive(true);
-                    foreach (Transform item in gameObjects[i].transform)
+                    if (playerInventory.items[i] != null)
                     {
-                        item.gameObject.layer = LayerMask.NameToLayer("Inventory");
+                        gameObjects[i].SetActive(true);
+                        foreach (Transform item in gameObjects[i].transform)
+                        {
+                            item.gameObject.layer = LayerMask.NameToLayer("Inventory");
+                        }
+                        camera.targetTexture = textures[i];
+                        camera.RenderDontRestore();
+                        gameObjects[i].SetActive(false);
                     }
-                    camera.targetTexture = textures[i];
-                    camera.RenderDontRestore();
-                    gameObjects[i].SetActive(false);
-                }
-                else
-                {
-                    textures[i].Release();
+                    else
+                    {
+                        textures[i].Release();
+                    }
                 }
             }
         }

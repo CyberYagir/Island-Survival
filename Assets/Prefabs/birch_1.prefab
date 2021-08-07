@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHp: 0
-  hp: 5
-  minDropCount: 2
-  maxDropCount: 5
+  hp: 3
+  minDropCount: 1
+  maxDropCount: 2
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
   resId: 0
   inTrigger: []

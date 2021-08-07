@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHp: 0
-  hp: 5
-  minDropCount: 2
+  hp: 3
+  minDropCount: 1
   maxDropCount: 5
   item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
   resId: 0
