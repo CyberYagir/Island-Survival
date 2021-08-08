@@ -82,6 +82,17 @@ public class ChangesManager : MonoBehaviour, IPunObservable
             AddChange(id, values, type);
         }
     }
+
+    [PunRPC]
+    public void SpawnObject(string itemName, Vector3 pos, Quaternion rot)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            var n = PhotonNetwork.Instantiate("ObjectsPrefabs/" + Item.GetItemByName(itemName).prefab.name, pos, rot);
+            n.GetPhotonView().RPC("Destroys", RpcTarget.AllBuffered);
+        }
+    }
+
     public static void MoveAllResToDestroy()
     {
         List<int> keys = new List<int>();

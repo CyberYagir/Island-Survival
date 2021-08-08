@@ -38,6 +38,13 @@ public class InventoryRenderItems : MonoBehaviour
                 var obj = Instantiate(playerInventory.items[i].prefab, point);
                 obj.transform.GetChild(0).localPosition = Vector3.zero;
                 gameObjects.Add(obj);
+
+                if (playerInventory.items[i] is PlaceItem)
+                {
+                    var pitem = playerInventory.items[i] as PlaceItem;
+                    obj.transform.localScale = pitem.previewScale;
+                    obj.transform.localEulerAngles += pitem.previewRot;
+                }
             }
         }
     }
@@ -54,7 +61,7 @@ public class InventoryRenderItems : MonoBehaviour
         ResetDisplay();
     }
 
-    public RenderTexture render(GameObject item)
+    public RenderTexture render(GameObject item, Item itemSome)
     {
         var obj = Instantiate(item.gameObject, point);
         obj.transform.GetChild(0).localPosition = Vector3.zero;
@@ -62,7 +69,17 @@ public class InventoryRenderItems : MonoBehaviour
         {
             it.gameObject.layer = LayerMask.NameToLayer("Inventory");
         }
-
+        if (itemSome is PlaceItem)
+        {
+            var pitem = itemSome as PlaceItem;
+            obj.transform.localScale = pitem.previewScale;
+            obj.transform.localEulerAngles += pitem.previewRot;
+        }
+        point.transform.localPosition = Vector3.zero;
+        if (itemSome is PlaceItem)
+        {
+            point.transform.localPosition += (itemSome as PlaceItem).previewOffcet;
+        }
         camera.targetTexture = other;
         camera.RenderDontRestore();
         Destroy(obj);
@@ -79,6 +96,12 @@ public class InventoryRenderItems : MonoBehaviour
                 {
                     if (playerInventory.items[i] != null)
                     {
+                        point.transform.localPosition = Vector3.zero;
+                        if (playerInventory.items[i] is PlaceItem)
+                        {
+                            point.transform.localPosition += (playerInventory.items[i] as PlaceItem).previewOffcet;
+                        }
+                        
                         gameObjects[i].SetActive(true);
                         foreach (Transform item in gameObjects[i].transform)
                         {

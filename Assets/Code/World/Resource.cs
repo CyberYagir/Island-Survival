@@ -66,15 +66,18 @@ public class Resource : MonoBehaviour
     }
     public void DropResources()
     {
-        for (int i = 0; i < Random.Range(minDropCount, maxDropCount+1); i++)
+        if (PhotonNetwork.IsMasterClient)
         {
-        ChangesManager.cm.gameObject.GetPhotonView().RPC(
-            "CreateDropItem",
-            RpcTarget.All,
-            "Drop",
-            transform.position + new Vector3(0,2,0),
-            transform.rotation,
-            item.name, 1, Vector3.zero);
+            for (int i = 0; i < Random.Range(minDropCount, maxDropCount + 1); i++)
+            {
+                ChangesManager.cm.gameObject.GetPhotonView().RPC(
+                    "CreateDropItem",
+                    RpcTarget.All,
+                    "Drop",
+                    transform.position + new Vector3(0, 2, 0),
+                    transform.rotation,
+                    item.name, 1, Vector3.zero);
+            }
         }
 
     }

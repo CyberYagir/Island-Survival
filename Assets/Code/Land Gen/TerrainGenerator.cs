@@ -35,11 +35,6 @@ public class TerrainGenerator : MonoBehaviour
     void Start()
     {
         var seeds = ((string)PhotonNetwork.CurrentRoom.CustomProperties["Seed"]).Split(':');
-        for (int i = 0; i < seeds.Length; i++)
-        {
-            print(i + ": " + seeds[i]); 
-        }
-
         seed = int.Parse(seeds[0]);
         main.offcet = new Vector3(int.Parse(seeds[1]), int.Parse(seeds[2]));
         moutains.offcet = new Vector3(int.Parse(seeds[3]), int.Parse(seeds[4]));

@@ -33,7 +33,7 @@ public class CraftsUI : MonoBehaviour
         }
         if (selected != null && moveWindow.openClose == true)
         {
-            image.texture = FindObjectOfType<InventoryRenderItems>().render(selected.finalItem.item.prefab);
+            image.texture = FindObjectOfType<InventoryRenderItems>().render(selected.finalItem.item.prefab, selected.finalItem.item);
             craftButton.interactable = isCanCraft(selected);
         }
     }
@@ -68,8 +68,7 @@ public class CraftsUI : MonoBehaviour
                     var it = GetComponentInParent<PlayerInventory>().items.Find(x => x != null && x.itemName == selected.craftItems[i].item.itemName);
                     if (it != null)
                     {
-                        it.value -= selected.craftItems[i].item.value;
-                        if (it.value <= 0) Destroy(it);
+                        GetComponentInParent<PlayerInventory>().RemoveItem(it.itemName, selected.craftItems[i].count);
                     }
                 }
                 var final = selected.finalItem.item.Clone();

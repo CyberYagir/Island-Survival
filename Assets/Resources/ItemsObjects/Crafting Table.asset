@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4828e7e73f0564ba891bdcbf2198db, type: 3}
+  m_Script: {fileID: 11500000, guid: d3edd437f9c898d40b6020d76c301212, type: 3}
   m_Name: Crafting Table
   m_EditorClassIdentifier: 
   itemName: Crafting Table
-  value: 0
-  maxValue: 10
-  durability: 0
+  value: 1
+  maxValue: 1
+  durability: 1
   prefab: {fileID: 3969789715782781214, guid: ce4311165dd4b41428595311aa9b555c, type: 3}
+  previewScale: {x: 1, y: 1, z: 1}
+  previewRot: {x: 0, y: 0, z: -90}
+  previewOffcet: {x: 0, y: 0, z: 7}
