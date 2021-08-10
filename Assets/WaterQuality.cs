@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WaterQuality : MonoBehaviour
 {
-    public List<Material> materials;
+    [SerializeField] List<Material> materials;
     public void Start()
     {
         Set();

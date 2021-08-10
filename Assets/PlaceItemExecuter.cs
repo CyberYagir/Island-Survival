@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlaceItemExecuter : MonoBehaviourPun
 {
-    public List<MonoBehaviour> destroys, destroyInHands;
+    [SerializeField] List<MonoBehaviour> destroys, destroyInHands;
 
     public void DestroysInHands()
     {

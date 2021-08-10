@@ -7,31 +7,29 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    // Width and height of the texture in pixels.
-    public int pixWidth;
-    public int pixHeight;
-    // The origin of the sampled area in the plane.
-    public float xOrg;
-    public float yOrg;
-    public int octaves;
-    // The number of cycles of the basic noise pattern that are repeated
-    // over the width and height of the texture.
-    public float scale = 1.0F, persistance, lacunar;
+    
+    [SerializeField] int pixWidth;
+    [SerializeField] int pixHeight;
+    [SerializeField] float xOrg;
+    [SerializeField] float yOrg;
+    [SerializeField] int octaves;
+    [SerializeField] float scale = 1.0F, persistance, lacunar;
+    [SerializeField] Texture2D noiseTex;
+    [SerializeField] int seed;
+    public TextureCreator main, moutains;
+    [SerializeField] AnimationCurve shoothRamp;
+    [SerializeField] List<TextureCreator> waitForTextures = new List<TextureCreator>();
 
-    public Texture2D noiseTex;
+
     private Color[] pix;
 
-    public int seed;
-
-    public TextureCreator main, moutains;
-
-    public Color color;
-
-    public AnimationCurve shoothRamp;
-
-    public List<TextureCreator> waitForTextures;
-
     public static bool genEnded;
+
+    public int GetSeed()
+    {
+        return seed;
+    }
+
     void Start()
     {
         var seeds = ((string)PhotonNetwork.CurrentRoom.CustomProperties["Seed"]).Split(':');

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DetailGenerator : MonoBehaviour
 {
-    public int patchDetail, grassDensity;
+    [SerializeField]
+    int patchDetail, grassDensity;
     public void GenGrass()
     {
         var terrainToPopulate = transform.gameObject.GetComponent<Terrain>();

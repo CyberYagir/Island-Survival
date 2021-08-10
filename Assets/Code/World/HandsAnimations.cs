@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandsAnimations : MonoBehaviour {
+
     public GameObject Hands;
     public float Ammout,SmoothAmmount;
     public Vector3 StartPos;

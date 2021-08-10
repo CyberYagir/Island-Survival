@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class WindowManager : MonoBehaviour
 {
     public List<MoveWindow> moveWindows = new List<MoveWindow>();
-    public MoveWindow crafts;
+    [SerializeField]
+    MoveWindow crafts;
     public static bool menu;
+    DepthOfField depthOfField;
+
+    private void Start()
+    {
+        depthOfField = (FindObjectOfType<Volume>().sharedProfile.components[2] as DepthOfField);
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -18,6 +27,8 @@ public class WindowManager : MonoBehaviour
         {
             if (moveWindows[i].openClose) { menu = true; break; }
         }
+        depthOfField.focalLength.value += (int)((menu ? 300 : -300) * Time.deltaTime);
+        
     }
 
     public void OpenWindow(MoveWindow moveWindow)

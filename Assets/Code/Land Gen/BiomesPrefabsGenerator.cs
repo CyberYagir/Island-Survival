@@ -22,13 +22,13 @@ public class BiomesPrefabsGenerator : MonoBehaviour
         public float minSize, maxSize;
 
     }
-    public int objectsCount;
-    public int objects;
-    public List<Prefabs> biomeObject;
-    public List<Vector2> poses;
-    public BiomesFormatter biomesFormatter;
-    public float scale;
-    public TextureCreator textureCreator;
+    [SerializeField] int objectsCount;
+    [SerializeField] int objects;
+    [SerializeField] List<Prefabs> biomeObject;
+    [SerializeField] List<Vector2> poses;
+    [SerializeField] BiomesFormatter biomesFormatter;
+    [SerializeField] float scale;
+    [SerializeField] TextureCreator textureCreator;
     public List<GameObject> spawnedObjects = new List<GameObject>();
 
     private void Start()
@@ -38,7 +38,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
 
     public void GenPrefabs()
     {
-        var rnd = new System.Random(GetComponent<TerrainGenerator>().seed);
+        var rnd = new System.Random(GetComponent<TerrainGenerator>().GetSeed());
         var terr = GetComponent<Terrain>();
 
         var holder = new GameObject() { name = "Resources Holder" };

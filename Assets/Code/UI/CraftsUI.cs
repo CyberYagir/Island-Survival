@@ -12,7 +12,6 @@ public class CraftsUI : MonoBehaviour
     public RawImage image;
     public TMP_Text itemName;
     MoveWindow moveWindow;
-    [HideInInspector]
     Craft selected = null;
     [Space]
     public GameObject subHolder;
@@ -107,7 +106,7 @@ public class CraftsUI : MonoBehaviour
         var crafts = FindObjectOfType<Crafts>().crafts;
         for (int i = 0; i < crafts.Count; i++)
         {
-            if (GetComponentInParent<PlayerInventory>().craftTypes.Contains(crafts[i].craftType))
+            if (GetComponentInParent<PlayerInventory>().CheckCraftType(crafts[i].craftType))
             {
                 var n = Instantiate(item, holder);
                 n.GetComponent<CraftsUIButton>().craft = crafts[i];

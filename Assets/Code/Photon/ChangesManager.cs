@@ -52,7 +52,7 @@ public class ChangesManager : MonoBehaviour, IPunObservable
     public static ChangesManager cm;
     public static Change changes = new Change();
     public enum SyncType { None = 0, SyncAction = 1, SyncPlayer = 2, SyncAll = 3};
-    public SyncType syncType;
+    SyncType syncType;
     bool initTerrain;
 
     public static void ReSync(SyncType syncType)

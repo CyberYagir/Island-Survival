@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HidePhotonConnecting : MonoBehaviour
 {
-    public Animator animator;
+    [SerializeField] Animator animator;
     float time;
 
     private void OnEnable()

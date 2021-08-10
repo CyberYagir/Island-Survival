@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class ConnectIndicator : MonoBehaviour
 {
-    public Image img;
+    Image img;
+    private void Start()
+    {
+        img = GetComponent<Image>();
+    }
 
     private void Update()
     {

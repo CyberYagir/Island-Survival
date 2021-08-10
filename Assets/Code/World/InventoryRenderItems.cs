@@ -92,7 +92,7 @@ public class InventoryRenderItems : MonoBehaviour
         {
             for (int i = 0; i < textures.Count; i++)
             {
-                if (i == playerInventory.selected || check)
+                if (playerInventory.IsSelected(i) || check)
                 {
                     if (playerInventory.items[i] != null)
                     {

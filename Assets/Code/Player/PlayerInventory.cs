@@ -16,15 +16,24 @@ public class InventorySend
 public class PlayerInventory : MonoBehaviourPun
 {
     public List<Item> items = new List<Item>(5);
-    public int selected = 1;
-    public int oldselected = 1;
-    public Transform hand, skinHand;
+    [SerializeField] int selected = 1;
+    [SerializeField] int oldselected = 1;
+    public Transform hand;
+    [SerializeField] Transform skinHand;
     public bool cooldown;
-    public Animator animator;
+    [SerializeField]
+    Animator animator;
     bool change;
-    public HandItem hands;
+    [SerializeField]
+    HandItem hands;
     float sendTime;
-    public List<Craft.CraftType> craftTypes;
+    List<Craft.CraftType> craftTypes = new List<Craft.CraftType>();
+    
+    public bool CheckCraftType(Craft.CraftType craftType)
+    {
+        return craftTypes.Contains(craftType);
+    }
+    
     private void Start()
     {
         if (photonView.IsMine)
@@ -35,6 +44,11 @@ public class PlayerInventory : MonoBehaviourPun
             }
             Set();
         }
+    }
+
+    public bool IsSelected(int id)
+    {
+        return selected == id;
     }
     [PunRPC]
     public void SpawnItemInHand(string itemName)
@@ -144,7 +158,7 @@ public class PlayerInventory : MonoBehaviourPun
             {
                 Destroy(item);
                 items[id] = null;
-                if (id == selected)
+                if (IsSelected(id))
                 {
                     Set();
                 }

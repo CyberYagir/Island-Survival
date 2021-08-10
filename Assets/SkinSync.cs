@@ -8,11 +8,10 @@ public class SkinSync : MonoBehaviour, IPunObservable
     public Animator animator;
     public PlayerMove player;
 
-
     private void Update()
     {
-        animator.SetFloat("RunDir", Mathf.Sign(player.forwardSpeed));
-        if (Mathf.Abs(player.forwardSpeed) > 2)
+        animator.SetFloat("RunDir", Mathf.Sign(player.GetForwardSpeed()));
+        if (Mathf.Abs(player.GetForwardSpeed()) > 2)
         {
             animator.SetLayerWeight(1, Mathf.Clamp01(animator.GetLayerWeight(1) + Time.deltaTime));
         }

@@ -34,6 +34,7 @@ public class TextureCreator : MonoBehaviour
     public event Action OnEndTexture = delegate { };
 
     Task thread;
+    [HideInInspector]
     public Color32[] colors;
 
     private void Init()

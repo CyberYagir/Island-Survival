@@ -6,8 +6,8 @@ using UnityEngine;
 public class BiomesFormatter : MonoBehaviour
 {
     public int biomeTexSize;
-
-    public List<TextureCreator> biomes = new List<TextureCreator>();
+    [SerializeField]
+    List<TextureCreator> biomes = new List<TextureCreator>();
     public List<Color> colors = new List<Color>();
     public Texture2D texture2D;
     public event Action OnEndGenBiomes;
@@ -24,7 +24,7 @@ public class BiomesFormatter : MonoBehaviour
         foreach (var item in biomes)
         {
             id++;
-            item.offcet = Mathf.PerlinNoise(id + Mathf.Sqrt(t.main.offcet.x), id + Mathf.Sqrt(t.main.offcet.y)) * (-t.seed * (id % 2 == 0 ? 1 : -1)) * Vector3.one * id;
+            item.offcet = Mathf.PerlinNoise(id + Mathf.Sqrt(t.main.offcet.x), id + Mathf.Sqrt(t.main.offcet.y)) * (-t.GetSeed() * (id % 2 == 0 ? 1 : -1)) * Vector3.one * id;
             item.FillTexture();
             creators.Add(item);
             item.OnEndTexture += () =>
@@ -53,7 +53,7 @@ public class BiomesFormatter : MonoBehaviour
                     texture2D.Apply();
                     OnEndGenBiomes();
                 }
-            };
+            };  
         }
     }
 }

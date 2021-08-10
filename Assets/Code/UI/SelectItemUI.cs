@@ -11,10 +11,10 @@ public class SelectItemUI : MonoBehaviour
     [HideInInspector]
     public int id;
     public RectTransform rectTransform, line;
-    public float addX;
-    public Vector2 startX;
+    [SerializeField] float addX;
+    Vector2 startX;
     public RawImage rawImage;
-    public TMP_Text id_text, count_text;
+    [SerializeField] TMP_Text id_text, count_text;
     private void Start()
     {
         id = transform.GetSiblingIndex();
@@ -44,7 +44,7 @@ public class SelectItemUI : MonoBehaviour
             line.parent.gameObject.SetActive(false);
         }
         rawImage.texture = inventoryRender.textures[id];
-        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, startX + (playerInventory.selected == id ? new Vector2(addX, 0) : new Vector2(0, 0)), 5 * Time.deltaTime);
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, startX + (playerInventory.IsSelected(id) ? new Vector2(addX, 0) : new Vector2(0, 0)), 5 * Time.deltaTime);
     }
 
 }

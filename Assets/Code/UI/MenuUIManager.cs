@@ -7,8 +7,8 @@ using UnityEngine;
 public class MenuUIManager : MonoBehaviour
 {
     public GameObject connectToPUN;
-    public TMP_InputField nickname, connectNickname;
-    public CustomToggle isMultiplayer;
+    [SerializeField] TMP_InputField nickname, connectNickname;
+    [SerializeField] CustomToggle isMultiplayer;
 
     private void Start()
     {

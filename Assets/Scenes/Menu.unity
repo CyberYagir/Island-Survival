@@ -5960,7 +5960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: V.13
+  m_text: V.2021.08.09
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52efac52e3f5640429a832f35459fdcb, type: 2}
   m_sharedMaterial: {fileID: 5696730485663102990, guid: 52efac52e3f5640429a832f35459fdcb,
@@ -9540,8 +9540,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720398515}
-  m_LocalRotation: {x: 0.051113997, y: 0, z: -0.047743108, w: 0.99755096}
-  m_LocalPosition: {x: 203.2, y: 15.17254, z: 46.28}
+  m_LocalRotation: {x: 0.02242316, y: 0, z: -0.012453775, w: 0.999671}
+  m_LocalPosition: {x: 203.2, y: 14.900057, z: 46.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1395857819}
@@ -10298,7 +10298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d06de9e33add440b725934a8f19d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1810110452}
 --- !u!114 &1810110452
 MonoBehaviour:
   m_ObjectHideFlags: 0

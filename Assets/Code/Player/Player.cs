@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
-    public MonoBehaviour[] behaviours, destroy;
-    public GameObject skin, canvas, hands, itemPreview;
+    [SerializeField] MonoBehaviour[] behaviours, destroy;
+    [SerializeField] GameObject skin, canvas, hands, itemPreview;
 
 
     private void Awake()

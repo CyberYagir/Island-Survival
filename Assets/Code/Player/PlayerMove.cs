@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float speed, sense;
-    public Rigidbody rb;
-    public Camera camera;
-    public float rotY, rotX;
-    public float angle;
-    public bool inWater;
-    public float jumpForce;
-    public LayerMask mask;
-    public bool inJump;
-    public float gravModifayer;
-    public float forwardSpeed;
+    [SerializeField] float speed, sense;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] Camera camera;
+    [SerializeField] float rotY, rotX;
+    [SerializeField] float angle;
+    [SerializeField] bool inWater;
+    [SerializeField] float jumpForce;
+    [SerializeField] LayerMask mask;
+    [SerializeField] bool inJump;
+    [SerializeField] float gravModifayer;
+    [SerializeField] float forwardSpeed;
+
+
+    public float GetForwardSpeed()
+    {
+        return Vector3.Dot(rb.velocity, transform.forward);
+    }
+
     private void Update()
     {
         if (!WindowManager.menu)
@@ -28,7 +35,6 @@ public class PlayerMove : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
-        forwardSpeed = Vector3.Dot(rb.velocity, transform.forward);
 
         if (!WindowManager.menu)
         {
