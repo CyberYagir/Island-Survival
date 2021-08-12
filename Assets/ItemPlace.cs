@@ -41,7 +41,7 @@ public class ItemPlace : MonoBehaviourPun
         print("Spawn");
         var inv = GetComponentInParent<PlayerInventory>();
         ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, point.transform.position, transform.rotation);
-        inv.RemoveItem(inv.GetItem().name, 1);
+        inv.RemoveItem(inv.GetItem().itemName, 1);
         Destroy(this);
     }
     public void Update()

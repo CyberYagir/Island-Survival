@@ -122,7 +122,7 @@ public class ChangesManager : MonoBehaviour, IPunObservable
             n.GetComponent<Rigidbody>().AddForce(forward*2, ForceMode.Impulse);
             if (forward == Vector3.zero)
             {
-                n.GetComponent<Drop>().time = 2;
+                n.GetComponent<Drop>().time = n.GetComponent<Drop>().waitTime;
                 n.GetComponent<Rigidbody>().AddExplosionForce(500, pos + new Vector3(Random.Range(-5, 5), -1, Random.Range(-5, 5)), 10);
             }
             n.GetPhotonView().RPC("InitRPC", RpcTarget.All, prefab);

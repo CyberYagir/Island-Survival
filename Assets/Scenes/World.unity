@@ -685,10 +685,8 @@ MonoBehaviour:
   persistance: 0.6
   lacunar: 0.01
   noiseTex: {fileID: 0}
-  seed: 1337
   main: {fileID: 646376464}
   moutains: {fileID: 646376463}
-  color: {r: 0, g: 0, b: 0, a: 0}
   shoothRamp:
     serializedVersion: 2
     m_Curve:
@@ -1495,8 +1493,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910855094}
-  m_LocalRotation: {x: -0.04328995, y: 0, z: 0.017107194, w: 0.9989161}
-  m_LocalPosition: {x: 826.7964, y: 15.802682, z: 861.55585}
+  m_LocalRotation: {x: -0.03598885, y: 0, z: 0.007926906, w: 0.99932075}
+  m_LocalPosition: {x: 826.7964, y: 14.6835, z: 861.55585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1532,7 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b4e6b35f4bde141b9c20e818f6f0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncType: 0
 --- !u!114 &919801120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,14 +1876,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6739726, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.10021782, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d8b4f444e5e02a48b0ee3c9e540514f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19767af1b435ea243a9b8029cc8bc6cc, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2388,8 +2385,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751295729}
-  m_LocalRotation: {x: 0.014980535, y: 0, z: -0.021428078, w: 0.99965817}
-  m_LocalPosition: {x: 1398, y: 14.520045, z: 1948}
+  m_LocalRotation: {x: -0.0044608647, y: 0, z: 0.025422145, w: 0.99966687}
+  m_LocalPosition: {x: 1398, y: 15.0616665, z: 1948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 852810575}
@@ -2681,4 +2678,20 @@ MonoBehaviour:
       count: 5
     finalItem:
       item: {fileID: 11400000, guid: c352827c9520edc46898b4a200faacb1, type: 2}
+      count: 1
+  - craftType: 1
+    craftItems:
+    - item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
+      count: 10
+    finalItem:
+      item: {fileID: 11400000, guid: 1c7ec458a9fdf374ebd03b79f3a734b9, type: 2}
+      count: 1
+  - craftType: 1
+    craftItems:
+    - item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
+      count: 5
+    - item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
+      count: 3
+    finalItem:
+      item: {fileID: 11400000, guid: 54fbee7143c6fea45a4f8c0290f46eac, type: 2}
       count: 1

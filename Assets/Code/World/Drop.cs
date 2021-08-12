@@ -10,7 +10,7 @@ public class Drop : MonoBehaviour
     public Item item;
     public Transform scaler;
 
-    public float time;
+    public float time, waitTime = 4;
 
     private void Update()
     {
@@ -56,6 +56,11 @@ public class Drop : MonoBehaviour
                 item.gameObject.AddComponent<MeshCollider>().convex = true;
             }
         }
+
+        if (item is PlaceItem)
+        {
+            i.transform.localScale = (item as PlaceItem).dropScale;
+        }
     }
     [PunRPC]
     void SetValue(int val)
@@ -63,9 +68,9 @@ public class Drop : MonoBehaviour
         item.value = val;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (time > 2)
+        if (time > waitTime)
         {
             if (other.GetComponentInParent<PlayerInventory>() != null)
             {

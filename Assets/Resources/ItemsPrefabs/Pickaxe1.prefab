@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   actions:
   - keyCode: 323
     Down:

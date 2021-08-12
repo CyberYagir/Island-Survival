@@ -253,9 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHp: 0
   hp: 10
-  minDropCount: 5
-  maxDropCount: 9
+  hpMinMax: {x: 15, y: 30}
+  dropCount: {x: 6, y: 15}
   item: {fileID: 11400000, guid: aea27380caba89144b76ad39a81583c5, type: 2}
+  usableType: 2
   resId: 0
   inTrigger: []
   animationCurve:

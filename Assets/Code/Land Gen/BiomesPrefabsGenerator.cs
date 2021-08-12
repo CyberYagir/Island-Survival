@@ -38,7 +38,7 @@ public class BiomesPrefabsGenerator : MonoBehaviour
 
     public void GenPrefabs()
     {
-        var rnd = new System.Random(GetComponent<TerrainGenerator>().GetSeed());
+        var rnd = new System.Random(TerrainGenerator.GetSeed());
         var terr = GetComponent<Terrain>();
 
         var holder = new GameObject() { name = "Resources Holder" };

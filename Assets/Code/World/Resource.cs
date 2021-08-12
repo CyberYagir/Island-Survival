@@ -8,16 +8,19 @@ public class Resource : MonoBehaviour
     [HideInInspector]
     public int startHp;
     public int hp;
-    public int minDropCount, maxDropCount;
+    public Vector2 hpMinMax;
+    public Vector2 dropCount;
     public Item item;
+    public ItemExecuter.Type usableType;
     public int resId;
     public List<GameObject> inTrigger;
     public AnimationCurve animationCurve;
     Vector3 scale;
-    float time = 0, deadtime = 0;
+    float time = 0;
     bool animate = false, dead = false;
     public void Start()
     {
+        hp = new System.Random(TerrainGenerator.GetSeed() + (int)transform.position.sqrMagnitude).Next((int)hpMinMax.x, (int)hpMinMax.y);
         scale = transform.localScale;
         startHp = hp;
         item = item.Clone();
@@ -53,7 +56,6 @@ public class Resource : MonoBehaviour
     public void Dead()
     {
         dead = true;
-        deadtime = 0;
     }
     public void RDestroy()
     {
@@ -68,7 +70,7 @@ public class Resource : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            for (int i = 0; i < Random.Range(minDropCount, maxDropCount + 1); i++)
+            for (int i = 0; i < Random.Range(dropCount.x, dropCount.y + 1); i++)
             {
                 ChangesManager.cm.gameObject.GetPhotonView().RPC(
                     "CreateDropItem",

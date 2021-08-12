@@ -17,9 +17,14 @@ public class CraftsUI : MonoBehaviour
     public GameObject subHolder;
     public GameObject subItem;
     public Button craftButton;
+    List<Craft.CraftType> craftTypes;
+    PlayerInventory playerInventory;
+
 
     private void Start()
     {
+        playerInventory = GetComponentInParent<PlayerInventory>();
+        craftTypes = playerInventory.GetCraftTypes();
         moveWindow = GetComponent<MoveWindow>();
         main.SetActive(false);
         DrawCrafts();
@@ -28,10 +33,18 @@ public class CraftsUI : MonoBehaviour
     {
         if (selected != null && Input.GetKeyDown(KeyCode.E))
         {
+            DrawCrafts();
             DrawCraftStats(selected);
         }
         if (selected != null && moveWindow.openClose == true)
         {
+            if (playerInventory.GetCraftTypes() != craftTypes)
+            {
+                main.SetActive(false);
+                DrawCrafts();
+                craftTypes = playerInventory.GetCraftTypes();
+                return;
+            }
             image.texture = FindObjectOfType<InventoryRenderItems>().render(selected.finalItem.item.prefab, selected.finalItem.item);
             craftButton.interactable = isCanCraft(selected);
         }
@@ -78,6 +91,9 @@ public class CraftsUI : MonoBehaviour
                 }
             }
         }
+
+        DrawCrafts();
+        DrawCraftStats(selected);
     }
     public bool isCanCraft(Craft craft)
     {
@@ -104,6 +120,13 @@ public class CraftsUI : MonoBehaviour
     public void DrawCrafts()
     {
         var crafts = FindObjectOfType<Crafts>().crafts;
+        foreach (Transform item in holder)
+        {
+            if (item.gameObject.active)
+            {
+                Destroy(item.gameObject);
+            }
+        }
         for (int i = 0; i < crafts.Count; i++)
         {
             if (GetComponentInParent<PlayerInventory>().CheckCraftType(crafts[i].craftType))

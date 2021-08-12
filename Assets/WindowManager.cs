@@ -27,10 +27,15 @@ public class WindowManager : MonoBehaviour
         {
             if (moveWindows[i].openClose) { menu = true; break; }
         }
-        depthOfField.focalLength.value += (int)((menu ? 300 : -300) * Time.deltaTime);
+        depthOfField.focalLength.value += (int)((menu ? 300 : -600) * Time.deltaTime);
         
     }
 
+
+    private void OnDestroy()
+    {
+        depthOfField.focalLength.value = 0;
+    }
     public void OpenWindow(MoveWindow moveWindow)
     {
         for (int i = 0; i < moveWindows.Count; i++)

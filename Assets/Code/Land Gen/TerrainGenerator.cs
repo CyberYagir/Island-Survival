@@ -15,7 +15,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] int octaves;
     [SerializeField] float scale = 1.0F, persistance, lacunar;
     [SerializeField] Texture2D noiseTex;
-    [SerializeField] int seed;
+    [SerializeField] static int seed;
     public TextureCreator main, moutains;
     [SerializeField] AnimationCurve shoothRamp;
     [SerializeField] List<TextureCreator> waitForTextures = new List<TextureCreator>();
@@ -25,7 +25,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public static bool genEnded;
 
-    public int GetSeed()
+    public static int GetSeed()
     {
         return seed;
     }

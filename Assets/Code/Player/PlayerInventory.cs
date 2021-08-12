@@ -27,12 +27,33 @@ public class PlayerInventory : MonoBehaviourPun
     [SerializeField]
     HandItem hands;
     float sendTime;
-    List<Craft.CraftType> craftTypes = new List<Craft.CraftType>();
+    [SerializeField]
+    List<Craft.CraftType> craftTypes = new List<Craft.CraftType>() { Craft.CraftType.Player};
     
     public bool CheckCraftType(Craft.CraftType craftType)
     {
         return craftTypes.Contains(craftType);
     }
+
+    public List<Craft.CraftType> GetCraftTypes()
+    {
+        return craftTypes;
+    }
+    public bool AddCraftType(Craft.CraftType craftType)
+    {
+        if (!craftTypes.Contains(craftType))
+        {
+            craftTypes.Add(craftType);
+            return true;
+        }
+        return false;
+    }
+    public void RemoveCraftType(Craft.CraftType craftType)
+    {
+        craftTypes.Remove(craftType);
+    }
+
+    
     
     private void Start()
     {
@@ -149,7 +170,6 @@ public class PlayerInventory : MonoBehaviourPun
     public bool RemoveItem(string itemName, int value)
     {
         var item = items.Find(x => x != null && x.itemName == itemName && x.value >= value);
-
         if (item != null)
         {
             int id = items.FindIndex(x => x != null && x.itemName == itemName && x.value >= value);

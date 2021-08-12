@@ -10,6 +10,8 @@ public class Keys
 }
 public class ItemExecuter : MonoBehaviour
 {
+    public enum Type { Any,Pickaxe, Axe}
+    public Type type;
     public List<Keys> actions;
 
     private void Update()

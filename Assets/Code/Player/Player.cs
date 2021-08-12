@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] MonoBehaviour[] behaviours, destroy;
     [SerializeField] GameObject skin, canvas, hands, itemPreview;
-
 
     private void Awake()
     {
@@ -33,9 +33,6 @@ public class Player : MonoBehaviourPun, IPunObservable
                 Destroy(destroy[i]);
             }
             GetComponent<Rigidbody>().isKinematic = true;
-        }
-        else
-        {
         }
     }
     private void Update()

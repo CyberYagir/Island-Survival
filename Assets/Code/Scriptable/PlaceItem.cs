@@ -6,5 +6,5 @@ using UnityEngine;
 public class PlaceItem : Item
 {
     [Newtonsoft.Json.JsonIgnore]
-    public Vector3 previewScale, previewRot, previewOffcet;
+    public Vector3 previewOffcet, previewRot, previewScale, dropScale;
 }

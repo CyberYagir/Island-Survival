@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   actions:
   - keyCode: 323
     Down:
@@ -145,6 +146,7 @@ MonoBehaviour:
   destroyInHands:
   - {fileID: 3426171155404769776}
   - {fileID: -9182225072038026719}
+  - {fileID: 158863530798981210}
 --- !u!1 &4028135449254757250
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +159,8 @@ GameObject:
   - component: {fileID: 1623979381315565796}
   - component: {fileID: 3422578307195210868}
   - component: {fileID: 7116372897563681686}
+  - component: {fileID: 6562980399979082866}
+  - component: {fileID: 158863530798981210}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -240,3 +244,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.046906833, y: 0.019999996, z: 0.05842157}
   m_Center: {x: 0, y: 0, z: -0.005903948}
+--- !u!65 &6562980399979082866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028135449254757250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &158863530798981210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028135449254757250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f13f64646dcbee46b3e84f613ab02da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  craftType: 1
