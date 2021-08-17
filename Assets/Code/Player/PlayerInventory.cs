@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -72,13 +73,14 @@ public class PlayerInventory : MonoBehaviourPun
         return selected == id;
     }
     [PunRPC]
-    public void SpawnItemInHand(string itemName)
+    public void SpawnItemInHand(string name_of_item)
     {
         foreach (Transform item in photonView.IsMine ? hand : skinHand)
         {
             Destroy(item.gameObject);
         }
-        var it = Resources.Load<Item>("ItemsObjects/" + itemName);
+
+        var it = StaticManager.ItemByName(name_of_item);
         var obj = Instantiate(it.prefab, photonView.IsMine ? hand : skinHand);
 
         foreach (var item in obj.GetComponentsInChildren<Collider>())

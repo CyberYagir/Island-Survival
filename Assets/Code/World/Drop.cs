@@ -38,9 +38,9 @@ public class Drop : MonoBehaviour
     }
 
     [PunRPC]
-    void InitRPC(string itemName)
+    void InitRPC(string itemfilename)
     {
-        item = Resources.Load<Item>("ItemsObjects/" + itemName).Clone();
+        item = StaticManager.ItemByName(itemfilename).Clone();
         var i = Instantiate(item.prefab, scaler);
 
         foreach (var item in i.GetComponentsInChildren<MonoBehaviour>())
@@ -70,13 +70,14 @@ public class Drop : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (time > waitTime)
+        if (time > waitTime && this.enabled)
         {
             if (other.GetComponentInParent<PlayerInventory>() != null)
             {
                 if (other.GetComponentInParent<PlayerInventory>().gameObject.GetPhotonView().IsMine)
                 {
                     other.GetComponentInParent<PlayerInventory>().AddItem(this);
+                    this.enabled = false;
                 }
             }
         }

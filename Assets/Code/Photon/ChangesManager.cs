@@ -84,12 +84,16 @@ public class ChangesManager : MonoBehaviour, IPunObservable
     }
 
     [PunRPC]
-    public void SpawnObject(string itemName, Vector3 pos, Quaternion rot)
+    public void SpawnObject(string itemfilename, Vector3 pos, Quaternion rot)
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            var n = PhotonNetwork.Instantiate("ObjectsPrefabs/" + Item.GetItemByName(itemName).prefab.name, pos, rot);
+            var n = PhotonNetwork.Instantiate(StaticManager.GetPrefabPathByName(StaticManager.ItemByName(itemfilename).prefab.name), pos, rot); 
             n.GetPhotonView().RPC("Destroys", RpcTarget.AllBuffered);
+            if (n.GetComponent<TableRPC>())
+            {
+                n.GetPhotonView().RPC("SetGlobalResID", RpcTarget.AllBuffered, FindObjectOfType<BiomesPrefabsGenerator>().spawnedObjects.Count);
+            }
         }
     }
 
@@ -160,7 +164,7 @@ public class ChangesManager : MonoBehaviour, IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             var dt = JsonConvert.DeserializeObject<InventorySend>(data);
-            print(changes.inventorySends.Count);
+            //print(changes.inventorySends.Count);
             var player = changes.inventorySends.Find(x => x != null && x.playerName == dt.playerName);
             if (player == null)
             {

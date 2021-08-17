@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerStatsUI : MonoBehaviour
 {
-    public Image hp, water, hungry;
+    [SerializeField] Image hp, water, hungry;
     PlayerStats playerStats;
 
     private void Start()

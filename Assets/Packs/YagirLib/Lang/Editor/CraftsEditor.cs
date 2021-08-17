@@ -21,7 +21,10 @@ public class CraftsEditor : EditorWindow
 
     private void OnGUI()
     {
-        crafts = FindObjectOfType<Crafts>(); 
+        crafts = FindObjectOfType<Crafts>();
+        if (crafts == null) return;
+
+
         scrollPosition = GUILayout.BeginScrollView(scrollPosition);
         
 

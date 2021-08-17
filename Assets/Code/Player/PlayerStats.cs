@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviourPun
 {
     public static PlayerStats stats;
     public float health = 100, water = 100, hunger = 100;
-    public float t_water = 1, t_hunger = 1;
+    [SerializeField] float t_water = 1, t_hunger = 1;
 
     public void Awake()
     {

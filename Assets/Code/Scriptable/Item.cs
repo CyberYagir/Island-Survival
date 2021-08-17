@@ -21,11 +21,5 @@ public class Item : ScriptableObject
         cln.name = cln.name.Replace("(Clone)", "");
         return cln;
     }
-
-
-    public static Item GetItemByName(string itemName)
-    {
-        return Resources.Load<Item>("ItemsObjects/" + itemName);
-    }
 }
 

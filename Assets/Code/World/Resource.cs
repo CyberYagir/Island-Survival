@@ -7,14 +7,17 @@ public class Resource : MonoBehaviour
 {
     [HideInInspector]
     public int startHp;
+    [HideInInspector]
     public int hp;
     public Vector2 hpMinMax;
     public Vector2 dropCount;
     public Item item;
     public ItemExecuter.Type usableType;
+    [HideInInspector]
     public int resId;
-    public List<GameObject> inTrigger;
     public AnimationCurve animationCurve;
+
+    List<GameObject> inTrigger = new List<GameObject>();
     Vector3 scale;
     float time = 0;
     bool animate = false, dead = false;
@@ -70,7 +73,7 @@ public class Resource : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            for (int i = 0; i < Random.Range(dropCount.x, dropCount.y + 1); i++)
+            for (int i = 0; i < ((dropCount.x == 1 && dropCount.y == dropCount.x) ? 1 : (int)Random.Range(dropCount.x, dropCount.y + 1)); i++)
             {
                 ChangesManager.cm.gameObject.GetPhotonView().RPC(
                     "CreateDropItem",

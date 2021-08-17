@@ -11,8 +11,6 @@ public interface IUsable {
 
 }
 
-
-
 public class Usable : MonoBehaviour, IUsable {
     public bool canMine;
     protected ItemsData itemsData;
