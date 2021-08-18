@@ -76,8 +76,10 @@ public class Drop : MonoBehaviour
             {
                 if (other.GetComponentInParent<PlayerInventory>().gameObject.GetPhotonView().IsMine)
                 {
-                    other.GetComponentInParent<PlayerInventory>().AddItem(this);
-                    this.enabled = false;
+                    if (other.GetComponentInParent<PlayerInventory>().AddItem(this))
+                    {
+                        this.enabled = false;
+                    }
                 }
             }
         }

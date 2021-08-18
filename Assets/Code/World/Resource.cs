@@ -32,21 +32,12 @@ public class Resource : MonoBehaviour
     {
         if (animate)
         {
-            foreach (var item in GetComponentsInChildren<Collider>(true))
-            {
-                item.enabled = false;
-            }
             time += Time.deltaTime * 5f;
             transform.localScale = new Vector3(scale.x + (animationCurve.Evaluate(time) / 3f), scale.y + (animationCurve.Evaluate(time) / 3f), scale.z + (animationCurve.Evaluate(time) / 3f));
             if (time > 1)
             {
                 transform.localScale = scale;
                 animate = false;
-
-                foreach (var item in GetComponentsInChildren<Collider>(true))
-                {
-                    item.enabled = true;
-                }
             }
         }
         if (dead)

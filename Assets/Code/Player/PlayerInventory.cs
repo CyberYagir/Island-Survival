@@ -176,6 +176,10 @@ public class PlayerInventory : MonoBehaviourPun
         {
             int id = items.FindIndex(x => x != null && x.itemName == itemName && x.value >= value);
             item.value -= value;
+            if (item is PlaceItem)
+            {
+                change = true;
+            }
             if (item.value <= 0)
             {
                 Destroy(item);

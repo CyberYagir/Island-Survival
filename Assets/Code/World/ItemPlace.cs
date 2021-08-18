@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ItemPlace : MonoBehaviourPun
 {
-    public LayerMask layerMask;
-    public GameObject point;
-    public Vector3 scale;
+    [SerializeField] LayerMask layerMask;
+    [SerializeField] GameObject point;
+    [SerializeField] Vector3 scale;
     PhotonView photonView;
-    
+    public bool dontSet;
     private void Start()
     {
         var parent = transform.parent;
@@ -38,22 +38,35 @@ public class ItemPlace : MonoBehaviourPun
 
     public void Spawn()
     {
-        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 5, layerMask);
-        if (hit.collider != null)
+        if (dontSet == false)
         {
-            if (hit.collider.GetComponent<Resource>() == null)
+            Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 5, layerMask);
+            if (hit.collider != null)
             {
-                var inv = GetComponentInParent<PlayerInventory>();
-                ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, point.transform.position, transform.rotation);
-                inv.RemoveItem(inv.GetItem().itemName, 1);
-                Destroy(this);
+                if (hit.collider.GetComponent<Resource>() == null)
+                {
+                    SendSpawn(point.transform.position, transform.rotation);
+                }
             }
         }
+        else
+        {
+            SendSpawn(transform.position, transform.rotation);
+        }
+    }
+
+    public void SendSpawn(Vector3 pos, Quaternion rot)
+    {
+        var inv = GetComponentInParent<PlayerInventory>();
+        ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, pos, rot);
+        inv.RemoveItem(inv.GetItem().itemName, 1);
+        Destroy(this);
     }
     public void Update()
     {
         if (photonView.IsMine)
         {
+            if (dontSet) return;
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 5, layerMask);
             if (hit.collider == null || hit.collider.tag != "Ground")
             {

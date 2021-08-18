@@ -2639,34 +2639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e9c69b608f6304c8514b16e7990298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabsPaths:
-  - ItemsPrefabs\Furnace\Copper Bar
-  - ItemsPrefabs\Furnace\Iron Bar
-  - ItemsPrefabs\ItemExec\Axe1
-  - ItemsPrefabs\ItemExec\Hands
-  - ItemsPrefabs\ItemExec\Pickaxe1
-  - ItemsPrefabs\ItemExec\Sword1
-  - ItemsPrefabs\WorldResources\Copper
-  - ItemsPrefabs\WorldResources\Iron
-  - ItemsPrefabs\WorldResources\Stone
-  - ItemsPrefabs\WorldResources\Wood
-  - PlacePrefabs\CraftingTable
-  - PlacePrefabs\Floor
-  - PlacePrefabs\Furnace
-  itemsPaths:
-  - ItemsObjects\Builds\Floor
-  - ItemsObjects\Furnace\Copper Bar
-  - ItemsObjects\Furnace\Iron Bar
-  - ItemsObjects\ItemExec\Axe stone
-  - ItemsObjects\ItemExec\Hands
-  - ItemsObjects\ItemExec\Pickaxe stone
-  - ItemsObjects\ItemExec\Sword stone
-  - ItemsObjects\Tables\Crafting Table
-  - ItemsObjects\Tables\Furnace Table
-  - ItemsObjects\WorldResources\Copper
-  - ItemsObjects\WorldResources\Iron
-  - ItemsObjects\WorldResources\Stone
-  - ItemsObjects\WorldResources\Wood
 --- !u!1001 &316838937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9595,8 +9567,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720398515}
-  m_LocalRotation: {x: 0.011016034, y: 0, z: -0.0046083936, w: 0.9999287}
-  m_LocalPosition: {x: 203.2, y: 14.613242, z: 46.28}
+  m_LocalRotation: {x: -0.034029163, y: 0, z: -0.008787409, w: 0.99938226}
+  m_LocalPosition: {x: 203.2, y: 15.192759, z: 46.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1395857819}

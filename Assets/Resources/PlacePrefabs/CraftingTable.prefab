@@ -131,6 +131,7 @@ MonoBehaviour:
     m_Bits: 1
   point: {fileID: 0}
   scale: {x: 0, y: 0, z: 0}
+  dontSet: 0
 --- !u!114 &-5962600601810062448
 MonoBehaviour:
   m_ObjectHideFlags: 0
