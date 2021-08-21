@@ -1,7 +1,13 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+public class RendererColor {
+    public Renderer renderer;
+    public List<Color> colors;
+}
 
 public class Resource : MonoBehaviour
 {
@@ -17,14 +23,32 @@ public class Resource : MonoBehaviour
     public int resId;
     public AnimationCurve animationCurve;
 
+
     List<GameObject> inTrigger = new List<GameObject>();
-    Vector3 scale;
+
+    List<RendererColor> renderers = new List<RendererColor>();
     float time = 0;
     bool animate = false, dead = false;
     public void Start()
     {
         hp = new System.Random(TerrainGenerator.GetSeed() + (int)transform.position.sqrMagnitude).Next((int)hpMinMax.x, (int)hpMinMax.y);
-        scale = transform.localScale;
+        
+        if (GetComponent<StoneOreRandom>())
+        {
+            GetComponent<StoneOreRandom>().Init();
+        }
+
+        var r = GetComponentsInChildren<Renderer>().ToList().FindAll(x => x.transform.name.Contains("Quad") == false);
+        foreach (var item in r)
+        {
+            List<Color> colors = new List<Color>();
+            for (int i = 0; i < item.materials.Length; i++)
+            {
+                colors.Add(item.materials[i].color);
+            }
+            renderers.Add(new RendererColor() { renderer = item, colors = colors });
+        }
+
         startHp = hp;
         item = item.Clone();
     }
@@ -33,14 +57,32 @@ public class Resource : MonoBehaviour
         if (animate)
         {
             time += Time.deltaTime * 5f;
-            transform.localScale = new Vector3(scale.x + (animationCurve.Evaluate(time) / 3f), scale.y + (animationCurve.Evaluate(time) / 3f), scale.z + (animationCurve.Evaluate(time) / 3f));
+            foreach (var item in renderers)
+            {
+                var mats = item.renderer.materials;
+
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    mats[i].color = item.colors[i] + (Color.red * animationCurve.Evaluate(time));
+                }
+                item.renderer.materials = mats;
+            }
             if (time > 1)
             {
-                transform.localScale = scale;
+                foreach (var item in renderers)
+                {
+                    var mats = item.renderer.materials;
+
+                    for (int i = 0; i < mats.Length; i++)
+                    {
+                        mats[i].color = item.colors[i];
+                    }
+                    item.renderer.materials = mats;
+                }
                 animate = false;
             }
         }
-        if (dead)
+        if (dead)   
         {
             if (transform.localScale.x < 0.01f) Destroy(gameObject);
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, 10f * Time.deltaTime);

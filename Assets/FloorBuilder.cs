@@ -31,13 +31,21 @@ public class FloorBuilder : MonoBehaviour
                                     id = i;
                                 }
                             }
-                            print(id);
                             transform.position = floor.pointsHolder.GetChild(id).position;
                             transform.rotation = floor.pointsHolder.GetChild(id).rotation;
+                            if (Physics.Raycast(transform.position + new Vector3(0, 0.5f), Vector3.down, out RaycastHit hit2))
+                            {
+                                if (hit2.transform.GetComponentInParent<Floor>())
+                                {
+                                    GetComponent<ItemExecuter>().enabled = false;
+                                    return;
+                                }
+                            }
                         }
                     }
                 }
             }
+            GetComponent<ItemExecuter>().enabled = true;
         }
     }
 }

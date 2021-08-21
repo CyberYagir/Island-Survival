@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
-    public Transform pointsHolder;
+    public Transform pointsHolder, wallHolder;
     [SerializeField] GameObject mesh;
     [SerializeField] bool onGround;
     [SerializeField] bool init;

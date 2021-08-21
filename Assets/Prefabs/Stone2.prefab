@@ -74,7 +74,6 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 179813671b1bd7f47a301456c8357c70, type: 2}
   usableType: 0
   resId: 0
-  inTrigger: []
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -89,7 +88,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5089022
-      value: 0.09972
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

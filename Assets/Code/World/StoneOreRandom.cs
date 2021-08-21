@@ -7,7 +7,7 @@ public class StoneOreRandom : MonoBehaviour
     [SerializeField] List<Item> ores = new List<Item>();
     [SerializeField] List<Material> materials = new List<Material>();
     [SerializeField] Renderer oreMesh;
-    private void Start()
+    public void Init()
     {
         var gen = FindObjectOfType<TerrainGenerator>();
         if (gen != null)
