@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
                 }
             }
             if (!Physics.Raycast(transform.position - new Vector3(0, 0.9f, 0), Vector3.down, out RaycastHit hitb, 3f)){
-                print("Fall");
+                //print("Fall");
                 rb.velocity -= new Vector3(0, Time.deltaTime * gravModifayer, 0);
             }
 

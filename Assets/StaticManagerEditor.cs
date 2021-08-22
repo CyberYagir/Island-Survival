@@ -11,6 +11,7 @@ public class StaticManagerEditor : MonoBehaviour
     List<string> prefabs, items;
     private void Update()
     {
+#if UNITY_EDITOR 
         if (Application.isEditor && !Application.isPlaying)
         {
             prefabs = new List<string>();
@@ -24,13 +25,14 @@ public class StaticManagerEditor : MonoBehaviour
             {
                 if (!resourcesPaths.prefabsPaths.SequenceEqual(prefabs) || !resourcesPaths.itemsPaths.SequenceEqual(items))
                 {
-                    print("Paths Updated!");
+                    //print("Paths Updated!");
                     resourcesPaths.prefabsPaths = prefabs;
                     resourcesPaths.itemsPaths = items;
                     AssetDatabase.SaveAssets();
                 }
-        }
             }
+        }
+#endif
     }
 
 

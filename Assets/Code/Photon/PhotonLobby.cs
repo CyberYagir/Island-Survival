@@ -98,7 +98,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        print("Failed");
+        //print("Failed");
         base.OnJoinRoomFailed(returnCode, message);
     }
     public override void OnJoinedRoom()

@@ -5987,7 +5987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: V.2021.08.12
+  m_text: V.2021.08.22
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52efac52e3f5640429a832f35459fdcb, type: 2}
   m_sharedMaterial: {fileID: 5696730485663102990, guid: 52efac52e3f5640429a832f35459fdcb,
@@ -8353,6 +8353,11 @@ PrefabInstance:
       propertyPath: m_text
       value: 25.141.160.131
       objectReference: {fileID: 0}
+    - target: {fileID: 6124016043414138221, guid: f20e0cfee0912fa4eafae86b6c4476a2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6124016043482069456, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
       propertyPath: key
@@ -8480,6 +8485,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6124016044438513322, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
+      propertyPath: m_Text
+      value: 100.103.240.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124016044438513322, guid: f20e0cfee0912fa4eafae86b6c4476a2,
+        type: 3}
       propertyPath: m_RegexValue
       value: '[0-9]|[.]'
       objectReference: {fileID: 0}
@@ -8511,7 +8521,7 @@ PrefabInstance:
     - target: {fileID: 6124016044438513322, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6124016044438513322, guid: f20e0cfee0912fa4eafae86b6c4476a2,
         type: 3}
@@ -9567,8 +9577,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720398515}
-  m_LocalRotation: {x: -0.034029163, y: 0, z: -0.008787409, w: 0.99938226}
-  m_LocalPosition: {x: 203.2, y: 15.192759, z: 46.28}
+  m_LocalRotation: {x: 0.07664075, y: 0, z: -0.05922093, w: 0.9952985}
+  m_LocalPosition: {x: 203.2, y: 14.773062, z: 46.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1395857819}

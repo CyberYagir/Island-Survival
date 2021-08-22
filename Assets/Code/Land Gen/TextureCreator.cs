@@ -62,7 +62,7 @@ public class TextureCreator : MonoBehaviour
             {
                 foreach (var item in thread.Exception.InnerExceptions)
                 {
-                    print(item.Message);
+                    //print(item.Message);
                 }
             }
             if (thread.IsCompleted)

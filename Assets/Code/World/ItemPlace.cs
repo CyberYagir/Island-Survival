@@ -61,9 +61,12 @@ public class ItemPlace : MonoBehaviourPun
     public void SendSpawn(Vector3 pos, Quaternion rot)
     {
         var inv = GetComponentInParent<PlayerInventory>();
-        ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, pos, rot);
-        inv.RemoveItem(inv.GetItem().itemName, 1);
-        Destroy(this);
+        if (inv.GetItem() != null)
+        {
+            ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, pos, rot);
+            inv.RemoveItem(inv.GetItem().itemName, 1);
+            Destroy(this);
+        }
     }
     public void Update()
     {
