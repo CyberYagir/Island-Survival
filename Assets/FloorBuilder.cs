@@ -33,14 +33,37 @@ public class FloorBuilder : MonoBehaviour
                             }
                             transform.position = floor.pointsHolder.GetChild(id).position;
                             transform.rotation = floor.pointsHolder.GetChild(id).rotation;
-                            if (Physics.Raycast(transform.position + new Vector3(0, 0.5f), Vector3.down, out RaycastHit hit2))
+                            
+                        }
+                    }
+                    if (hit.transform.tag == "Wall")
+                    {
+                        var wall = hit.transform.GetComponentInParent<Wall>();
+                        if (wall)
+                        {
+                            GetComponent<ItemPlace>().dontSet = true;
+                            float dist = 999;
+                            int id = -1;
+                            for (int i = 0; i < wall.floorPoints.childCount; i++)
                             {
-                                if (hit2.transform.GetComponentInParent<Floor>())
+                                var dst = Vector3.Distance(hit.point, wall.floorPoints.GetChild(i).position);
+                                if (dst < dist)
                                 {
-                                    GetComponent<ItemExecuter>().enabled = false;
-                                    return;
+                                    dist = dst;
+                                    id = i;
                                 }
                             }
+                            transform.position = wall.floorPoints.GetChild(id).position;
+                            transform.rotation = wall.floorPoints.GetChild(id).rotation;
+
+                        }
+                    }
+                    if (Physics.Raycast(transform.position + new Vector3(0, 0.5f), Vector3.down, out RaycastHit hit2))
+                    {
+                        if (hit2.transform.GetComponentInParent<Floor>() && hit2.distance < 1)
+                        {
+                            GetComponent<ItemExecuter>().enabled = false;
+                            return;
                         }
                     }
                 }

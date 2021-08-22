@@ -37,6 +37,6 @@ public class StaticManager : MonoBehaviour
 
     public static string GetPrefabPathByName(string prefabName)
     {
-        return resourcesPaths.prefabsPaths.Find(x => x.Contains(prefabName));
+        return resourcesPaths.prefabsPaths.Find(x => x.Split('\\')[x.Split('\\').Length - 1] == prefabName);
     }
 }

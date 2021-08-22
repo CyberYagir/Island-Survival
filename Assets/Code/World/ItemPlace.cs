@@ -8,6 +8,7 @@ public class ItemPlace : MonoBehaviourPun
     [SerializeField] LayerMask layerMask;
     [SerializeField] GameObject point;
     [SerializeField] Vector3 scale;
+    [SerializeField] List<string> placeTags;
     PhotonView photonView;
     public bool dontSet;
     private void Start()
@@ -20,6 +21,8 @@ public class ItemPlace : MonoBehaviourPun
         scale = transform.localScale;
         point = new GameObject("Point");
         photonView = parent.GetComponentInParent<PhotonView>();
+
+        placeTags.Add("Ground");
 
         if (photonView == null)
         {
@@ -68,7 +71,7 @@ public class ItemPlace : MonoBehaviourPun
         {
             if (dontSet) return;
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 5, layerMask);
-            if (hit.collider == null || hit.collider.tag != "Ground")
+            if (hit.collider == null || placeTags.Contains(hit.collider.tag) == false)
             {
                 foreach (var item in GetComponentsInChildren<Renderer>())
                 {
