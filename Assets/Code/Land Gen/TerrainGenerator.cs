@@ -147,6 +147,7 @@ public class TerrainGenerator : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         GetComponent<Terrain>().terrainData.SetHeights(0, 0, n);
         LoadUI.text_loading = "Set grass and terrain texture...";
+        FindObjectOfType<MobsSpawner>().Init();
         yield return new WaitForSeconds(0.5f);
         GetComponent<TerrainTexturer>().DrawTextureTerrain();
         yield return new WaitForSeconds(0.5f);
