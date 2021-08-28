@@ -8,9 +8,11 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
     public Item item;
-    public Transform scaler;
+    [SerializeField] Transform scaler;
 
     public float time, waitTime = 4;
+    [SerializeField]
+    public LayerMask layerMask;
 
     private void Update()
     {
@@ -18,15 +20,27 @@ public class Drop : MonoBehaviour
         if (gameObject.GetPhotonView().IsMine) {
             if (transform.position.y < 15)
             {
-                if (GetComponent<FloatingTransform>() == null)
+                if (Physics.Raycast(transform.position + new Vector3(0, 10, 0), Vector3.down, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    GetComponent<Rigidbody>().drag = 10;
-                    GetComponent<Rigidbody>().useGravity = false;
-                    gameObject.AddComponent<FloatingTransform>().rollAmount = 2;
+                    if (transform.position.y > hit.point.y)
+                    {
+                        if (GetComponent<FloatingTransform>() == null)
+                        {
+                            GetComponent<Rigidbody>().drag = 10;
+                            GetComponent<Rigidbody>().useGravity = false;
+                            gameObject.AddComponent<FloatingTransform>().rollAmount = 2;
+                        }
+                    }
+                    else
+                    {
+                        Destroy(GetComponent<FloatingTransform>());
+                        transform.position = hit.point;
+                    }
                 }
             }
         }
     }
+
 
     [PunRPC]
     void DestroyRPC()
