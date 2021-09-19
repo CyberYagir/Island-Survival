@@ -8,6 +8,13 @@ public class MobsSpawner : MonoBehaviour
     public List<Mob> mobsPrefabs;
     public List<Mob> spawned_mobs;
     public int maxMobsCount;
+    GameObject holder;
+    private void Awake()
+    {
+        holder = new GameObject();
+        holder.transform.name = "MobsHolder";
+    }
+
     public void Init()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -58,6 +65,8 @@ public class MobsSpawner : MonoBehaviour
                 }
             }
         }
-        spawned_mobs.Add(PhotonNetwork.Instantiate(mobsPrefabs[Random.Range(0, mobsPrefabs.Count)].name, pos, Quaternion.identity).GetComponent<Mob>());
+        var obj = PhotonNetwork.Instantiate(mobsPrefabs[Random.Range(0, mobsPrefabs.Count)].name, pos, Quaternion.identity);
+        obj.transform.parent = holder.transform;
+        spawned_mobs.Add(obj.GetComponent<Mob>());
     }
 }

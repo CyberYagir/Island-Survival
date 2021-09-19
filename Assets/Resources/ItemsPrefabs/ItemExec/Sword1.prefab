@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7116965946883413869}
   - component: {fileID: 5399616845612256431}
-  - component: {fileID: 9018108008175085602}
+  - component: {fileID: -1887017801472825519}
   m_Layer: 7
   m_Name: Sword1
   m_TagString: Untagged
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   actions: []
---- !u!114 &9018108008175085602
+--- !u!114 &-1887017801472825519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765794878614499069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed297242c347c84ca943bb64bfacafd, type: 3}
+  m_Script: {fileID: 11500000, guid: b3cac91fe92b9f345b1286612309e3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4284121487890977566

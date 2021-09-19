@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviourPun
+public class PlayerStats : LiveObject
 {
     public static PlayerStats stats;
-    public float health = 100, water = 100, hunger = 100;
+    public float water = 100, hunger = 100;
     [SerializeField] float t_water = 1, t_hunger = 1;
 
     public void Awake()

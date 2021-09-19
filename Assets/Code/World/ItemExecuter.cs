@@ -10,7 +10,7 @@ public class Keys
 }
 public class ItemExecuter : MonoBehaviour
 {
-    public enum Type { Any,Pickaxe, Axe}
+    public enum Type { Any,Pickaxe, Axe, Sword}
     public Type type;
     public List<Keys> actions;
 

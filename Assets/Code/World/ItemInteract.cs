@@ -11,24 +11,37 @@ public class ItemInteract : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Resource resource = GetResource(hit.transform.gameObject);
+                Resource resource = GetComponentFrom<Resource>(hit.transform.gameObject);
                 return resource;
             }
         }
         return null;
     }
 
-    public static Resource GetResource(GameObject obj)
+    public LiveObject GetHealthFromRay()
     {
-        Resource res;
-        res = obj.GetComponentInParent<Resource>();
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 4f))
+        {
+            if (hit.transform != null)
+            {
+                LiveObject resource = GetComponentFrom<LiveObject>(hit.transform.gameObject);
+                return resource;
+            }
+        }
+        return null;
+    }
+
+    public static T GetComponentFrom<T>(GameObject obj)
+    {
+        T res;
+        res = obj.GetComponentInParent<T>();
         if (res == null)
         {
-            res = obj.GetComponent<Resource>();
+            res = obj.GetComponent<T>();
         }
         if (res == null)
         {
-            res = obj.GetComponentInChildren<Resource>();
+            res = obj.GetComponentInChildren<T>();
         }
 
         return res;
