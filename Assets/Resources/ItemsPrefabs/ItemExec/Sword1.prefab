@@ -45,8 +45,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  actions: []
+  type: 3
+  actions:
+  - keyCode: 323
+    Down:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -1887017801472825519}
+          m_TargetAssemblyTypeName: AttackTool, Assembly-CSharp
+          m_MethodName: Mine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    Up:
+      m_PersistentCalls:
+        m_Calls: []
+    Press:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &-1887017801472825519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cac91fe92b9f345b1286612309e3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMine: 0
+  attack: {fileID: 7400000, guid: 63fe1794476ef73409e8272202989d84, type: 2}
 --- !u!1 &4284121487890977566
 GameObject:
   m_ObjectHideFlags: 0

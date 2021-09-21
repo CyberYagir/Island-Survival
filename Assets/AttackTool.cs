@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackTool : Usable
 {
-    public virtual void Mine()
+    public new virtual void Mine()
     {
         if (!(canMine && !playerInventory.cooldown)) return;
         itemsData.handsAnim.Play(attack.name);
@@ -12,15 +12,16 @@ public class AttackTool : Usable
         StartCoroutine(startWait());
         StartCoroutine(startAttack());
     }
-    public IEnumerator startAttack()
+    public new IEnumerator startAttack()
     {
+        var live = GetComponentInParent<ItemInteract>().GetHealthFromRay();
         yield return new WaitForSeconds((playerInventory.GetItem(true) as HandItem).attackTime);
-        var res = GetComponentInParent<ItemInteract>().GetHealthFromRay();
-        if (res)
-        { 
+        if (live)
+        {
+            var handI = playerInventory.GetItem(true) as HandItem;
+            print((float)handI.damage);
             //Делать файт (сделать у LiveObject IPunObservable и синхронизировать таким образом хп у всех живих обьектов)
-            пукп
-            GameManager.manager.LocalPlayer.photonView.RPC("DamageResource", Photon.Pun.RpcTarget.All, res.resId, (res.usableType == GetComponent<ItemExecuter>().type || res.usableType == ItemExecuter.Type.Any ? (int)handI.damage : (int)1));
+            live.photonView.RPC("TakeDamage", Photon.Pun.RpcTarget.All, (int)handI.damage);
         }
     }
 }

@@ -353,11 +353,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b44de869eb6acc44916872bbeb6ada4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  maxHealth: 100
+  health: 100
   speed: 2
   newPosition: {x: 0, y: 0, z: 0}
   movingRadius: 10
-  player: {fileID: 0}
   attacked: 0
   jumpForce: 4
 --- !u!114 &3980695160031394387

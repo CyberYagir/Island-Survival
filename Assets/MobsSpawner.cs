@@ -65,7 +65,9 @@ public class MobsSpawner : MonoBehaviour
                 }
             }
         }
-        var obj = PhotonNetwork.Instantiate(mobsPrefabs[Random.Range(0, mobsPrefabs.Count)].name, pos, Quaternion.identity);
+        var n = Random.Range(0, mobsPrefabs.Count);
+        var obj = PhotonNetwork.Instantiate(mobsPrefabs[n].name, pos, Quaternion.identity);
+        obj.transform.name = mobsPrefabs[n].name;
         obj.transform.parent = holder.transform;
         spawned_mobs.Add(obj.GetComponent<Mob>());
     }

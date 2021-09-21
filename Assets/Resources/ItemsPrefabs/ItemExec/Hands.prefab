@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8294632373281740599}
   - component: {fileID: 6572920134947523829}
   - component: {fileID: 7853784705135667320}
+  - component: {fileID: 3354439752768844303}
   m_Layer: 7
   m_Name: Hands
   m_TagString: Untagged
@@ -44,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2dc10dd1060d4eb3cef89a7ba7fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   actions:
   - keyCode: 323
     Down:
@@ -67,6 +69,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 3354439752768844303}
+          m_TargetAssemblyTypeName: AttackTool, Assembly-CSharp
+          m_MethodName: Mine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &7853784705135667320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +91,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed297242c347c84ca943bb64bfacafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMine: 0
+  attack: {fileID: 7400000, guid: e4f25607723ca8f4b9c9bd29506608a9, type: 2}
+--- !u!114 &3354439752768844303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673749897155260071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cac91fe92b9f345b1286612309e3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canMine: 0

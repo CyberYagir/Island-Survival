@@ -22,13 +22,21 @@ public class ItemDisplay : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Resource resource = ItemInteract.GetResource(hit.transform.gameObject);
+                Resource resource = ItemInteract.GetComponentFrom<Resource>(hit.transform.gameObject);
                 if (resource)
                 {
                     text.gameObject.SetActive(true);
                     text.text = resource.item.itemName; 
                     bar.SetActive(true);
                     value.fillAmount = (float)resource.hp / (float)resource.startHp;
+                }
+                else if (ItemInteract.GetComponentFrom<LiveObject>(hit.transform.gameObject) != null)
+                {
+                    var live = ItemInteract.GetComponentFrom<LiveObject>(hit.transform.gameObject);
+                    text.gameObject.SetActive(true);
+                    text.text = live.transform.name;
+                    bar.SetActive(true);
+                    value.fillAmount = (float)live.health / (float)live.maxHealth;
                 }
                 else
                 {
