@@ -7,15 +7,17 @@ public class PlayerStatsUI : MonoBehaviour
 {
     [SerializeField] Image hp, water, hungry;
     PlayerStats playerStats;
+    LiveObject liveObject;
 
     private void Start()
     {
-        playerStats = GetComponentInParent<PlayerStats>();
+           playerStats = GetComponentInParent<PlayerStats>();
+        liveObject = playerStats.GetComponent<LiveObject>();
     }
 
     private void Update()
     {
-        hp.fillAmount = playerStats.health / 100f;
+        hp.fillAmount = liveObject.health / (float)liveObject.maxHealth;
         water.fillAmount = playerStats.water / 100f;
         hungry.fillAmount = playerStats.hunger / 100f;
     }

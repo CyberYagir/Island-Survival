@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 0.1
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: ru
     Server: 
     Port: 0
     ProxyServer: 
@@ -48,6 +48,7 @@ MonoBehaviour:
   - Destroys
   - SetGlobalResID
   - TakeDamage
+  - Death
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

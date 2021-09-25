@@ -20,7 +20,6 @@ public class AttackTool : Usable
         {
             var handI = playerInventory.GetItem(true) as HandItem;
             print((float)handI.damage);
-            //Делать файт (сделать у LiveObject IPunObservable и синхронизировать таким образом хп у всех живих обьектов)
             live.photonView.RPC("TakeDamage", Photon.Pun.RpcTarget.All, (int)handI.damage);
         }
     }

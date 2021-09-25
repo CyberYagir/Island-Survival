@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : LiveObject
+public class PlayerStats : MonoBehaviourPun
 {
     public static PlayerStats stats;
     public float water = 100, hunger = 100;

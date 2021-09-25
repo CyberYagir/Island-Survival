@@ -9,7 +9,6 @@ public class Player : MonoBehaviourPun
 {
     [SerializeField] MonoBehaviour[] behaviours, destroy;
     [SerializeField] GameObject skin, canvas, hands, itemPreview;
-
     private void Awake()
     {
         GameManager.pause = false;

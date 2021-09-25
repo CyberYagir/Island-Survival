@@ -1840,6 +1840,7 @@ GameObject:
   - component: {fileID: 8519827177402707754}
   - component: {fileID: 5112776625948487077}
   - component: {fileID: 8861858373229545813}
+  - component: {fileID: 5360873319979338935}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1909,11 +1910,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2494989143954309162}
   - {fileID: 4499007634525031955}
-  - {fileID: 8519827177402707754}
   - {fileID: 5112776625948487077}
   - {fileID: 8861858373229545813}
+  - {fileID: 5360873319979338935}
   - {fileID: 1022244377857169328}
   sceneViewId: 0
   InstantiationId: 0
@@ -2040,8 +2040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b92760ee1e5854a9c201afeada2e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
   water: 100
   hunger: 100
   t_water: 1
@@ -2082,6 +2080,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4063765239898888338}
   player: {fileID: 1994265110}
+--- !u!114 &5360873319979338935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494989143954309163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94309813121ee8f448566c49aa4cade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 100
 --- !u!1 &2526355728415491943
 GameObject:
   m_ObjectHideFlags: 0

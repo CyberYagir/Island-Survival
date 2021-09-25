@@ -20,7 +20,7 @@ public class ItemInteract : MonoBehaviour
 
     public LiveObject GetHealthFromRay()
     {
-        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 4f))
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, 6f))
         {
             if (hit.transform != null)
             {

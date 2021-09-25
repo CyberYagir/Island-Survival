@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 3131813936946826191}
   - component: {fileID: 3131813936946826186}
   - component: {fileID: 3131813936946826185}
-  - component: {fileID: 3131813936946826184}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -168,19 +167,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3131813936946826184
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3131813936946826190}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3131813937318798153
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +178,6 @@ GameObject:
   - component: {fileID: 3131813937318798154}
   - component: {fileID: 3131813937318798149}
   - component: {fileID: 3131813937318798148}
-  - component: {fileID: 3131813937318798155}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -263,19 +248,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3131813937318798155
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3131813937318798153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3131813937616841145
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +262,7 @@ GameObject:
   - component: {fileID: 3131813937616841146}
   - component: {fileID: 3980695160031394387}
   - component: {fileID: -2155318039739604068}
+  - component: {fileID: 7323726974757877990}
   m_Layer: 0
   m_Name: Chiken
   m_TagString: Untagged
@@ -323,8 +296,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.69017476
+  m_Center: {x: 0, y: 0.19017476, z: 0}
 --- !u!54 &3131813937616841147
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -353,8 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b44de869eb6acc44916872bbeb6ada4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
   speed: 2
   newPosition: {x: 0, y: 0, z: 0}
   movingRadius: 10
@@ -395,8 +366,22 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 3131813937616841146}
   - {fileID: 3980695160031394387}
+  - {fileID: 7323726974757877990}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7323726974757877990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131813937616841145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94309813121ee8f448566c49aa4cade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 20

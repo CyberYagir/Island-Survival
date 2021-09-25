@@ -86,13 +86,24 @@ public class Drop : MonoBehaviour
     {
         if (time > waitTime && this.enabled)
         {
-            if (other.GetComponentInParent<PlayerInventory>() != null)
+            var liveObj = other.GetComponentInParent<LiveObject>();
+            if (liveObj == null)
+                liveObj = other.GetComponent<LiveObject>();
+            if (liveObj == null)
+                liveObj = other.GetComponentInChildren<LiveObject>();
+            if (liveObj != null)
             {
-                if (other.GetComponentInParent<PlayerInventory>().gameObject.GetPhotonView().IsMine)
+                if (liveObj.health > 0)
                 {
-                    if (other.GetComponentInParent<PlayerInventory>().AddItem(this))
+                    if (other.GetComponentInParent<PlayerInventory>() != null)
                     {
-                        this.enabled = false;
+                        if (other.GetComponentInParent<PlayerInventory>().gameObject.GetPhotonView().IsMine)
+                        {
+                            if (other.GetComponentInParent<PlayerInventory>().AddItem(this))
+                            {
+                                this.enabled = false;
+                            }
+                        }
                     }
                 }
             }

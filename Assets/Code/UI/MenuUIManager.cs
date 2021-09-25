@@ -9,11 +9,27 @@ public class MenuUIManager : MonoBehaviour
     public GameObject connectToPUN;
     [SerializeField] TMP_InputField nickname, connectNickname;
     [SerializeField] CustomToggle isMultiplayer;
+    [SerializeField] TMP_Text joinRoomError;
+    [SerializeField] TMP_InputField ipConnect;
+    public void DisplayJoinError(string error)
+    {
+        joinRoomError.text = $"Error: {error}";
+        joinRoomError.gameObject.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(hideWait());
+    }
+
+    IEnumerator hideWait()
+    {
+        yield return new WaitForSeconds(2);
+        joinRoomError.gameObject.SetActive(false);
+    }
 
     private void Start()
     {
         nickname.text = PhotonLobby.nickname;
         connectNickname.text = PhotonLobby.nickname;
+        ipConnect.text = IPManager.GetIP(ADDRESSFAM.IPv4);
     }
 
     public void OpenWindow(MoveWindow moveWindow)

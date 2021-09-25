@@ -162,10 +162,22 @@ public class PlayerInventory : MonoBehaviourPun
             item.name, 1, Camera.main.transform.forward * ((localForwardVelocity / 2) + 1));
     }
 
+    public void DropAllInventory()
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] != null)
+            {
+                Drop(items[i]);
+            }
+        }
+    }
+
     public void SendData()
     {
         var s = GetComponent<PlayerStats>();
-        var data = new InventorySend() { hp = s.health, hungry = s.hunger, water = s.water, items = items, playerName = gameObject.GetPhotonView().Owner.NickName };
+        var h = GetComponent<LiveObject>();
+        var data = new InventorySend() { hp = h.health, hungry = s.hunger, water = s.water, items = items, playerName = gameObject.GetPhotonView().Owner.NickName };
         FindObjectOfType<ChangesManager>().gameObject.GetPhotonView().RPC("SendPlayerData", RpcTarget.MasterClient, JsonConvert.SerializeObject(data));
     }
 

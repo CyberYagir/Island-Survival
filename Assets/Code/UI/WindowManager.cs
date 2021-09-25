@@ -36,6 +36,13 @@ public class WindowManager : MonoBehaviour
     {
         depthOfField.focalLength.value = 0;
     }
+    public void CloseAll()
+    {
+        for (int i = 0; i < moveWindows.Count; i++)
+        {
+            moveWindows[i].SetOpen(false);
+        }
+    }
     public void OpenWindow(MoveWindow moveWindow)
     {
         for (int i = 0; i < moveWindows.Count; i++)

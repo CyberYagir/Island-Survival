@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             SceneManager.LoadScene("Menu");
             return;
         }
+        print("RoomName:" + PhotonNetwork.CurrentRoom.Name);
     }
 
     public void RespawnPlayer()

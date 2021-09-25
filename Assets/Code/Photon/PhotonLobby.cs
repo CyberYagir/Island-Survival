@@ -64,12 +64,12 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
         //mainUI.SetActive(true);
         isConnectedToMasterOrLobby = true;
         base.OnConnectedToMaster();
+        PhotonNetwork.JoinLobby(new TypedLobby("DEFAULT", LobbyType.Default));
     }
 
 
     public override void OnJoinedLobby()
     {
-        PhotonNetwork.JoinLobby(new TypedLobby("DEFAULT", LobbyType.Default));
         isConnectedToMasterOrLobby = true;
         base.OnJoinedLobby();
     }
@@ -98,8 +98,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        //print("Failed");
         base.OnJoinRoomFailed(returnCode, message);
+        FindObjectOfType<MenuUIManager>().DisplayJoinError(message);
     }
     public override void OnJoinedRoom()
     {
@@ -109,7 +109,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        //errorText.text = "Join room Error";
         //CreateRoom();
         base.OnJoinRandomFailed(returnCode, message);
     }
@@ -121,8 +120,21 @@ public class PhotonLobby : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        //errorText.text = "Failed to create room";
+        print("CreateRoom: " + message);
         base.OnCreateRoomFailed(returnCode, message);
+    }
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+        PhotonNetwork.LoadLevel(0);
+    }
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    {
+        base.OnMasterClientSwitched(newMasterClient);
+        foreach (var item in PhotonNetwork.PlayerList)
+        {
+            PhotonNetwork.CloseConnection(item);
+        }
     }
 }
 

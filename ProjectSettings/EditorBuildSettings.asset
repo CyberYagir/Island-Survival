@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World.unity
     guid: b6e8ff69f3561a94e808721cb0c8174b
+  - enabled: 1
+    path: Assets/Scenes/MobsTest.unity
+    guid: 66de170f4ceb50d47ab5b3de0d5b9c2f
   m_configObjects: {}

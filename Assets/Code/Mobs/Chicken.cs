@@ -11,24 +11,34 @@ public class Chicken : Mob
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(randomPoses());
+        if (!photonView.IsMine)
+        {
+            Destroy(rb);
+        }
     }
     private void Update()
     {
-        if (inJump)
+        if (photonView.IsMine)
         {
-            rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
-        }
-        transform.LookAt(new Vector3(newPosition.x, transform.position.y, newPosition.z));
-        if (Vector3.Distance(new Vector3(newPosition.x, transform.position.y, newPosition.z), transform.position) < 1)
-        {
-            SetRandomPos();
+            if (inJump)
+            {
+                rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
+            }
+            transform.LookAt(new Vector3(newPosition.x, transform.position.y, newPosition.z));
+            if (Vector3.Distance(new Vector3(newPosition.x, transform.position.y, newPosition.z), transform.position) < 1)
+            {
+                SetRandomPos();
+            }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        inJump = false;
-        rb.AddRelativeForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (photonView.IsMine)
+        {
+            inJump = false;
+            rb.AddRelativeForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     private void OnCollisionExit(Collision collision)

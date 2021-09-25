@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Mob : LiveObject
+public abstract class Mob : MonoBehaviourPun
 {
     [SerializeField]
     protected float speed;
@@ -12,5 +12,10 @@ public abstract class Mob : LiveObject
     [SerializeField]
     protected float movingRadius;
     public bool attacked;
+
+    public void SetName()
+    {
+        transform.name = transform.name.Split('(')[0];
+    }
 
 }

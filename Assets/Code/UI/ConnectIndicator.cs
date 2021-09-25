@@ -14,6 +14,6 @@ public class ConnectIndicator : MonoBehaviour
 
     private void Update()
     {
-        img.color = PhotonNetwork.IsConnected ? new Color(0, 0.5f, 1) : Color.red;
+        img.color = PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode ? new Color(0, 0.5f, 1) : Color.red;
     }
 }
