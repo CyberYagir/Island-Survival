@@ -22,7 +22,7 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
 
         if (health <= 0)
         {
-            photonView.RPC("Death", RpcTarget.All);
+            photonView.RPC("Death", RpcTarget.MasterClient);
         }
     }
 
@@ -52,11 +52,19 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)) * 5, ForceMode.Impulse);
                 Destroy(GetComponentInChildren<Canvas>().gameObject);
+                Instantiate(Resources.Load<GameObject>("DeathUI"), transform);
             }
         }
         else if (GetComponent<Mob>() != null)
         {
-
+            if (GetComponent<Mob>().enabled){
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)) * 5, ForceMode.Impulse);
+                GetComponent<Mob>().enabled = false;
+                if (PhotonNetwork.IsMasterClient){
+                    PhotonNetwork.Destroy(gameObject);
+                }
+            }
         }
     }
 

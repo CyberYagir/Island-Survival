@@ -19,7 +19,6 @@ public class AttackTool : Usable
         if (live)
         {
             var handI = playerInventory.GetItem(true) as HandItem;
-            print((float)handI.damage);
             live.photonView.RPC("TakeDamage", Photon.Pun.RpcTarget.All, (int)handI.damage);
         }
     }

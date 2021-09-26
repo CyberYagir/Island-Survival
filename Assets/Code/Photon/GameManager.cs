@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (LocalPlayer == null)
         {
             time += Time.deltaTime;
-            if (time > 2.5f && TerrainGenerator.genEnded)
+            if (time > 4f && TerrainGenerator.genEnded)
             {
                 RespawnPlayer();
             }

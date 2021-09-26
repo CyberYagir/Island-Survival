@@ -7,6 +7,7 @@ TagManager:
   - OpenMenu
   - Ground
   - Wall
+  - Drop
   layers:
   - Default
   - TransparentFX

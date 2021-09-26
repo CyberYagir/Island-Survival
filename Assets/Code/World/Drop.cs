@@ -86,25 +86,35 @@ public class Drop : MonoBehaviour
     {
         if (time > waitTime && this.enabled)
         {
-            var liveObj = other.GetComponentInParent<LiveObject>();
-            if (liveObj == null)
-                liveObj = other.GetComponent<LiveObject>();
-            if (liveObj == null)
-                liveObj = other.GetComponentInChildren<LiveObject>();
-            if (liveObj != null)
+            if (other.transform.parent != null)
             {
-                if (liveObj.health > 0)
+                var ph = other.transform.parent.gameObject.GetPhotonView();
+                if (ph != null)
                 {
-                    if (other.GetComponentInParent<PlayerInventory>() != null)
+                    if (ph.IsMine)
                     {
-                        if (other.GetComponentInParent<PlayerInventory>().gameObject.GetPhotonView().IsMine)
+                        var inv = ph.GetComponentInParent<PlayerInventory>();
+                        if (inv != null)
                         {
-                            if (other.GetComponentInParent<PlayerInventory>().AddItem(this))
+                            var liveObj = ph.GetComponent<LiveObject>();
+                            if (liveObj.health > 0)
                             {
-                                this.enabled = false;
+                                if (inv.AddItem(this))
+                                {
+                                    this.enabled = false;
+                                    return;
+                                }
                             }
                         }
                     }
+                }
+            }
+            else
+            {
+                if (other.transform.tag != "Ground")
+                {
+                    time = 0;
+                    waitTime = Random.Range(1, 3f);
                 }
             }
         }
