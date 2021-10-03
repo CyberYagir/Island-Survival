@@ -57,11 +57,14 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
         }
         else if (GetComponent<Mob>() != null)
         {
-            if (GetComponent<Mob>().enabled){
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)) * 5, ForceMode.Impulse);
-                GetComponent<Mob>().enabled = false;
-                if (PhotonNetwork.IsMasterClient){
+            var n = GetComponent<Mob>();
+            if (n.enabled){
+                n.enabled = false;
+                Destroy(Instantiate(Resources.Load<GameObject>("PoofDeath"), transform.position, Quaternion.identity), 3);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    ChangesManager.DropObjectRPCFast(n.dropItem.name, transform.position, transform.rotation, Vector3.zero);
+                    GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)), ForceMode.Impulse);
                     PhotonNetwork.Destroy(gameObject);
                 }
             }

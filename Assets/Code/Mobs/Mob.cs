@@ -11,6 +11,9 @@ public abstract class Mob : MonoBehaviourPun
     protected Vector3 newPosition;
     [SerializeField]
     protected float movingRadius;
+    [SerializeField]
+    public int dropCount;
+    public Item dropItem;
     public bool attacked;
 
     public void SetName()

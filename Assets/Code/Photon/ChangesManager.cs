@@ -62,6 +62,21 @@ public class ChangesManager : MonoBehaviour, IPunObservable
             cm.syncType = syncType;
         }
     }
+    public static void DropObjectRPCFast(string itemFileName, Vector3 pos, Quaternion quaternion, Vector3 forward, int val = 1, string dropPrefabName = "Drop") 
+    {
+        ChangesManager.cm.gameObject.GetPhotonView().RPC(
+           "CreateDropItem",
+           RpcTarget.All,
+           dropPrefabName,
+           pos,
+           quaternion,
+           itemFileName, 1, forward);
+    }
+    public static void SpawnObjectRPCFast(string itemName, Vector3 pos, Quaternion rot)
+    {
+        ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, itemName, pos, rot);
+    }
+
     public static void AddChange(int id, List<Values> values, Change.ChangeType type = Change.ChangeType.DontChange)
     {
         changes.changes.TryGetValue(id, out ResChange get);

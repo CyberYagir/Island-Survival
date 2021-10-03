@@ -63,7 +63,7 @@ public class ItemPlace : MonoBehaviourPun
         var inv = GetComponentInParent<PlayerInventory>();
         if (inv.GetItem() != null)
         {
-            ChangesManager.cm.gameObject.GetPhotonView().RPC("SpawnObject", RpcTarget.All, inv.GetItem().name, pos, rot);
+            ChangesManager.SpawnObjectRPCFast(inv.GetItem().name, pos, rot);
             inv.RemoveItem(inv.GetItem().itemName, 1);
             Destroy(this);
         }

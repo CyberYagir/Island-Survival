@@ -32,6 +32,7 @@ public class MobsSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(5);
+            spawned_mobs.RemoveAll(x => x == null || x.GetComponent<LiveObject>().health <= 0);
             foreach (var item in spawned_mobs)
             {
                 if (item.transform.position.y < 14.5f)

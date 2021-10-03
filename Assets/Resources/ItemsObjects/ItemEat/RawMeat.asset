@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527cb566041bb7b4391959446ca49bbc, type: 3}
+  m_Name: RawMeat
+  m_EditorClassIdentifier: 
+  itemName: Raw meat
+  value: 1
+  maxValue: 16
+  durability: 1
+  prefab: {fileID: 758703465632823389, guid: 47773ff9248cf53488a35b84f6e78fb9, type: 3}
+  eatValue: 50
+  eatTime: 2
+  animatorController: {fileID: 9100000, guid: b742c999c43ffa240bf3e6e60bd87c0f, type: 2}
