@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Hand Item", menuName = "Game/Hand Item", order = 2)]
-public class HandItem : Item
+public abstract class AnimatorItem: Item
 {
-    public float damage, attackTime;
     [Newtonsoft.Json.JsonIgnore]
     public RuntimeAnimatorController animatorController;
+}
+
+[CreateAssetMenu(fileName = "Hand Item", menuName = "Game/Hand Item", order = 2)]
+public class HandItem : AnimatorItem
+{
+    public float damage, attackTime;
 
 }

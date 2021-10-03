@@ -329,6 +329,8 @@ MonoBehaviour:
   speed: 2
   newPosition: {x: 0, y: 0, z: 0}
   movingRadius: 10
+  dropCount: 2
+  dropItem: {fileID: 11400000, guid: 1ac5f74a1521c5441ad4b52f816b0e5a, type: 2}
   attacked: 0
   jumpForce: 4
 --- !u!114 &3980695160031394387

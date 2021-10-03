@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Keys
 {
     public KeyCode keyCode;
-    public UnityEvent Down, Up, Press;
+    public UnityEvent Down, Up, Press, notPress;
 }
 public class ItemExecuter : MonoBehaviour
 {
@@ -22,6 +22,10 @@ public class ItemExecuter : MonoBehaviour
                 if (Input.GetKey(actions[i].keyCode))
                 {
                     actions[i].Press.Invoke();
+                }
+                else
+                {
+                    actions[i].notPress.Invoke();
                 }
                 if (Input.GetKeyDown(actions[i].keyCode))
                 {

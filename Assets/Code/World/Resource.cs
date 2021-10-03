@@ -108,13 +108,7 @@ public class Resource : MonoBehaviour
         {
             for (int i = 0; i < ((dropCount.x == 1 && dropCount.y == dropCount.x) ? 1 : (int)Random.Range(dropCount.x, dropCount.y + 1)); i++)
             {
-                ChangesManager.cm.gameObject.GetPhotonView().RPC(
-                    "CreateDropItem",
-                    RpcTarget.All,
-                    "Drop",
-                    transform.position + new Vector3(0, 2, 0),
-                    transform.rotation,
-                    item.name, 1, Vector3.zero);
+                ChangesManager.DropObjectRPCFast(item.name, transform.position + new Vector3(0, 2, 0), transform.rotation, Vector3.zero);
             }
         }
 

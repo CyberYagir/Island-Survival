@@ -18,7 +18,8 @@ public class PlayerStats : MonoBehaviourPun
     }
     private void Update()
     {
-
+        water = Mathf.Clamp(water, 0, 100);
+        hunger = Mathf.Clamp(hunger, 0, 100);
         if (Mathf.Abs(GetComponent<Rigidbody>().velocity.magnitude) > 1)
         {
             water -= t_water * Time.deltaTime;

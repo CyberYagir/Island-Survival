@@ -153,13 +153,8 @@ public class PlayerInventory : MonoBehaviourPun
     public void Drop(Item item)
     {
         float localForwardVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        ChangesManager.cm.gameObject.GetPhotonView().RPC(
-            "CreateDropItem",
-            RpcTarget.All,
-            "Drop",
-            hand.transform.position,
-            transform.rotation,
-            item.name, 1, Camera.main.transform.forward * ((localForwardVelocity / 2) + 1));
+        ChangesManager.DropObjectRPCFast(item.name, hand.transform.position, transform.rotation, Camera.main.transform.forward * ((localForwardVelocity / 2) + 1));
+
     }
 
     public void DropAllInventory()
@@ -181,7 +176,7 @@ public class PlayerInventory : MonoBehaviourPun
         FindObjectOfType<ChangesManager>().gameObject.GetPhotonView().RPC("SendPlayerData", RpcTarget.MasterClient, JsonConvert.SerializeObject(data));
     }
 
-    public bool RemoveItem(string itemName, int value)
+    public bool RemoveItem(string itemName, int value = 1)
     {
         var item = items.Find(x => x != null && x.itemName == itemName && x.value >= value);
         if (item != null)
@@ -220,9 +215,9 @@ public class PlayerInventory : MonoBehaviourPun
             {
                 photonView.RPC("SpawnItemInHand", RpcTarget.AllBuffered, items[selected].name);
             }
-            if (items[selected] is HandItem)
+            if (items[selected] is AnimatorItem)
             {
-                GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = (items[selected] as HandItem).animatorController;
+                GetComponent<ItemsData>().handsAnim.runtimeAnimatorController = (items[selected] as AnimatorItem).animatorController;
             }
         }
         else
