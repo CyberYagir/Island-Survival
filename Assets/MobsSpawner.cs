@@ -23,9 +23,9 @@ public class MobsSpawner : MonoBehaviour
             {
                 SpawnObject();
             }
+            StopAllCoroutines();
+            StartCoroutine(cheker());
         }
-        StopAllCoroutines();
-        StartCoroutine(cheker());
     }
     IEnumerator cheker()
     {

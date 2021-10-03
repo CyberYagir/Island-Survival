@@ -34,7 +34,7 @@ public class ItemDisplay : MonoBehaviour
                 {
                     var live = ItemInteract.GetComponentFrom<LiveObject>(hit.transform.gameObject);
                     text.gameObject.SetActive(true);
-                    text.text = live.transform.name;
+                    text.text = live.transform.name.Split(':')[0];
                     bar.SetActive(true);
                     value.fillAmount = (float)live.health / (float)live.maxHealth;
                 }

@@ -18,7 +18,10 @@ public abstract class Mob : MonoBehaviourPun
 
     public void SetName()
     {
-        transform.name = transform.name.Split('(')[0];
+        transform.name = transform.name.Replace("(Clone)", "");
     }
-
+    void Awake()
+    {
+        SetName();
+    }
 }

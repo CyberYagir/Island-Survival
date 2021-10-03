@@ -64,7 +64,8 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
                 if (PhotonNetwork.IsMasterClient)
                 {
                     ChangesManager.DropObjectRPCFast(n.dropItem.name, transform.position, transform.rotation, Vector3.zero);
-                    GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)), ForceMode.Impulse);
+                    if (GetComponent<Rigidbody>() != null)
+                        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)), ForceMode.Impulse);
                     PhotonNetwork.Destroy(gameObject);
                 }
             }
