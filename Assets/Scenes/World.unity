@@ -1523,8 +1523,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910855094}
-  m_LocalRotation: {x: -0.032122623, y: 0, z: 0.015294897, w: 0.99936694}
-  m_LocalPosition: {x: 826.7964, y: 15.157151, z: 861.55585}
+  m_LocalRotation: {x: -0.0168785, y: 0, z: -0.0014271546, w: 0.99985653}
+  m_LocalPosition: {x: 826.7964, y: 15.128534, z: 861.55585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2432,8 +2432,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751295729}
-  m_LocalRotation: {x: 0.03063621, y: 0, z: -0.023360293, w: 0.9992576}
-  m_LocalPosition: {x: 1398, y: 15.521255, z: 1948}
+  m_LocalRotation: {x: 0.007789334, y: 0, z: -0.0031341885, w: 0.9999648}
+  m_LocalPosition: {x: 1398, y: 14.190324, z: 1948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 852810575}
@@ -2819,4 +2819,11 @@ MonoBehaviour:
       count: 4
     finalItem:
       item: {fileID: 11400000, guid: 09907925aa53f63429ef31962446c00a, type: 2}
+      count: 1
+  - craftType: 2
+    craftItems:
+    - item: {fileID: 11400000, guid: 1ac5f74a1521c5441ad4b52f816b0e5a, type: 2}
+      count: 1
+    finalItem:
+      item: {fileID: 11400000, guid: e3f496ea06c349443a92806e608ff6e3, type: 2}
       count: 1

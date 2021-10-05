@@ -106,10 +106,11 @@ MonoBehaviour:
   item: {fileID: 0}
   scaler: {fileID: 5661022228154514484}
   time: 0
-  waitTime: 4
+  waitTime: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 55
+  triggered: []
 --- !u!135 &4041365915772145192
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class Drop : MonoBehaviour
     [SerializeField]
     public LayerMask layerMask;
 
+    public List<PlayerInventory> triggered;
+    
     private void Update()
     {
         time += Time.deltaTime;
@@ -82,39 +84,50 @@ public class Drop : MonoBehaviour
         item.value = val;
     }
 
+    public void OnTriggerEnter(Collider other){
+        if (other.transform.parent != null)
+        {
+            var ph = other.transform.parent.gameObject.GetPhotonView();
+            if (ph != null)
+            {
+                if (ph.IsMine)
+                {
+                    var inv = ph.GetComponentInParent<PlayerInventory>();
+                    if (inv != null)
+                    {
+                        if (!triggered.Contains(inv)){
+                            triggered.Add(inv);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other){
+        if (other.transform.parent != null){
+            var inv = other.GetComponentInParent<PlayerInventory>();
+            if (triggered.Contains(inv)){
+                triggered.Remove(inv);
+            }
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (time > waitTime && this.enabled)
         {
             if (other.transform.parent != null)
             {
-                var ph = other.transform.parent.gameObject.GetPhotonView();
-                if (ph != null)
-                {
-                    if (ph.IsMine)
-                    {
-                        var inv = ph.GetComponentInParent<PlayerInventory>();
-                        if (inv != null)
+                var inv = other.GetComponentInParent<PlayerInventory>();
+                if (triggered.Contains(inv)){
+                    if (inv.GetComponent<LiveObject>().health > 0){
+                        if (inv.AddItem(this))
                         {
-                            var liveObj = ph.GetComponent<LiveObject>();
-                            if (liveObj.health > 0)
-                            {
-                                if (inv.AddItem(this))
-                                {
-                                    this.enabled = false;
-                                    return;
-                                }
-                            }
+                            this.enabled = false;
+                            return;
                         }
                     }
-                }
-            }
-            else
-            {
-                if (other.transform.tag != "Ground")
-                {
-                    time = 0;
-                    waitTime = Random.Range(1, 3f);
                 }
             }
         }

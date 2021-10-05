@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviourPun
     public float water = 100, hunger = 100;
     [SerializeField] float t_water = 1, t_hunger = 1;
 
+    float time = 0;
+
     public void Awake()
     {
         if (photonView.IsMine)
@@ -24,6 +26,13 @@ public class PlayerStats : MonoBehaviourPun
         {
             water -= t_water * Time.deltaTime;
             hunger -= t_hunger * Time.deltaTime;
+        }
+        if (water <= 0 || hunger <= 0){
+            time += Time.deltaTime;
+            if (time > 5){
+                GetComponent<LiveObject>().photonView.RPC("TakeDamage", RpcTarget.All, 5);
+                time = 0;
+            }
         }
     }
 }

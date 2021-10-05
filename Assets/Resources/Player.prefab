@@ -1974,9 +1974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: a2e890b1501e03f4f94304b21a1851f0, type: 2}
-  - {fileID: 11400000, guid: c3d0645821210ca48b7d3a51964e0ad9, type: 2}
-  - {fileID: 11400000, guid: 1ac5f74a1521c5441ad4b52f816b0e5a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   selected: 0
@@ -2042,8 +2042,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   water: 100
   hunger: 100
-  t_water: 1
-  t_hunger: 1
+  t_water: 0.6
+  t_hunger: 0.3
 --- !u!114 &5112776625948487077
 MonoBehaviour:
   m_ObjectHideFlags: 0

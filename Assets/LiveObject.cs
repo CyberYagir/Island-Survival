@@ -36,7 +36,14 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
             }
         }
     }
-
+    [PunRPC]
+    public void SpawnParticles(){
+        foreach (var item in GetComponentsInChildren<Renderer>())
+        {
+            item.enabled = false;
+        }
+        Destroy(Instantiate(Resources.Load<GameObject>("PoofDeath"), transform.position, Quaternion.identity), 3);
+    }
     [PunRPC]
     public void Death()
     {
@@ -60,9 +67,9 @@ public class LiveObject : MonoBehaviourPun, IPunObservable
             var n = GetComponent<Mob>();
             if (n.enabled){
                 n.enabled = false;
-                Destroy(Instantiate(Resources.Load<GameObject>("PoofDeath"), transform.position, Quaternion.identity), 3);
                 if (PhotonNetwork.IsMasterClient)
                 {
+                    photonView.RPC("SpawnParticles", RpcTarget.All);
                     ChangesManager.DropObjectRPCFast(n.dropItem.name, transform.position, transform.rotation, Vector3.zero);
                     if (GetComponent<Rigidbody>() != null)
                         GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f)), ForceMode.Impulse);
